@@ -28,7 +28,16 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 300px;
-  text-align: center;
+}
+
+.letterSection .letters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
 }
 
 .letterSection h1 {

@@ -74,7 +74,7 @@ const words = [
         img: '',
     },
     {
-        title: 'Њ',
+        title: 'Њива',
         img: '',
     },
     {
@@ -134,24 +134,25 @@ const words = [
 letter.innerHTML = azbukaArr[0];
 img.src = words[0].img;
 
-let stop = false;
 let character = 0;
 let timer;
 
 function onTick() {
     letter.innerHTML = azbukaArr[character];
     character++;
-    if (character === azbukaArr.length && !stop) {
+    if (character === azbukaArr.length) {
         character = 0;
     }
 }
 
 button.addEventListener('click', () => {
     button.classList.toggle('start');
+
     if (button.classList.contains('start')) {
         button.innerHTML = 'СТАРТ';
         clearInterval(timer);
         stopLetter = letter.textContent;
+
         for (let word of words) {
             if (word.title.charAt(0) == stopLetter) {
                 img.src = word.img;
