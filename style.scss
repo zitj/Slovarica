@@ -3,8 +3,52 @@
     padding: 0;
     box-sizing: border-box;
 }
-h1 {
+.letterSection {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background: yellow;
     text-align: center;
-    line-height: 100vh;
-    font-size: 10em;
+    h1 {
+        font-size: 20em;
+    }
+    button {
+        border: none;
+        border-bottom: 5px solid rgb(83, 26, 26);
+        outline: none;
+        cursor: pointer;
+        letter-spacing: 3px;
+        font-size: 1.5em;
+        background: rgb(255, 71, 71);
+        color: white;
+        border-radius: 8px;
+        padding: 20px;
+        &:hover {
+            opacity: 0.9;
+        }
+        &:active {
+            opacity: 1;
+            border-bottom: 4px solid rgb(83, 26, 26);
+        }
+        &.start {
+            background: rgb(36, 175, 66);
+            border-bottom: 4px solid rgb(26, 83, 31);
+        }
+    }
+}
+
+.illustration {
+    position: absolute;
+    top: 15%;
+    left: 45%;
+    display: flex;
+    flex-direction: column;
+    img {
+        width: 700px;
+    }
+    h3 {
+        text-align: center;
+        font-size: 3em;
+        margin-top: 20px;
+    }
 }
