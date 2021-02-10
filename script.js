@@ -3,6 +3,7 @@ const azbukaArr = azbuka.split('');
 
 const button = document.querySelector('button');
 const letter = document.querySelector('h1');
+const displayWord = document.querySelector('h3');
 const img = document.querySelector('img');
 
 let stopLetter = '';
@@ -10,8 +11,123 @@ let stopLetter = '';
 const words = [
     {
         title: 'Авион',
-        img:
-            'https://w7.pngwing.com/pngs/607/226/png-transparent-airplane-cartoon-plane-creative-train-marine-mammal-photography-decoupage.png',
+        img: '',
+    },
+    {
+        title: 'Банана',
+        img: '',
+    },
+    {
+        title: 'Вук',
+        img: '',
+    },
+    {
+        title: 'Грожђе',
+        img: '',
+    },
+    {
+        title: 'Домине',
+        img: '',
+    },
+    {
+        title: 'Ђеврек',
+        img: '',
+    },
+    {
+        title: 'Ексер',
+        img: '',
+    },
+    {
+        title: 'Жирафа',
+        img: '',
+    },
+    {
+        title: 'Зомби',
+        img: '',
+    },
+    {
+        title: 'Игла',
+        img: '',
+    },
+    {
+        title: 'Јабука',
+        img: '',
+    },
+    {
+        title: 'Крокодил',
+        img: '',
+    },
+    {
+        title: 'Лизалица',
+        img: '',
+    },
+    {
+        title: 'Љуљашка',
+        img: '',
+    },
+    {
+        title: 'Миш',
+        img: '',
+    },
+    {
+        title: 'Нож',
+        img: '',
+    },
+    {
+        title: 'Њ',
+        img: '',
+    },
+    {
+        title: 'Око',
+        img: '',
+    },
+    {
+        title: 'Парадајз',
+        img: '',
+    },
+    {
+        title: 'Ранац',
+        img: '',
+    },
+    {
+        title: 'Сат',
+        img: '',
+    },
+    {
+        title: 'Телевизор',
+        img: '',
+    },
+    {
+        title: 'Ћурка',
+        img: '',
+    },
+    {
+        title: 'Уво',
+        img: '',
+    },
+    {
+        title: 'Фрула',
+        img: '',
+    },
+    {
+        title: 'Хлеб',
+        img: '',
+    },
+    {
+        title: 'Цигла',
+        img: '',
+    },
+    {
+        title: 'Чесма',
+        img: '',
+    },
+    {
+        title: 'Џак',
+        img: '',
+    },
+    {
+        title: 'Шешир',
+        img: '',
     },
 ];
 
@@ -38,8 +154,8 @@ button.addEventListener('click', () => {
         stopLetter = letter.textContent;
         for (let word of words) {
             if (word.title.charAt(0) == stopLetter) {
-                console.log(word.img);
                 img.src = word.img;
+                displayWord.innerHTML = word.title;
             }
         }
     } else {

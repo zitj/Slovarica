@@ -3,11 +3,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+.wrapper {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: space-around;
+    width: 60%;
+}
 .letterSection {
     display: flex;
     flex-direction: column;
     width: 300px;
-    background: yellow;
     text-align: center;
     h1 {
         font-size: 20em;
@@ -38,9 +46,6 @@
 }
 
 .illustration {
-    position: absolute;
-    top: 15%;
-    left: 45%;
     display: flex;
     flex-direction: column;
     img {
