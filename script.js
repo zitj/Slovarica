@@ -8,159 +8,74 @@ const img = document.querySelector('img');
 
 let stopLetter = '';
 
-const words = [
-    {
-        title: 'Авион',
-        img: '',
-    },
-    {
-        title: 'Банана',
-        img: '',
-    },
-    {
-        title: 'Вук',
-        img: '',
-    },
-    {
-        title: 'Грожђе',
-        img: '',
-    },
-    {
-        title: 'Домине',
-        img: '',
-    },
-    {
-        title: 'Ђеврек',
-        img: '',
-    },
-    {
-        title: 'Ексер',
-        img: '',
-    },
-    {
-        title: 'Жирафа',
-        img: '',
-    },
-    {
-        title: 'Зомби',
-        img: '',
-    },
-    {
-        title: 'Игла',
-        img: '',
-    },
-    {
-        title: 'Јабука',
-        img: '',
-    },
-    {
-        title: 'Крокодил',
-        img: '',
-    },
-    {
-        title: 'Лизалица',
-        img: '',
-    },
-    {
-        title: 'Љуљашка',
-        img: '',
-    },
-    {
-        title: 'Миш',
-        img: '',
-    },
-    {
-        title: 'Нож',
-        img: '',
-    },
-    {
-        title: 'Њива',
-        img: '',
-    },
-    {
-        title: 'Око',
-        img: '',
-    },
-    {
-        title: 'Парадајз',
-        img: '',
-    },
-    {
-        title: 'Ранац',
-        img: '',
-    },
-    {
-        title: 'Сат',
-        img: '',
-    },
-    {
-        title: 'Телевизор',
-        img: '',
-    },
-    {
-        title: 'Ћурка',
-        img: '',
-    },
-    {
-        title: 'Уво',
-        img: '',
-    },
-    {
-        title: 'Фрула',
-        img: '',
-    },
-    {
-        title: 'Хлеб',
-        img: '',
-    },
-    {
-        title: 'Цигла',
-        img: '',
-    },
-    {
-        title: 'Чесма',
-        img: '',
-    },
-    {
-        title: 'Џак',
-        img: '',
-    },
-    {
-        title: 'Шешир',
-        img: '',
-    },
+// DATA
+const data = [
+    'Авион',
+    'Банана',
+    'Грожђе',
+    'Домине',
+    'Ђумбирко',
+    'Вук',
+    'Ексери',
+    'Жирафа',
+    'Зомби',
+    'Индијанaц',
+    'Јабука',
+    'Крокодил',
+    'Лизалица',
+    'Љуљашка',
+    'Миш',
+    'Нож',
+    'Њива',
+    'Око',
+    'Пица',
+    'Ранац',
+    'Сат',
+    'Телевизор',
+    'Ћурка',
+    'Уво',
+    'Фрула',
+    'Хлеб',
+    'Цигле',
+    'Чесма',
+    'Џак',
+    'Шешир',
 ];
 
 letter.innerHTML = azbukaArr[0];
-img.src = words[0].img;
+img.src = `img/${data[0]}.png`;
 
 let character = 0;
 let timer;
 
-function onTick() {
+const onTick = () => {
     letter.innerHTML = azbukaArr[character];
+    displayWord.innerHTML = data[character];
+    img.src = `img/${data[character]}.png`;
     character++;
     if (character === azbukaArr.length) {
         character = 0;
     }
-}
+};
 
-button.addEventListener('click', () => {
+const startStop = () => {
     button.classList.toggle('start');
 
     if (button.classList.contains('start')) {
-        button.innerHTML = 'СТАРТ';
+        button.innerHTML = 'КРЕНИ';
         clearInterval(timer);
         stopLetter = letter.textContent;
 
-        for (let word of words) {
-            if (word.title.charAt(0) == stopLetter) {
-                img.src = word.img;
-                displayWord.innerHTML = word.title;
+        for (let word of data) {
+            if (word.charAt(0) == stopLetter) {
+                img.src = `img/${word}.png`;
+                displayWord.innerHTML = word;
             }
         }
     } else {
         timer = setInterval(onTick, 80);
-        button.innerHTML = 'СТОП';
+        button.innerHTML = 'СТАНИ';
     }
-});
+};
+
+button.addEventListener('click', startStop);
