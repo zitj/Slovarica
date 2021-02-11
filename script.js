@@ -6,16 +6,18 @@ const letter = document.querySelector('h1');
 const displayWord = document.querySelector('h3');
 const img = document.querySelector('img');
 
+const audio = document.getElementById('my_audio');
+
 let stopLetter = '';
 
 // DATA
 const data = [
     'Авион',
     'Банана',
+    'Вук',
     'Грожђе',
     'Домине',
     'Ђумбирко',
-    'Вук',
     'Ексери',
     'Жирафа',
     'Зомби',
@@ -70,9 +72,15 @@ const startStop = () => {
             if (word.charAt(0) == stopLetter) {
                 img.src = `img/${word}.png`;
                 displayWord.innerHTML = word;
+                audio.src = `audio/${word}.mp3`;
+                audio.loop = false;
+                audio.play();
             }
         }
     } else {
+        audio.src = 'audio/shuffle.mp3';
+        audio.loop = true;
+        audio.play();
         timer = setInterval(onTick, 80);
         button.innerHTML = 'СТАНИ';
     }
