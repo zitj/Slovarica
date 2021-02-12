@@ -11,6 +11,7 @@ const audio = document.getElementById('my_audio');
 
 let stopLetter = '';
 
+//DATA
 const vocabular = [
     {
         wordCounter: 0,
@@ -26,7 +27,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Грожђе', 'Град', 'Гитара'],
+        words: ['Грожђе', 'Гром', 'Гитара'],
     },
     {
         wordCounter: 0,
@@ -38,7 +39,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Ексери', 'Елипса', 'Енергија'],
+        words: ['Ексери', 'Елипса'],
     },
     {
         wordCounter: 0,
@@ -46,7 +47,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Зомби', 'Зец', 'Знак'],
+        words: ['Зомби', 'Зец', 'Звезда'],
     },
     {
         wordCounter: 0,
@@ -66,7 +67,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Љуљашка', 'Љубичица', 'Људи'],
+        words: ['Љуљашка', 'Људи'],
     },
     {
         wordCounter: 0,
@@ -78,7 +79,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Њива', 'Њушка', 'Њоке'],
+        words: ['Њива', 'Њушка'],
     },
     {
         wordCounter: 0,
@@ -86,7 +87,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Пица', 'Папирка', 'Папагај'],
+        words: ['Пица', 'Паприка', 'Папагај'],
     },
     {
         wordCounter: 0,
@@ -98,15 +99,15 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Телевизор', 'Труба', 'Трешња'],
+        words: ['Телевизор', 'Труба', 'Трактор'],
     },
     {
         wordCounter: 0,
-        words: ['Ћурка', 'Ћускија', 'Ћуп'],
+        words: ['Ћурка', 'Ћуп'],
     },
     {
         wordCounter: 0,
-        words: ['Уво', 'Удица', 'Усне'],
+        words: ['Уво', 'Удица'],
     },
     {
         wordCounter: 0,
@@ -114,11 +115,11 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Хлеб', 'Храм', 'Храна'],
+        words: ['Хлеб', 'Храм'],
     },
     {
         wordCounter: 0,
-        words: ['Цигле', 'Цуцла', 'Ципеле'],
+        words: ['Цигле', 'Цуцла', 'Цвекла'],
     },
     {
         wordCounter: 0,
@@ -126,50 +127,16 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Џак', 'Џезва', 'Џемпер'],
+        words: ['Џак', 'Џемпер'],
     },
     {
         wordCounter: 0,
-        words: ['Шешир'],
+        words: ['Шешир', 'Шишарка'],
     },
 ];
 
-// DATA
-const data = [
-    'Авион',
-    'Банана',
-    'Вук',
-    'Грожђе',
-    'Домине',
-    'Ђумбирко',
-    'Ексери',
-    'Жирафа',
-    'Зомби',
-    'Индијанaц',
-    'Јабука',
-    'Крокодил',
-    'Лизалица',
-    'Љуљашка',
-    'Миш',
-    'Нож',
-    'Њива',
-    'Око',
-    'Пица',
-    'Ранац',
-    'Сат',
-    'Телевизор',
-    'Ћурка',
-    'Уво',
-    'Фрула',
-    'Хлеб',
-    'Цигле',
-    'Чесма',
-    'Џак',
-    'Шешир',
-];
-
 letter.innerHTML = azbukaArr[0];
-img.src = `img/${data[0]}.png`;
+img.src = `img/${vocabular[0].words[0]}.png`;
 
 let counter = 0;
 let character = 0;
@@ -193,30 +160,24 @@ const startStop = () => {
         clearInterval(timer);
         stopLetter = letter.textContent;
 
-        for (let word of data) {
-            if (word.charAt(0) == stopLetter) {
-                img.src = `img/${word}.png`;
-                displayWord.innerHTML = word;
-                audio.src = `audio/${word}.mp3`;
-                audio.loop = false;
-                audio.play();
-            }
-        }
-
         for (let word of vocabular) {
             if (word.wordCounter > word.words.length - 1) {
                 word.wordCounter = 0;
             }
             if (word.words[0].charAt(0) == stopLetter) {
                 counter = word.wordCounter;
+                img.src = `img/${word.words[counter]}.png`;
                 displayWord.innerHTML = word.words[counter];
+                //audio.src = `audio/${word}.mp3`;
+                //audio.loop = false;
+                //audio.play();
                 word.wordCounter++;
             }
         }
     } else {
-        audio.src = 'audio/shuffle.mp3';
-        audio.loop = true;
-        audio.play();
+        // audio.src = 'audio/shuffle.mp3';
+        // audio.loop = true;
+        // audio.play();
         timer = setInterval(onTick, 80);
         button.innerHTML = 'СТАНИ';
     }
