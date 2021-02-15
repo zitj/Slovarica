@@ -15,7 +15,7 @@ let stopLetter = '';
 const vocabular = [
     {
         wordCounter: 0,
-        words: ['Авион', 'Ауто', 'Аждаја'],
+        words: ['Авион', 'Ауто', 'Астронаут'],
     },
     {
         wordCounter: 0,
@@ -31,15 +31,15 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Домине', 'Дабар', 'Диносаурус'],
+        words: ['Домине', 'Дрво', 'Диносаурус'],
     },
     {
         wordCounter: 0,
-        words: ['Ђумбирко', 'Ђак', 'Ђеврек'],
+        words: ['Ђумбирко', 'Ђеврек'],
     },
     {
         wordCounter: 0,
-        words: ['Ексери', 'Елипса'],
+        words: ['Ексери'],
     },
     {
         wordCounter: 0,
@@ -95,7 +95,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Сат', 'Сендвич', 'Саксија'],
+        words: ['Сат', 'Слон'],
     },
     {
         wordCounter: 0,
@@ -115,7 +115,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Хлеб', 'Храм'],
+        words: ['Хлеб', 'Храм', 'Хармоника'],
     },
     {
         wordCounter: 0,
@@ -146,6 +146,7 @@ const onTick = () => {
     letter.innerHTML = azbukaArr[character];
     displayWord.innerHTML = vocabular[character].words[0];
     img.src = `img/${vocabular[character].words[0]}.png`;
+
     character++;
     if (character === azbukaArr.length) {
         character = 0;
