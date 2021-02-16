@@ -169,16 +169,16 @@ const startStop = () => {
                 counter = word.wordCounter;
                 img.src = `img/${word.words[counter]}.png`;
                 displayWord.innerHTML = word.words[counter];
-                //audio.src = `audio/${word}.mp3`;
-                //audio.loop = false;
-                //audio.play();
+                audio.src = `audio/${word.words[counter]}.mp3`;
+                audio.loop = false;
+                audio.play();
                 word.wordCounter++;
             }
         }
     } else {
-        // audio.src = 'audio/shuffle.mp3';
-        // audio.loop = true;
-        // audio.play();
+        audio.src = 'audio/shuffle.mp3';
+        audio.loop = true;
+        audio.play();
         timer = setInterval(onTick, 80);
         button.innerHTML = 'СТАНИ';
     }
