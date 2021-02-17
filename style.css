@@ -71,7 +71,8 @@ header nav a.active {
           transform: translate(-50%, -50%);
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  width: 60%;
+  width: 1100px;
+  height: 670px;
   padding: 5% 3%;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
@@ -82,7 +83,8 @@ header nav a.active {
 
 .letterSection,
 .letters,
-h1 {
+h1,
+.arrowButtons {
   background: #eeeeee;
   font-family: 'Balsamiq Sans', cursive;
 }
@@ -111,6 +113,48 @@ h1 {
 
 .letterSection h1 {
   font-size: 20em;
+}
+
+.letterSection .arrowButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: -10px;
+}
+
+.letterSection .arrowButtons button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  width: 80px;
+  height: 80px;
+  background: #24af42;
+}
+
+.letterSection .arrowButtons button:active {
+  border: none;
+}
+
+.letterSection .arrowButtons .arrowRight {
+  -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+          clip-path: polygon(100% 50%, 0 0, 0 100%);
+}
+
+.letterSection .arrowButtons .arrowLeft {
+  margin-right: 20px;
+  -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
+          clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+.letterSection .arrowButtons .buttonWrap {
+  background: none;
+  -webkit-filter: drop-shadow(0px 2px 3px rgba(0, 54, 9, 0.877));
+          filter: drop-shadow(0px 2px 3px rgba(0, 54, 9, 0.877));
 }
 
 .letterSection button {

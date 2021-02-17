@@ -52,7 +52,8 @@ header {
     top: 50%;
     transform: translate(-50%, -50%);
     justify-content: space-around;
-    width: 60%;
+    width: 1100px;
+    height: 670px;
     padding: 5% 3%;
     border-radius: 10px;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
@@ -61,7 +62,8 @@ header {
 }
 .letterSection,
 .letters,
-h1 {
+h1,
+.arrowButtons {
     background: rgb(238, 238, 238);
     font-family: 'Balsamiq Sans', cursive;
 }
@@ -78,7 +80,33 @@ h1 {
     h1 {
         font-size: 20em;
     }
-
+    .arrowButtons {
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        margin-right: -10px;
+        button {
+            display: flex;
+            border: none;
+            width: 80px;
+            height: 80px;
+            background: rgb(36, 175, 66);
+            &:active {
+                border: none;
+            }
+        }
+        .arrowRight {
+            clip-path: polygon(100% 50%, 0 0, 0 100%);
+        }
+        .arrowLeft {
+            margin-right: 20px;
+            clip-path: polygon(100% 0, 0 50%, 100% 100%);
+        }
+        .buttonWrap {
+            background: none;
+            filter: drop-shadow(0px 2px 3px rgba(0, 54, 9, 0.877));
+        }
+    }
     button {
         border: none;
         border-bottom: 5px solid rgb(83, 26, 26);
@@ -95,6 +123,7 @@ h1 {
         }
         &:active {
             opacity: 1;
+
             border-bottom: 4px solid rgb(83, 26, 26);
         }
         &.start {

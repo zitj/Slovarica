@@ -1,18 +1,25 @@
 const azbuka = 'АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ';
 const azbukaArr = azbuka.split('');
 
+const wrapper = document.querySelector('.wrapper');
 const span = document.querySelector('span');
 const randomButton = document.querySelector('.start');
 const letter = document.querySelector('h1');
 const displayWord = document.querySelector('h3');
 const img = document.querySelector('img');
-const nav = document.querySelector('nav');
-
-const sectionButtons = nav.querySelectorAll('a');
-
 const audio = document.getElementById('my_audio');
 
+const nav = document.querySelector('nav');
+const sectionButtons = nav.querySelectorAll('a');
+
+const arrowButtons = document.querySelector('.arrowButtons');
+const leftArrow = arrowButtons.querySelector('.arrowLeft');
+const rightArrow = arrowButtons.querySelector('.arrowRight');
+
 let stopLetter = '';
+randomButton.style.display = 'none';
+
+console.log(leftArrow);
 
 //DATA
 const vocabular = [
@@ -145,7 +152,7 @@ let counter = 0;
 let character = 0;
 let timer;
 
-//Navigation
+//Navigation (adding and removing elements)
 const classRemover = () => {
     for (let sectionButton of sectionButtons) {
         sectionButton.classList.remove('active');
@@ -156,19 +163,59 @@ for (let sectionButton of sectionButtons) {
     sectionButton.addEventListener('click', () => {
         classRemover();
         sectionButton.classList.add('active');
+
+        if (sectionButtons[1].classList.contains('active')) {
+            randomButton.style.display = 'block';
+            arrowButtons.style.display = 'none';
+        } else {
+            arrowButtons.style.display = 'flex';
+            randomButton.style.display = 'none';
+        }
+        if (sectionButtons[2].classList.contains('active')) {
+            wrapper.style.display = 'none';
+        } else {
+            wrapper.style.display = 'flex';
+        }
     });
 }
 
-//Randomizing letter
-const randomizeLetter = () => {
+//Lectures section
+const defaultLetter = () => {
+    character = 0;
     letter.innerHTML = azbukaArr[character];
     displayWord.innerHTML = vocabular[character].words[0];
     img.src = `img/${vocabular[character].words[0]}.png`;
+    audio.src = `audio/${vocabular[character].words[0]}.mp3`;
+    audio.loop = false;
+    audio.play();
+};
+
+//Randomizing letter section
+const forward = () => {
+    letter.innerHTML = azbukaArr[character];
+    displayWord.innerHTML = vocabular[character].words[counter];
+    img.src = `img/${vocabular[character].words[counter]}.png`;
 
     character++;
     if (character === azbukaArr.length) {
         character = 0;
+        counter++;
     }
+    console.log(character);
+};
+const backward = () => {
+    letter.innerHTML = azbukaArr[character];
+    displayWord.innerHTML = vocabular[character].words[counter];
+    img.src = `img/${vocabular[character].words[counter]}.png`;
+
+    character--;
+
+    if (character == -1) {
+        character = 29;
+        counter--;
+    }
+
+    console.log('klik');
 };
 
 const startStop = () => {
@@ -197,12 +244,16 @@ const startStop = () => {
         audio.src = 'audio/shuffle.mp3';
         audio.loop = true;
         audio.play();
-        timer = setInterval(randomizeLetter, 80);
+        //randomize letter
+        timer = setInterval(forward, 80);
         randomButton.innerHTML = 'СТАНИ';
     }
 };
 
 randomButton.addEventListener('click', startStop);
+
+leftArrow.addEventListener('click', backward);
+rightArrow.addEventListener('click', forward);
 
 document.body.onkeyup = function (e) {
     if (e.keyCode == 32) {
