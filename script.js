@@ -2,10 +2,13 @@ const azbuka = 'АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ';
 const azbukaArr = azbuka.split('');
 
 const span = document.querySelector('span');
-const button = document.querySelector('button');
+const randomButton = document.querySelector('.start');
 const letter = document.querySelector('h1');
 const displayWord = document.querySelector('h3');
 const img = document.querySelector('img');
+const nav = document.querySelector('nav');
+
+const sectionButtons = nav.querySelectorAll('a');
 
 const audio = document.getElementById('my_audio');
 
@@ -142,7 +145,22 @@ let counter = 0;
 let character = 0;
 let timer;
 
-const onTick = () => {
+//Navigation
+const classRemover = () => {
+    for (let sectionButton of sectionButtons) {
+        sectionButton.classList.remove('active');
+    }
+};
+
+for (let sectionButton of sectionButtons) {
+    sectionButton.addEventListener('click', () => {
+        classRemover();
+        sectionButton.classList.add('active');
+    });
+}
+
+//Randomizing letter
+const randomizeLetter = () => {
     letter.innerHTML = azbukaArr[character];
     displayWord.innerHTML = vocabular[character].words[0];
     img.src = `img/${vocabular[character].words[0]}.png`;
@@ -154,10 +172,10 @@ const onTick = () => {
 };
 
 const startStop = () => {
-    button.classList.toggle('start');
+    randomButton.classList.toggle('start');
 
-    if (button.classList.contains('start')) {
-        button.innerHTML = 'КРЕНИ';
+    if (randomButton.classList.contains('start')) {
+        randomButton.innerHTML = 'КРЕНИ';
         clearInterval(timer);
         stopLetter = letter.textContent;
 
@@ -179,12 +197,12 @@ const startStop = () => {
         audio.src = 'audio/shuffle.mp3';
         audio.loop = true;
         audio.play();
-        timer = setInterval(onTick, 80);
-        button.innerHTML = 'СТАНИ';
+        timer = setInterval(randomizeLetter, 80);
+        randomButton.innerHTML = 'СТАНИ';
     }
 };
 
-button.addEventListener('click', startStop);
+randomButton.addEventListener('click', startStop);
 
 document.body.onkeyup = function (e) {
     if (e.keyCode == 32) {
