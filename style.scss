@@ -104,7 +104,7 @@ h1,
         }
         .buttonWrap {
             background: none;
-            filter: drop-shadow(0px 2px 3px rgba(0, 54, 9, 0.877));
+            filter: drop-shadow(0px 2px 3px rgb(40, 66, 43));
         }
     }
     button {
@@ -128,7 +128,7 @@ h1,
         }
         &.start {
             background: rgb(36, 175, 66);
-            border-bottom: 4px solid rgb(26, 83, 31);
+            border-bottom: 4px solid rgb(40, 66, 43);
         }
     }
 }

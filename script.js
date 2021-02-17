@@ -170,6 +170,7 @@ for (let sectionButton of sectionButtons) {
         } else {
             arrowButtons.style.display = 'flex';
             randomButton.style.display = 'none';
+            defaultLetter();
         }
         if (sectionButtons[2].classList.contains('active')) {
             wrapper.style.display = 'none';
@@ -191,31 +192,38 @@ const defaultLetter = () => {
 };
 
 //Randomizing letter section
-const forward = () => {
+const randomizingLetter = () => {
     letter.innerHTML = azbukaArr[character];
-    displayWord.innerHTML = vocabular[character].words[counter];
-    img.src = `img/${vocabular[character].words[counter]}.png`;
+    displayWord.innerHTML = vocabular[character].words[0];
+    img.src = `img/${vocabular[character].words[0]}.png`;
 
     character++;
     if (character === azbukaArr.length) {
         character = 0;
-        counter++;
     }
+};
+
+const forward = () => {
+    character++;
+    if (character === azbukaArr.length) {
+        character = 0;
+    }
+    letter.innerHTML = azbukaArr[character];
+    displayWord.innerHTML = vocabular[character].words[0];
+    img.src = `img/${vocabular[character].words[0]}.png`;
+
     console.log(character);
 };
 const backward = () => {
-    letter.innerHTML = azbukaArr[character];
-    displayWord.innerHTML = vocabular[character].words[counter];
-    img.src = `img/${vocabular[character].words[counter]}.png`;
-
     character--;
-
     if (character == -1) {
-        character = 29;
-        counter--;
+        character = azbukaArr.length - 1;
     }
+    letter.innerHTML = azbukaArr[character];
+    displayWord.innerHTML = vocabular[character].words[0];
+    img.src = `img/${vocabular[character].words[0]}.png`;
 
-    console.log('klik');
+    console.log(character);
 };
 
 const startStop = () => {
@@ -245,15 +253,19 @@ const startStop = () => {
         audio.loop = true;
         audio.play();
         //randomize letter
-        timer = setInterval(forward, 80);
+        timer = setInterval(randomizingLetter, 80);
         randomButton.innerHTML = 'СТАНИ';
     }
 };
 
 randomButton.addEventListener('click', startStop);
 
-leftArrow.addEventListener('click', backward);
-rightArrow.addEventListener('click', forward);
+leftArrow.addEventListener('click', () => {
+    backward();
+});
+rightArrow.addEventListener('click', () => {
+    forward();
+});
 
 document.body.onkeyup = function (e) {
     if (e.keyCode == 32) {

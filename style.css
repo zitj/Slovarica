@@ -153,8 +153,8 @@ h1,
 
 .letterSection .arrowButtons .buttonWrap {
   background: none;
-  -webkit-filter: drop-shadow(0px 2px 3px rgba(0, 54, 9, 0.877));
-          filter: drop-shadow(0px 2px 3px rgba(0, 54, 9, 0.877));
+  -webkit-filter: drop-shadow(0px 2px 3px #28422b);
+          filter: drop-shadow(0px 2px 3px #28422b);
 }
 
 .letterSection button {
@@ -181,7 +181,7 @@ h1,
 
 .letterSection button.start {
   background: #24af42;
-  border-bottom: 4px solid #1a531f;
+  border-bottom: 4px solid #28422b;
 }
 
 .illustration {
