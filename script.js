@@ -212,12 +212,26 @@ const forward = () => {
     character++;
     if (character === azbukaArr.length) {
         character = 0;
+        for (let word of vocabular) {
+            word.wordCounter++;
+        }
     }
-    letter.innerHTML = azbukaArr[character];
-    displayWord.innerHTML = vocabular[character].words[0];
-    img.src = `img/${vocabular[character].words[0]}.png`;
+    if (
+        vocabular[character].wordCounter >
+        vocabular[character].words.length - 1
+    ) {
+        vocabular[character].wordCounter = 0;
+        counter = 0;
+    } else {
+        counter = vocabular[character].wordCounter;
+    }
 
-    console.log(character);
+    letter.innerHTML = azbukaArr[character];
+    displayWord.innerHTML = vocabular[character].words[counter];
+    img.src = `img/${vocabular[character].words[counter]}.png`;
+    audio.src = `audio/${vocabular[character].words[counter]}.mp3`;
+    audio.loop = false;
+    audio.play();
 };
 const backward = () => {
     character--;
@@ -273,10 +287,8 @@ document.body.onkeyup = function (e) {
     }
     if (e.keyCode == 37) {
         backward();
-        console.log(e.keyCode);
     }
     if (e.keyCode == 39) {
         forward();
-        console.log(e.keyCode);
     }
 };
