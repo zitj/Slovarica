@@ -167,11 +167,16 @@ for (let sectionButton of sectionButtons) {
         if (sectionButtons[1].classList.contains('active')) {
             randomButton.style.display = 'block';
             arrowButtons.style.display = 'none';
-        } else {
-            arrowButtons.style.display = 'flex';
-            randomButton.style.display = 'none';
             defaultLetter();
+        } else {
+            randomButton.style.display = 'none';
         }
+
+        if (sectionButtons[0].classList.contains('active')) {
+            defaultLetter();
+            arrowButtons.style.display = 'flex';
+        }
+
         if (sectionButtons[2].classList.contains('active')) {
             wrapper.style.display = 'none';
         } else {
@@ -259,16 +264,19 @@ const startStop = () => {
 };
 
 randomButton.addEventListener('click', startStop);
-
-leftArrow.addEventListener('click', () => {
-    backward();
-});
-rightArrow.addEventListener('click', () => {
-    forward();
-});
+leftArrow.addEventListener('click', backward);
+rightArrow.addEventListener('click', forward);
 
 document.body.onkeyup = function (e) {
     if (e.keyCode == 32) {
         startStop;
+    }
+    if (e.keyCode == 37) {
+        backward();
+        console.log(e.keyCode);
+    }
+    if (e.keyCode == 39) {
+        forward();
+        console.log(e.keyCode);
     }
 };

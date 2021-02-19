@@ -65,12 +65,12 @@ header nav a.active {
   display: -ms-flexbox;
   display: flex;
   position: absolute;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   width: 1100px;
   height: 670px;
   padding: 5% 3%;
@@ -153,8 +153,8 @@ h1,
 
 .letterSection .arrowButtons .buttonWrap {
   background: none;
-  -webkit-filter: drop-shadow(0px 2px 3px #28422b);
-          filter: drop-shadow(0px 2px 3px #28422b);
+  -webkit-filter: drop-shadow(0px 2px 0px #28422b);
+          filter: drop-shadow(0px 2px 0px #28422b);
 }
 
 .letterSection button {
