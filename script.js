@@ -186,7 +186,6 @@ for (let sectionButton of sectionButtons) {
     });
 }
 
-//Lectures section
 const defaultLetter = () => {
     character = 0;
     letter.innerHTML = azbukaArr[character];
@@ -200,18 +199,7 @@ const defaultLetter = () => {
     }
 };
 
-//Randomizing letter section
-const randomizingLetter = () => {
-    letter.innerHTML = azbukaArr[character];
-    displayWord.innerHTML = vocabular[character].words[0];
-    img.src = `img/${vocabular[character].words[0]}.png`;
-
-    character++;
-    if (character === azbukaArr.length) {
-        character = 0;
-    }
-};
-
+//Lectures section
 const changeLetter = () => {
     if (
         vocabular[character].wordCounter >
@@ -250,6 +238,18 @@ const backward = () => {
     changeLetter();
 };
 
+//Randomizing letter section
+const randomizingLetter = () => {
+    letter.innerHTML = azbukaArr[character];
+    displayWord.innerHTML = vocabular[character].words[0];
+    img.src = `img/${vocabular[character].words[0]}.png`;
+
+    character++;
+    if (character === azbukaArr.length) {
+        character = 0;
+    }
+};
+
 const startStop = () => {
     randomButton.classList.toggle('start');
 
@@ -282,10 +282,12 @@ const startStop = () => {
     }
 };
 
+//Triggers on Mouse
 randomButton.addEventListener('click', startStop);
 leftArrow.addEventListener('click', backward);
 rightArrow.addEventListener('click', forward);
 
+//Triggers on Keyboard
 document.body.onkeyup = function (e) {
     if (e.keyCode == 32) {
         startStop;

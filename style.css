@@ -79,6 +79,10 @@ header nav a.active {
           box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
   color: #333333;
   background: #eeeeee;
+  border-left: 10px solid #737373;
+  border-bottom: 10px solid dimgray;
+  border-top: 10px solid #848484;
+  border-right: 10px solid #8b8b8b;
 }
 
 .letterSection,
@@ -193,6 +197,7 @@ h1,
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: -50px;
+  margin-right: -20px;
   background: #eeeeee;
 }
 
