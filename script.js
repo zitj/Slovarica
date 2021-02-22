@@ -171,7 +171,9 @@ for (let sectionButton of sectionButtons) {
         }
 
         if (sectionButtons[0].classList.contains('active')) {
-            // window.location.reload();
+            clearInterval(timer);
+            randomButton.innerHTML = 'КРЕНИ';
+            randomButton.classList.add('start');
             defaultLetter();
             arrowButtons.style.display = 'flex';
         }
@@ -239,6 +241,7 @@ const forward = () => {
     }
     changeLetter();
 };
+
 const backward = () => {
     character--;
     if (character == -1) {
