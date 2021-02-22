@@ -19,8 +19,6 @@ const rightArrow = arrowButtons.querySelector('.arrowRight');
 let stopLetter = '';
 randomButton.style.display = 'none';
 
-console.log(leftArrow);
-
 //DATA
 const vocabular = [
     {
@@ -61,7 +59,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Индијанaц', 'Игла', 'Играчке'],
+        words: ['Играчке', 'Игла', 'Индијанaц'],
     },
     {
         wordCounter: 0,
@@ -73,7 +71,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Лизалица', 'Лубеница', 'Ловац'],
+        words: ['Лубеница', 'Лизалица', 'Ловац'],
     },
     {
         wordCounter: 0,
@@ -109,7 +107,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Телевизор', 'Труба', 'Трактор'],
+        words: ['Трактор', 'Телевизор', 'Труба'],
     },
     {
         wordCounter: 0,
@@ -129,11 +127,11 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Цигле', 'Цуцла', 'Цвекла'],
+        words: ['Цвекла', 'Цуцла', 'Цигле'],
     },
     {
         wordCounter: 0,
-        words: ['Чесма', 'Чизме', 'Чарапе'],
+        words: ['Чарапе', 'Чизме', 'Чесма'],
     },
     {
         wordCounter: 0,
@@ -173,6 +171,7 @@ for (let sectionButton of sectionButtons) {
         }
 
         if (sectionButtons[0].classList.contains('active')) {
+            // window.location.reload();
             defaultLetter();
             arrowButtons.style.display = 'flex';
         }
@@ -194,6 +193,9 @@ const defaultLetter = () => {
     audio.src = `audio/${vocabular[character].words[0]}.mp3`;
     audio.loop = false;
     audio.play();
+    for (word of vocabular) {
+        word.wordCounter = 0;
+    }
 };
 
 //Randomizing letter section
@@ -238,11 +240,24 @@ const backward = () => {
     if (character == -1) {
         character = azbukaArr.length - 1;
     }
-    letter.innerHTML = azbukaArr[character];
-    displayWord.innerHTML = vocabular[character].words[0];
-    img.src = `img/${vocabular[character].words[0]}.png`;
+    if (
+        vocabular[character].wordCounter >
+        vocabular[character].words.length - 1
+    ) {
+        vocabular[character].wordCounter = 0;
+        counter = 0;
+    } else {
+        counter = vocabular[character].wordCounter;
+    }
 
-    console.log(character);
+    letter.innerHTML = azbukaArr[character];
+    displayWord.innerHTML = vocabular[character].words[counter];
+    img.src = `img/${vocabular[character].words[counter]}.png`;
+    audio.src = `audio/${vocabular[character].words[counter]}.mp3`;
+    audio.loop = false;
+    audio.play();
+
+    console.log(vocabular[character].wordCounter);
 };
 
 const startStop = () => {
