@@ -2,6 +2,9 @@ const azbuka = 'АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ';
 const azbukaArr = azbuka.split('');
 
 const wrapper = document.querySelector('.wrapper');
+const letterSection = document.querySelector('.letterSection');
+const illustration = document.querySelector('.illustration');
+
 const span = document.querySelector('span');
 const randomButton = document.querySelector('.start');
 const letter = document.querySelector('h1');
@@ -18,6 +21,11 @@ const rightArrow = arrowButtons.querySelector('.arrowRight');
 
 let stopLetter = '';
 randomButton.style.display = 'none';
+
+//Keyboard
+isKeyPressed = {
+    a: false,
+};
 
 //DATA
 const vocabular = [
@@ -177,9 +185,11 @@ for (let sectionButton of sectionButtons) {
         }
 
         if (sectionButtons[2].classList.contains('active')) {
-            wrapper.style.display = 'none';
+            letterSection.style.display = 'none';
+            illustration.style.display = 'none';
         } else {
-            wrapper.style.display = 'flex';
+            letterSection.style.display = 'flex';
+            illustration.style.display = 'flex';
         }
     });
 }
@@ -300,13 +310,17 @@ rightArrow.addEventListener('click', forward);
 
 //Triggers on Keyboard
 document.body.onkeyup = function (e) {
-    if (e.keyCode == 32) {
+    if (e.keyCode === 32) {
         startStop;
     }
-    if (e.keyCode == 37) {
+    if (e.keyCode === 37) {
         backward();
     }
-    if (e.keyCode == 39) {
+    if (e.keyCode === 39) {
         forward();
     }
+};
+document.onkeydown = (keyDownEvent) => {
+    isKeyPressed[keyDownEvent.key] = true;
+    console.log(keyDownEvent.key);
 };

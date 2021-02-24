@@ -125,6 +125,44 @@ h1,
   margin-left: 30px;
 }
 
+.letterSection button {
+  border: none;
+  border-bottom: 4px solid #531a1a;
+  outline: none;
+  cursor: pointer;
+  letter-spacing: 3px;
+  font-size: 1.5em;
+  background: #ff4747;
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.letterSection button:hover {
+  opacity: 0.9;
+}
+
+.letterSection button:active {
+  opacity: 1;
+  border-bottom: 4px solid #531a1a;
+  border-bottom: 2px solid #531a1a;
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+}
+
+.letterSection button.start {
+  background: #24af42;
+  border-bottom: 4px solid #28422b;
+}
+
+.letterSection button.start:active {
+  border-bottom: 2px solid #28422b;
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+}
+
 .letterSection .arrowButtons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -148,6 +186,8 @@ h1,
 
 .letterSection .arrowButtons button:active {
   border: none;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
 }
 
 .letterSection .arrowButtons .arrowRight {
@@ -167,31 +207,9 @@ h1,
           filter: drop-shadow(0px 2px 0px #28422b);
 }
 
-.letterSection button {
-  border: none;
-  border-bottom: 5px solid #531a1a;
-  outline: none;
-  cursor: pointer;
-  letter-spacing: 3px;
-  font-size: 1.5em;
-  background: #ff4747;
-  color: white;
-  border-radius: 8px;
-  padding: 20px;
-}
-
-.letterSection button:hover {
-  opacity: 0.9;
-}
-
-.letterSection button:active {
-  opacity: 1;
-  border-bottom: 4px solid #531a1a;
-}
-
-.letterSection button.start {
-  background: #24af42;
-  border-bottom: 4px solid #28422b;
+.letterSection .arrowButtons .buttonWrap:active {
+  -webkit-filter: drop-shadow(0px 1px 0px #28422b);
+          filter: drop-shadow(0px 1px 0px #28422b);
 }
 
 .illustration {
