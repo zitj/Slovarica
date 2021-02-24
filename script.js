@@ -313,14 +313,13 @@ document.body.onkeyup = function (e) {
     if (e.keyCode === 32) {
         startStop;
     }
-    if (e.keyCode === 37) {
-        backward();
-    }
-    if (e.keyCode === 39) {
-        forward();
-    }
 };
 document.onkeydown = (keyDownEvent) => {
     isKeyPressed[keyDownEvent.key] = true;
-    console.log(keyDownEvent.key);
+    if (keyDownEvent.key == 'ArrowLeft') {
+        backward();
+    }
+    if (keyDownEvent.key == 'ArrowRight') {
+        forward();
+    }
 };

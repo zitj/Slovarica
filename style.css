@@ -7,6 +7,19 @@
   background: #28422b;
 }
 
+a,
+button,
+h1,
+h2,
+h3,
+h4,
+img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 header {
   display: -webkit-box;
   display: -ms-flexbox;
