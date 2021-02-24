@@ -4,7 +4,11 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+body {
   background: #28422b;
+  font-family: 'Pangolin', cursive;
 }
 
 a,
@@ -31,7 +35,6 @@ header {
   width: 80%;
   left: 10%;
   top: 5%;
-  font-family: 'Pangolin', cursive;
   color: white;
 }
 
@@ -87,7 +90,6 @@ header nav a.active {
   width: 1100px;
   height: 670px;
   padding: 5% 3%;
-  border-radius: 10px;
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
           box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
   color: #333333;
@@ -96,14 +98,6 @@ header nav a.active {
   border-bottom: 10px solid dimgray;
   border-top: 10px solid #848484;
   border-right: 10px solid #8b8b8b;
-}
-
-.letterSection,
-.letters,
-h1,
-.arrowButtons {
-  background: #eeeeee;
-  font-family: 'Balsamiq Sans', cursive;
 }
 
 .letterSection {
@@ -130,11 +124,12 @@ h1,
 
 .letterSection h1 {
   font-size: 20em;
+  font-family: 'Pangolin', cursive;
 }
 
 .letterSection h1 span {
   background: transparent;
-  font-size: 0.3em;
+  font-size: 0.4em;
   margin-left: 30px;
 }
 
@@ -235,12 +230,6 @@ h1,
           flex-direction: column;
   margin-top: -50px;
   margin-right: -20px;
-  background: #eeeeee;
-}
-
-.illustration img,
-.illustration h3 {
-  background: #eeeeee;
 }
 
 .illustration h3 {
@@ -248,5 +237,122 @@ h1,
   font-size: 3em;
   margin-top: 20px;
   font-family: 'Pangolin', cursive;
+}
+
+.memoryGame {
+  display: none;
+}
+
+.memoryGame.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
+}
+
+.memoryGame .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  height: 200px;
+  width: 200px;
+  cursor: pointer;
+}
+
+.memoryGame .box.active .front {
+  -webkit-transform: rotateY(0deg) translateX(0px);
+          transform: rotateY(0deg) translateX(0px);
+}
+
+.memoryGame .box.active .back {
+  -webkit-transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
+          transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
+}
+
+.memoryGame .box .square {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.memoryGame .box .front,
+.memoryGame .box .back {
+  border-left: 5px solid #737373;
+  border-bottom: 5px solid dimgray;
+  border-top: 5px solid #848484;
+  border-right: 5px solid #8b8b8b;
+  border-radius: 10px;
+}
+
+.memoryGame .box .front {
+  -webkit-transform: rotateY(90deg) skewY(-5deg) translateX(200px);
+          transform: rotateY(90deg) skewY(-5deg) translateX(200px);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+.memoryGame .box .front .boxContent {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.memoryGame .box .front .boxContent img,
+.memoryGame .box .front .boxContent h2,
+.memoryGame .box .front .boxContent p {
+  position: absolute;
+}
+
+.memoryGame .box .front .boxContent img {
+  opacity: 1;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -55%) rotateY(180deg);
+          transform: translate(-50%, -55%) rotateY(180deg);
+  width: 180px;
+  height: 180px;
+  opacity: 0.8;
+}
+
+.memoryGame .box .front .boxContent h2 {
+  font-size: 2.2em;
+  left: 8%;
+  top: 2%;
+}
+
+.memoryGame .box .front .boxContent h2 span {
+  margin-left: 5px;
+  font-size: 0.6em;
+}
+
+.memoryGame .box .front .boxContent p {
+  bottom: 0%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, 75%);
+          transform: translate(-50%, 75%);
+  opacity: 0.8;
+}
+
+.memoryGame .box .back {
+  background: hotpink;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.memoryGame .box .back:hover {
+  opacity: 0.95;
 }
 /*# sourceMappingURL=style.css.map */

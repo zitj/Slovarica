@@ -4,7 +4,9 @@ const azbukaArr = azbuka.split('');
 const wrapper = document.querySelector('.wrapper');
 const letterSection = document.querySelector('.letterSection');
 const illustration = document.querySelector('.illustration');
+const memoryGame = document.querySelector('.memoryGame');
 
+const boxes = document.querySelectorAll('.box');
 const span = document.querySelector('span');
 const randomButton = document.querySelector('.start');
 const letter = document.querySelector('h1');
@@ -187,9 +189,11 @@ for (let sectionButton of sectionButtons) {
         if (sectionButtons[2].classList.contains('active')) {
             letterSection.style.display = 'none';
             illustration.style.display = 'none';
+            memoryGame.classList.add('active');
         } else {
             letterSection.style.display = 'flex';
             illustration.style.display = 'flex';
+            memoryGame.classList.remove('active');
         }
     });
 }
@@ -302,6 +306,16 @@ const startStop = () => {
         randomButton.innerHTML = 'СТАНИ';
     }
 };
+
+//Memory game
+for (let box of boxes) {
+    box.addEventListener('click', () => {
+        box.classList.toggle('active');
+        setTimeout(() => {
+            box.classList.remove('active');
+        }, 1000);
+    });
+}
 
 //Triggers on Mouse
 randomButton.addEventListener('click', startStop);
