@@ -83,6 +83,12 @@ h1,
     }
     h1 {
         font-size: 20em;
+        span {
+            background: transparent;
+            font-size: 0.3em;
+            margin-left: 30px;
+            // font-family: 'Pangolin', cursive;
+        }
     }
     .arrowButtons {
         display: flex;

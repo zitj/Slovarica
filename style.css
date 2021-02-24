@@ -119,6 +119,12 @@ h1,
   font-size: 20em;
 }
 
+.letterSection h1 span {
+  background: transparent;
+  font-size: 0.3em;
+  margin-left: 30px;
+}
+
 .letterSection .arrowButtons {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -143,7 +143,7 @@ const vocabular = [
     },
 ];
 
-letter.innerHTML = azbukaArr[0];
+letter.innerHTML = azbukaArr[0] + `<span>${azbukaArr[0].toLowerCase()}</span>`;
 img.src = `img/${vocabular[0].words[0]}.png`;
 
 let counter = 0;
@@ -168,12 +168,10 @@ for (let sectionButton of sectionButtons) {
             defaultLetter();
         } else {
             randomButton.style.display = 'none';
+            stopRandomButton();
         }
 
         if (sectionButtons[0].classList.contains('active')) {
-            clearInterval(timer);
-            randomButton.innerHTML = 'КРЕНИ';
-            randomButton.classList.add('start');
             defaultLetter();
             arrowButtons.style.display = 'flex';
         }
@@ -186,9 +184,18 @@ for (let sectionButton of sectionButtons) {
     });
 }
 
+const stopRandomButton = () => {
+    clearInterval(timer);
+    randomButton.innerHTML = 'КРЕНИ';
+    randomButton.classList.add('start');
+    audio.src = '';
+};
+
 const defaultLetter = () => {
     character = 0;
-    letter.innerHTML = azbukaArr[character];
+    letter.innerHTML =
+        azbukaArr[character] +
+        `<span>${azbukaArr[character].toLowerCase()}</span>`;
     displayWord.innerHTML = vocabular[character].words[0];
     img.src = `img/${vocabular[character].words[0]}.png`;
     audio.src = `audio/${vocabular[character].words[0]}.mp3`;
@@ -211,7 +218,9 @@ const changeLetter = () => {
         counter = vocabular[character].wordCounter;
     }
 
-    letter.innerHTML = azbukaArr[character];
+    letter.innerHTML =
+        azbukaArr[character] +
+        `<span>${azbukaArr[character].toLowerCase()}</span>`;
     displayWord.innerHTML = vocabular[character].words[counter];
     img.src = `img/${vocabular[character].words[counter]}.png`;
     audio.src = `audio/${vocabular[character].words[counter]}.mp3`;
@@ -240,7 +249,9 @@ const backward = () => {
 
 //Randomizing letter section
 const randomizingLetter = () => {
-    letter.innerHTML = azbukaArr[character];
+    letter.innerHTML =
+        azbukaArr[character] +
+        `<span>${azbukaArr[character].toLowerCase()}</span>`;
     displayWord.innerHTML = vocabular[character].words[0];
     img.src = `img/${vocabular[character].words[0]}.png`;
 
@@ -256,7 +267,7 @@ const startStop = () => {
     if (randomButton.classList.contains('start')) {
         randomButton.innerHTML = 'КРЕНИ';
         clearInterval(timer);
-        stopLetter = letter.textContent;
+        stopLetter = letter.textContent[0];
 
         for (let word of vocabular) {
             if (word.wordCounter > word.words.length - 1) {
@@ -272,7 +283,7 @@ const startStop = () => {
                 word.wordCounter++;
             }
         }
-    } else {
+    } else if (!randomButton.classList.contains('start')) {
         audio.src = 'audio/shuffle.mp3';
         audio.loop = true;
         audio.play();
