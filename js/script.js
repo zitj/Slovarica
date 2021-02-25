@@ -314,23 +314,30 @@ const startStop = () => {
 };
 
 //Memory game
-let trialArray = [];
+let unshuffledArray = [];
+let shuffledArray = [];
+
 let trialVersion = [];
 
 const formingArrayForMemoryGame = () => {
-    character = 3;
-    for (let i = 0; trialArray.length < 6; i++) {
-        trialArray.push(vocabular[character].words[0]);
-        trialArray.push(vocabular[character + 1].words[0]);
-        trialArray.push(vocabular[character + 2].words[0]);
+    character = 12;
+    for (let i = 0; unshuffledArray.length < 6; i++) {
+        unshuffledArray.push(vocabular[character].words[0]);
+        unshuffledArray.push(vocabular[character + 1].words[0]);
+        unshuffledArray.push(vocabular[character + 2].words[0]);
     }
 
-    console.log(trialArray);
+    shuffledArray = unshuffledArray
+        .map((a) => ({ sort: Math.random(), value: a }))
+        .sort((a, b) => a.sort - b.sort)
+        .map((a) => a.value);
+
+    console.log(shuffledArray);
 };
 
 const rednerBoxes = () => {
     let template = '';
-    trialArray.forEach((el) => {
+    shuffledArray.forEach((el) => {
         template += `
         <div class="box" data-val="${el}" >
         <div class="front square">
@@ -356,6 +363,10 @@ const rednerBoxes = () => {
 
 const clickingOnBoxes = () => {
     for (let box of boxes) {
+        box.classList.add('active');
+        setTimeout(() => {
+            box.classList.remove('active');
+        }, 500);
         box.addEventListener('click', () => {
             box.classList.toggle('active');
             if (box.classList.contains('active')) {
@@ -382,7 +393,7 @@ const clickingOnBoxes = () => {
                 box.classList.remove('active');
                 trialVersion.shift();
                 console.log(trialVersion);
-            }, 700);
+            }, 800);
         });
     }
 };
@@ -407,19 +418,3 @@ document.onkeydown = (keyDownEvent) => {
         forward();
     }
 };
-
-//box model
-
-/*
-                <div class="box" id="1">
-                    <div class="front square">
-                        <h2>А<span>а</span></h2>
-                        <p>Авион</p>
-                        <img src="img/Авион.png" alt="" />
-                    </div>
-                    <!-- end .front square -->
-                    <div class="back square">
-                        <p>?</p>
-                    </div>
-                </div>
-*/

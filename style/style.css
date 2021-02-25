@@ -274,8 +274,8 @@ header nav a.active {
   height: 200px;
   width: 200px;
   cursor: pointer;
-  -webkit-transition: 0.8s;
-  transition: 0.8s;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
   -webkit-animation: scalingIn 0.4s;
           animation: scalingIn 0.4s;
 }
@@ -294,6 +294,10 @@ header nav a.active {
   -webkit-transform: scale(0);
           transform: scale(0);
   opacity: 0;
+}
+
+.memoryGame .box.gone {
+  display: none;
 }
 
 .memoryGame .box .square {
@@ -400,6 +404,32 @@ header nav a.active {
     opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1);
+  }
+}
+
+@-webkit-keyframes scalingOut {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
+@keyframes scalingOut {
+  from {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
 }
 /*# sourceMappingURL=style.css.map */
