@@ -194,7 +194,8 @@ header {
         height: 200px;
         width: 200px;
         cursor: pointer;
-
+        transition: 0.8s;
+        animation: scalingIn 0.4s;
         &.active {
             .front {
                 transform: rotateY(0deg) translateX(0px);
@@ -204,7 +205,12 @@ header {
                     translateX(-30px);
             }
         }
-
+        &.correct {
+            // animation: scalingOut 0.4s ease-out;
+            // animation-delay: 0.3s;
+            transform: scale(0);
+            opacity: 0;
+        }
         .square {
             position: absolute;
             height: 200px;
@@ -266,5 +272,15 @@ header {
                 opacity: 0.95;
             }
         }
+    }
+}
+@keyframes scalingIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }

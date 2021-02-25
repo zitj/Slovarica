@@ -6,7 +6,6 @@ const letterSection = document.querySelector('.letterSection');
 const illustration = document.querySelector('.illustration');
 const memoryGame = document.querySelector('.memoryGame');
 
-const boxes = document.querySelectorAll('.box');
 const span = document.querySelector('span');
 const randomButton = document.querySelector('.start');
 const letter = document.querySelector('h1');
@@ -21,6 +20,9 @@ const arrowButtons = document.querySelector('.arrowButtons');
 const leftArrow = arrowButtons.querySelector('.arrowLeft');
 const rightArrow = arrowButtons.querySelector('.arrowRight');
 
+let boxes = [];
+let boxTitles = [];
+let countingPairs = 0;
 let stopLetter = '';
 randomButton.style.display = 'none';
 
@@ -191,6 +193,8 @@ for (let sectionButton of sectionButtons) {
             illustration.style.display = 'none';
             memoryGame.classList.add('active');
             wrapper.classList.add('game');
+            formingArrayForMemoryGame();
+            rednerBoxes();
         } else {
             letterSection.style.display = 'flex';
             illustration.style.display = 'flex';
@@ -310,37 +314,78 @@ const startStop = () => {
 };
 
 //Memory game
+let trialArray = [];
 let trialVersion = [];
 
-for (let box of boxes) {
-    box.addEventListener('click', () => {
-        box.classList.toggle('active');
-        if (box.classList.contains('active')) {
-            trialVersion.push(box);
-        }
+const formingArrayForMemoryGame = () => {
+    character = 3;
+    for (let i = 0; trialArray.length < 6; i++) {
+        trialArray.push(vocabular[character].words[0]);
+        trialArray.push(vocabular[character + 1].words[0]);
+        trialArray.push(vocabular[character + 2].words[0]);
+    }
 
-        if (trialVersion.length > 2) {
-            trialVersion.pop();
-            box.classList.remove('active');
-            console.log(trialVersion);
-        }
+    console.log(trialArray);
+};
 
-        if (trialVersion.length == 2) {
-            console.log(trialVersion);
-            for (let i = 0; i <= trialVersion.length; i++) {
-                if (trialVersion[i] === trialVersion[i + 1]) {
-                    console.log('Ha, imamo ga sine!');
+const rednerBoxes = () => {
+    let template = '';
+    trialArray.forEach((el) => {
+        template += `
+        <div class="box" data-val="${el}" >
+        <div class="front square">
+            <h2>${el[0]}<span>${el[0].toLowerCase()}</span></h2>
+            <p class="boxTitle">${el}</p>
+            <img src="img/${el}.png" alt="${el}" />
+        </div>
+            <div class="back square">
+            <p>?</p>
+         </div>
+        </div>
+        `;
+    });
+
+    memoryGame.innerHTML = template;
+    boxes = document.querySelectorAll('.box');
+    boxTitles = document.querySelectorAll('.boxTitle');
+
+    if (boxes.length > 0) {
+        clickingOnBoxes();
+    }
+};
+
+const clickingOnBoxes = () => {
+    for (let box of boxes) {
+        box.addEventListener('click', () => {
+            box.classList.toggle('active');
+            if (box.classList.contains('active')) {
+                trialVersion.push(box.dataset.val);
+            }
+
+            if (trialVersion.length > 2) {
+                trialVersion.pop();
+                box.classList.remove('active');
+                console.log(trialVersion);
+            }
+
+            if (trialVersion.length == 2) {
+                console.log(trialVersion);
+                if (trialVersion[0] === trialVersion[1]) {
+                    for (b of boxes) {
+                        if (b.dataset.val == trialVersion[0]) {
+                            b.classList.add('correct');
+                        }
+                    }
                 }
             }
-        }
-
-        setTimeout(() => {
-            box.classList.remove('active');
-            trialVersion.pop();
-            console.log(trialVersion);
-        }, 1100);
-    });
-}
+            setTimeout(() => {
+                box.classList.remove('active');
+                trialVersion.shift();
+                console.log(trialVersion);
+            }, 700);
+        });
+    }
+};
 
 //Triggers on Mouse
 randomButton.addEventListener('click', startStop);
@@ -366,19 +411,15 @@ document.onkeydown = (keyDownEvent) => {
 //box model
 
 /*
-   <div class="box" id="1">
+                <div class="box" id="1">
                     <div class="front square">
                         <h2>А<span>а</span></h2>
                         <p>Авион</p>
                         <img src="img/Авион.png" alt="" />
-
-                        <!-- end .boxContent-->
                     </div>
                     <!-- end .front square -->
                     <div class="back square">
                         <p>?</p>
                     </div>
-                    <!-- end .back square-->
                 </div>
-                <!-- end .box-->
 */
