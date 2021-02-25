@@ -90,14 +90,22 @@ header nav a.active {
   width: 1100px;
   height: 670px;
   padding: 5% 3%;
+  color: #333333;
+  border-radius: 10px;
   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
           box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
-  color: #333333;
   background: #eeeeee;
   border-left: 10px solid #737373;
   border-bottom: 10px solid dimgray;
   border-top: 10px solid #848484;
   border-right: 10px solid #8b8b8b;
+}
+
+.wrapper.game {
+  background: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .letterSection {
@@ -301,43 +309,37 @@ header nav a.active {
           transform: rotateY(90deg) skewY(-5deg) translateX(200px);
   -webkit-transform-origin: right;
           transform-origin: right;
+  background: white;
 }
 
-.memoryGame .box .front .boxContent {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
-.memoryGame .box .front .boxContent img,
-.memoryGame .box .front .boxContent h2,
-.memoryGame .box .front .boxContent p {
+.memoryGame .box .front img,
+.memoryGame .box .front h2,
+.memoryGame .box .front p {
   position: absolute;
 }
 
-.memoryGame .box .front .boxContent img {
-  opacity: 1;
+.memoryGame .box .front img {
   left: 50%;
   top: 50%;
-  -webkit-transform: translate(-50%, -55%) rotateY(180deg);
-          transform: translate(-50%, -55%) rotateY(180deg);
-  width: 180px;
-  height: 180px;
+  -webkit-transform: translate(-50%, -55%);
+          transform: translate(-50%, -55%);
+  width: 160px;
+  height: 160px;
   opacity: 0.8;
 }
 
-.memoryGame .box .front .boxContent h2 {
+.memoryGame .box .front h2 {
   font-size: 2.2em;
   left: 8%;
   top: 2%;
 }
 
-.memoryGame .box .front .boxContent h2 span {
+.memoryGame .box .front h2 span {
   margin-left: 5px;
   font-size: 0.6em;
 }
 
-.memoryGame .box .front .boxContent p {
+.memoryGame .box .front p {
   bottom: 0%;
   left: 50%;
   top: 50%;
@@ -347,9 +349,17 @@ header nav a.active {
 }
 
 .memoryGame .box .back {
-  background: hotpink;
+  background: white;
   -webkit-transform-origin: left;
           transform-origin: left;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.memoryGame .box .back p {
+  font-size: 10em;
 }
 
 .memoryGame .box .back:hover {

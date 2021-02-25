@@ -66,13 +66,19 @@ header {
     width: 1100px;
     height: 670px;
     padding: 5% 3%;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
     color: #333333;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
     background: rgb(238, 238, 238);
     border-left: 10px solid rgb(115, 115, 115);
     border-bottom: 10px solid rgb(105, 105, 105);
     border-top: 10px solid rgb(132, 132, 132);
     border-right: 10px solid rgb(139, 139, 139);
+    &.game {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
 }
 
 .letterSection {
@@ -188,6 +194,7 @@ header {
         height: 200px;
         width: 200px;
         cursor: pointer;
+
         &.active {
             .front {
                 transform: rotateY(0deg) translateX(0px);
@@ -216,45 +223,45 @@ header {
         .front {
             transform: rotateY(90deg) skewY(-5deg) translateX(200px);
             transform-origin: right;
-            .boxContent {
-                position: relative;
-                height: 100%;
-                width: 100%;
-                img,
-                h2,
-                p {
-                    position: absolute;
+            background: white;
+            img,
+            h2,
+            p {
+                position: absolute;
+            }
+            img {
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -55%);
+                width: 160px;
+                height: 160px;
+                opacity: 0.8;
+            }
+            h2 {
+                font-size: 2.2em;
+                left: 8%;
+                top: 2%;
+                span {
+                    margin-left: 5px;
+                    font-size: 0.6em;
                 }
-                img {
-                    opacity: 1;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -55%) rotateY(180deg);
-                    width: 180px;
-                    height: 180px;
-                    opacity: 0.8;
-                }
-                h2 {
-                    font-size: 2.2em;
-                    left: 8%;
-                    top: 2%;
-                    span {
-                        margin-left: 5px;
-                        font-size: 0.6em;
-                    }
-                }
-                p {
-                    bottom: 0%;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, 75%);
-                    opacity: 0.8;
-                }
+            }
+            p {
+                bottom: 0%;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, 75%);
+                opacity: 0.8;
             }
         }
         .back {
-            background: hotpink;
+            background: white;
             transform-origin: left;
+            text-align: center;
+            justify-content: center;
+            p {
+                font-size: 10em;
+            }
             &:hover {
                 opacity: 0.95;
             }

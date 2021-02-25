@@ -190,10 +190,12 @@ for (let sectionButton of sectionButtons) {
             letterSection.style.display = 'none';
             illustration.style.display = 'none';
             memoryGame.classList.add('active');
+            wrapper.classList.add('game');
         } else {
             letterSection.style.display = 'flex';
             illustration.style.display = 'flex';
             memoryGame.classList.remove('active');
+            wrapper.classList.remove('game');
         }
     });
 }
@@ -308,12 +310,35 @@ const startStop = () => {
 };
 
 //Memory game
+let trialVersion = [];
+
 for (let box of boxes) {
     box.addEventListener('click', () => {
         box.classList.toggle('active');
+        if (box.classList.contains('active')) {
+            trialVersion.push(box);
+        }
+
+        if (trialVersion.length > 2) {
+            trialVersion.pop();
+            box.classList.remove('active');
+            console.log(trialVersion);
+        }
+
+        if (trialVersion.length == 2) {
+            console.log(trialVersion);
+            for (let i = 0; i <= trialVersion.length; i++) {
+                if (trialVersion[i] === trialVersion[i + 1]) {
+                    console.log('Ha, imamo ga sine!');
+                }
+            }
+        }
+
         setTimeout(() => {
             box.classList.remove('active');
-        }, 1000);
+            trialVersion.pop();
+            console.log(trialVersion);
+        }, 1100);
     });
 }
 
@@ -337,3 +362,23 @@ document.onkeydown = (keyDownEvent) => {
         forward();
     }
 };
+
+//box model
+
+/*
+   <div class="box" id="1">
+                    <div class="front square">
+                        <h2>А<span>а</span></h2>
+                        <p>Авион</p>
+                        <img src="img/Авион.png" alt="" />
+
+                        <!-- end .boxContent-->
+                    </div>
+                    <!-- end .front square -->
+                    <div class="back square">
+                        <p>?</p>
+                    </div>
+                    <!-- end .back square-->
+                </div>
+                <!-- end .box-->
+*/
