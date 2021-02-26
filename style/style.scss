@@ -95,7 +95,9 @@ header {
     h1 {
         font-size: 20em;
         font-family: 'Pangolin', cursive;
-
+        &.animate {
+            animation: capitalAndLower 0.7s;
+        }
         span {
             background: transparent;
             font-size: 0.4em;
@@ -171,6 +173,11 @@ header {
     flex-direction: column;
     margin-top: -50px;
     margin-right: -50px;
+    img {
+        &.animate {
+            animation: illuIntro 0.8s;
+        }
+    }
     h3 {
         text-align: center;
         font-size: 3em;
@@ -192,8 +199,9 @@ header {
     .box {
         display: flex;
         position: relative;
-        height: 200px;
-        width: 200px;
+        height: 220px;
+        width: 220px;
+        margin-bottom: 40px;
         cursor: pointer;
         transition: 0.6s;
         animation: scalingIn 0.4s;
@@ -215,8 +223,8 @@ header {
         }
         .square {
             position: absolute;
-            height: 200px;
-            width: 200px;
+            height: 100%;
+            width: 100%;
             transition: 0.2s ease-in-out;
             transform-style: preserve-3d;
         }
@@ -243,7 +251,6 @@ header {
                 transform: translate(-50%, -55%);
                 width: 160px;
                 height: 160px;
-                opacity: 0.8;
             }
             h2 {
                 font-size: 2.2em;
@@ -267,8 +274,9 @@ header {
             transform-origin: left;
             text-align: center;
             justify-content: center;
-            p {
-                font-size: 10em;
+            img {
+                height: 100%;
+                width: 100%;
             }
             &:hover {
                 opacity: 0.95;
@@ -276,6 +284,8 @@ header {
         }
     }
 }
+
+//Keyframes animation
 @keyframes scalingIn {
     from {
         opacity: 0;
@@ -294,5 +304,32 @@ header {
     to {
         opacity: 0;
         transform: scale(0);
+    }
+}
+@keyframes capitalAndLower {
+    0% {
+        transform: scale(0) rotate(20deg);
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(1.5) rotate(-10deg);
+    }
+    60% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes illuIntro {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

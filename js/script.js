@@ -224,6 +224,17 @@ const defaultLetter = () => {
     for (word of vocabular) {
         word.wordCounter = 0;
     }
+    animatingElements();
+};
+
+const animatingElements = () => {
+    let elements = [letter, img];
+    for (let element of elements) {
+        element.classList.add('animate');
+        element.addEventListener('animationend', () => {
+            element.classList.remove('animate');
+        });
+    }
 };
 
 //Lectures section
@@ -246,6 +257,7 @@ const changeLetter = () => {
     audio.src = `audio/${vocabular[character].words[counter]}.mp3`;
     audio.loop = false;
     audio.play();
+    animatingElements();
 };
 
 const forward = () => {
@@ -256,6 +268,7 @@ const forward = () => {
             word.wordCounter++;
         }
     }
+
     changeLetter();
 };
 
@@ -288,6 +301,7 @@ const startStop = () => {
         randomButton.innerHTML = 'КРЕНИ';
         clearInterval(timer);
         stopLetter = letter.textContent[0];
+        animatingElements();
 
         for (let word of vocabular) {
             if (word.wordCounter > word.words.length - 1) {
@@ -344,9 +358,9 @@ const rednerBoxes = () => {
             <h2>${el[0]}<span>${el[0].toLowerCase()}</span></h2>
             <p class="boxTitle">${el}</p>
             <img src="img/${el}.png" alt="${el}" />
-        </div>
+            </div>
             <div class="back square">
-            <p>?</p>
+            <img src="gif/questionMark.gif" alt="question mark gif" />
          </div>
         </div>
         `;
@@ -402,7 +416,6 @@ const clickingOnBoxes = () => {
 randomButton.addEventListener('click', startStop);
 leftArrow.addEventListener('click', backward);
 rightArrow.addEventListener('click', forward);
-
 //Triggers on Keyboard
 document.body.onkeyup = function (e) {
     if (e.keyCode === 32) {
@@ -418,3 +431,4 @@ document.onkeydown = (keyDownEvent) => {
         forward();
     }
 };
+animatingElements();
