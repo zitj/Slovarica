@@ -211,6 +211,16 @@ const stopRandomButton = () => {
     audio.src = '';
 };
 
+const animatingElements = () => {
+    let elements = [letter, img, displayWord];
+    for (let element of elements) {
+        element.classList.add('animate');
+        element.addEventListener('animationend', () => {
+            element.classList.remove('animate');
+        });
+    }
+};
+
 const defaultLetter = () => {
     character = 0;
     letter.innerHTML =
@@ -225,16 +235,6 @@ const defaultLetter = () => {
         word.wordCounter = 0;
     }
     animatingElements();
-};
-
-const animatingElements = () => {
-    let elements = [letter, img];
-    for (let element of elements) {
-        element.classList.add('animate');
-        element.addEventListener('animationend', () => {
-            element.classList.remove('animate');
-        });
-    }
 };
 
 //Lectures section
