@@ -1,397 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Pangolin&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-body {
-  background: #28422b;
-  font-family: 'Pangolin', cursive;
-}
-
-a,
-button,
-h1,
-h2,
-h3,
-h4,
-img {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  position: fixed;
-  width: 80%;
-  left: 10%;
-  top: 5%;
-  color: white;
-}
-
-header .logo,
-header nav,
-header a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-header .logo {
-  cursor: pointer;
-  font-size: 1.6em;
-  letter-spacing: 1px;
-  text-transform: capitalize;
-}
-
-header nav {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-header nav a {
-  cursor: pointer;
-  padding: 5px;
-  margin-right: 20px;
-  font-size: 1.4em;
-  -webkit-transition: 0.1s ease-in-out;
-  transition: 0.1s ease-in-out;
-}
-
-header nav a:hover {
-  font-size: 1.5em;
-}
-
-header nav a.active {
-  border-bottom: 1px solid white;
-  font-size: 1.5em;
-}
-
-.wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 1100px;
-  height: 670px;
-  padding: 5% 3%;
-  color: #333333;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
-          box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
-  background: #eeeeee;
-  border-left: 10px solid #767676;
-  border-right: 10px solid #949494;
-  border-top: 10px solid #888888;
-  border-bottom: 10px solid dimgray;
-}
-
-.wrapper.game {
-  background: transparent;
-  border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.letterSection {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 300px;
-  margin-top: -20px;
-  margin-right: -50px;
-}
-
-.letterSection .letters {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  position: relative;
-}
-
-.letterSection h1 {
-  font-size: 20em;
-  font-family: 'Pangolin', cursive;
-}
-
-.letterSection h1.animate {
-  -webkit-animation: capitalAndLower 0.7s;
-          animation: capitalAndLower 0.7s;
-}
-
-.letterSection h1 span {
-  background: transparent;
-  font-size: 0.4em;
-  margin-left: 30px;
-}
-
-.letterSection button {
-  border: none;
-  border-bottom: 4px solid #531a1a;
-  outline: none;
-  cursor: pointer;
-  letter-spacing: 3px;
-  font-size: 1.5em;
-  background: #ff4747;
-  color: white;
-  border-radius: 8px;
-  padding: 20px;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
-}
-
-.letterSection button:hover {
-  opacity: 0.9;
-}
-
-.letterSection button:active {
-  opacity: 1;
-  border-bottom: 2px solid #531a1a;
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
-}
-
-.letterSection button.start {
-  background: #24af42;
-  border-bottom: 4px solid #28422b;
-}
-
-.letterSection button.start:active {
-  border-bottom: 2px solid #28422b;
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
-}
-
-.letterSection .arrowButtons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 40px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-right: -10px;
-}
-
-.letterSection .arrowButtons button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border: none;
-  width: 80px;
-  height: 80px;
-  background: #24af42;
-}
-
-.letterSection .arrowButtons button:active {
-  border: none;
-  -webkit-transform: translateY(2px);
-          transform: translateY(2px);
-}
-
-.letterSection .arrowButtons .arrowRight {
-  -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
-          clip-path: polygon(100% 50%, 0 0, 0 100%);
-}
-
-.letterSection .arrowButtons .arrowLeft {
-  margin-right: 20px;
-  -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
-          clip-path: polygon(100% 0, 0 50%, 100% 100%);
-}
-
-.letterSection .arrowButtons .buttonWrap {
-  background: none;
-  -webkit-filter: drop-shadow(0px 2px 0px #28422b);
-          filter: drop-shadow(0px 2px 0px #28422b);
-}
-
-.letterSection .arrowButtons .buttonWrap:active {
-  -webkit-filter: drop-shadow(0px 1px 0px #28422b);
-          filter: drop-shadow(0px 1px 0px #28422b);
-}
-
-.illustration {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin-top: -50px;
-  margin-right: -50px;
-}
-
-.illustration img.animate,
-.illustration h3.animate {
-  -webkit-animation: fadeIn 0.8s;
-          animation: fadeIn 0.8s;
-}
-
-.illustration h3 {
-  text-align: center;
-  font-size: 3em;
-  margin-top: 20px;
-  font-family: 'Pangolin', cursive;
-}
-
-.memoryGame {
-  display: none;
-}
-
-.memoryGame.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 80%;
-}
-
-.memoryGame .box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  height: 220px;
-  width: 220px;
-  margin-bottom: 40px;
-  cursor: pointer;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
-  -webkit-animation: scalingIn 0.4s;
-          animation: scalingIn 0.4s;
-}
-
-.memoryGame .box.active .front {
-  -webkit-transform: rotateY(0deg) translateX(0px);
-          transform: rotateY(0deg) translateX(0px);
-}
-
-.memoryGame .box.active .back {
-  -webkit-transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
-          transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
-}
-
-.memoryGame .box.correct {
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  opacity: 0;
-}
-
-.memoryGame .box.gone {
-  display: none;
-}
-
-.memoryGame .box .square {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-
-.memoryGame .box .front,
-.memoryGame .box .back {
-  border-left: 5px solid #767676;
-  border-right: 5px solid #949494;
-  border-top: 5px solid #888888;
-  border-bottom: 5px solid dimgray;
-  border-radius: 10px;
-}
-
-.memoryGame .box .front {
-  -webkit-transform: rotateY(90deg) skewY(-5deg) translateX(200px);
-          transform: rotateY(90deg) skewY(-5deg) translateX(200px);
-  -webkit-transform-origin: right;
-          transform-origin: right;
-  background: white;
-}
-
-.memoryGame .box .front img,
-.memoryGame .box .front h2,
-.memoryGame .box .front p {
-  position: absolute;
-}
-
-.memoryGame .box .front img {
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -55%);
-          transform: translate(-50%, -55%);
-  width: 160px;
-  height: 160px;
-}
-
-.memoryGame .box .front h2 {
-  font-size: 2.2em;
-  left: 8%;
-  top: 2%;
-}
-
-.memoryGame .box .front h2 span {
-  margin-left: 5px;
-  font-size: 0.6em;
-}
-
-.memoryGame .box .front p {
-  bottom: 0%;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, 75%);
-          transform: translate(-50%, 75%);
-  opacity: 0.8;
-}
-
-.memoryGame .box .back {
-  background: white;
-  -webkit-transform-origin: left;
-          transform-origin: left;
-  text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.memoryGame .box .back img {
-  height: 100%;
-  width: 100%;
-}
-
-.memoryGame .box .back:hover {
-  opacity: 0.95;
-}
-
 @-webkit-keyframes scalingIn {
   from {
     opacity: 0;
@@ -404,7 +11,6 @@ header nav a.active {
             transform: scale(1);
   }
 }
-
 @keyframes scalingIn {
   from {
     opacity: 0;
@@ -502,5 +108,380 @@ header nav a.active {
   to {
     opacity: 1;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: #28422b;
+  font-family: 'Pangolin', cursive;
+}
+
+a,
+button,
+h1,
+h2,
+h3,
+h4,
+img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+header,
+header .logo,
+header nav,
+header a,
+.wrapper,
+.letterSection,
+.letterSection .letters,
+.arrowButtons,
+.arrowButtons button,
+.illustration,
+.memoryGame.active,
+.memoryGame .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .logo,
+nav a,
+button,
+.box {
+  cursor: pointer;
+}
+
+header {
+  position: fixed;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  left: 10%;
+  top: 5%;
+  color: white;
+}
+
+header .logo {
+  font-size: 1.6em;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
+header nav {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+header nav a {
+  padding: 5px;
+  margin-right: 20px;
+  font-size: 1.4em;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+header nav a:hover {
+  font-size: 1.5em;
+}
+
+header nav a.active {
+  border-bottom: 1px solid white;
+  font-size: 1.5em;
+}
+
+.wrapper {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background: #eeeeee;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-left: 10px solid #767676;
+  border-right: 10px solid #949494;
+  border-top: 10px solid #888888;
+  border-bottom: 10px solid dimgray;
+  width: 1100px;
+  height: 670px;
+  padding: 5% 3%;
+  color: #333333;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
+          box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
+}
+
+.wrapper.game {
+  background: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.letterSection {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 300px;
+  margin-top: -20px;
+  margin-right: -50px;
+}
+
+.letterSection .letters {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.letterSection h1 {
+  font-size: 20em;
+  font-family: 'Pangolin', cursive;
+}
+
+.letterSection h1.animate {
+  -webkit-animation: capitalAndLower 0.7s;
+          animation: capitalAndLower 0.7s;
+}
+
+.letterSection h1 span {
+  background: transparent;
+  font-size: 0.4em;
+  margin-left: 30px;
+}
+
+.letterSection button {
+  border: none;
+  border-bottom: 4px solid #531a1a;
+  outline: none;
+  letter-spacing: 3px;
+  font-size: 1.5em;
+  background: #ff4747;
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.letterSection button:hover {
+  opacity: 0.9;
+}
+
+.letterSection button:active {
+  opacity: 1;
+  border-bottom: 2px solid #531a1a;
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+}
+
+.letterSection button.start {
+  background: #24af42;
+  border-bottom: 4px solid #28422b;
+}
+
+.letterSection button.start:active {
+  border-bottom: 2px solid #28422b;
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+}
+
+.letterSection .arrowButtons {
+  height: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: -10px;
+}
+
+.letterSection .arrowButtons button {
+  border: none;
+  width: 80px;
+  height: 80px;
+  background: #24af42;
+}
+
+.letterSection .arrowButtons button:active {
+  border: none;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.letterSection .arrowButtons .arrowRight {
+  -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+          clip-path: polygon(100% 50%, 0 0, 0 100%);
+}
+
+.letterSection .arrowButtons .arrowLeft {
+  margin-right: 20px;
+  -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
+          clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+.letterSection .arrowButtons .buttonWrap {
+  background: none;
+  -webkit-filter: drop-shadow(0px 2px 0px #28422b);
+          filter: drop-shadow(0px 2px 0px #28422b);
+}
+
+.letterSection .arrowButtons .buttonWrap:active {
+  -webkit-filter: drop-shadow(0px 1px 0px #28422b);
+          filter: drop-shadow(0px 1px 0px #28422b);
+}
+
+.illustration {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: -50px;
+  margin-right: -50px;
+}
+
+.illustration img.animate,
+.illustration h3.animate {
+  -webkit-animation: fadeIn 0.8s;
+          animation: fadeIn 0.8s;
+}
+
+.illustration h3 {
+  text-align: center;
+  font-size: 3em;
+  margin-top: 20px;
+  font-family: 'Pangolin', cursive;
+}
+
+.memoryGame {
+  display: none;
+}
+
+.memoryGame.active {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
+}
+
+.memoryGame .box {
+  position: relative;
+  height: 220px;
+  width: 220px;
+  margin-bottom: 40px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-animation: scalingIn 0.4s;
+          animation: scalingIn 0.4s;
+}
+
+.memoryGame .box.active .front {
+  -webkit-transform: rotateY(0deg) translateX(0px);
+          transform: rotateY(0deg) translateX(0px);
+}
+
+.memoryGame .box.active .back {
+  -webkit-transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
+          transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
+}
+
+.memoryGame .box.correct {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  opacity: 0;
+}
+
+.memoryGame .box.gone {
+  display: none;
+}
+
+.memoryGame .box .square {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.memoryGame .box .front,
+.memoryGame .box .back {
+  border-left: 5px solid #767676;
+  border-right: 5px solid #949494;
+  border-top: 5px solid #888888;
+  border-bottom: 5px solid dimgray;
+  border-radius: 10px;
+}
+
+.memoryGame .box .front {
+  -webkit-transform: rotateY(90deg) skewY(-5deg) translateX(200px);
+          transform: rotateY(90deg) skewY(-5deg) translateX(200px);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  background: #eeeeee;
+}
+
+.memoryGame .box .front img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -55%);
+          transform: translate(-50%, -55%);
+  width: 160px;
+  height: 160px;
+}
+
+.memoryGame .box .front h2 {
+  position: absolute;
+  font-size: 2.2em;
+  left: 8%;
+  top: 2%;
+}
+
+.memoryGame .box .front h2 span {
+  margin-left: 5px;
+  font-size: 0.6em;
+}
+
+.memoryGame .box .front p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, 75%);
+          transform: translate(-50%, 75%);
+  bottom: 0%;
+  opacity: 0.8;
+}
+
+.memoryGame .box .back {
+  background: #eeeeee;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.memoryGame .box .back img {
+  height: 100%;
+  width: 100%;
+}
+
+.memoryGame .box .back:hover {
+  opacity: 0.95;
 }
 /*# sourceMappingURL=style.css.map */

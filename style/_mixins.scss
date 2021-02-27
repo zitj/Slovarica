@@ -1,0 +1,15 @@
+@import 'variables';
+
+@mixin borderMixin($width) {
+    border-left: $width solid lighten($border-grey, 5%);
+    border-right: $width solid lighten($border-grey, 17%);
+    border-top: $width solid lighten($border-grey, 12%);
+    border-bottom: $width solid $border-grey;
+}
+
+@mixin centering($x, $y) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate($x, $y);
+}

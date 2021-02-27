@@ -1,0 +1,47 @@
+@keyframes scalingIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes scalingOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+@keyframes capitalAndLower {
+    0% {
+        transform: scale(0) rotate(20deg);
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(1.5) rotate(-10deg);
+    }
+    60% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=Pangolin&display=swap');
 @import 'variables';
+@import 'mixins';
+@import 'animations';
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     background: $background-green;
     font-family: 'Pangolin', cursive;
 }
+
 a,
 button,
 h1,
@@ -20,21 +24,37 @@ img {
     user-select: none;
 }
 
-header {
+header,
+header .logo,
+header nav,
+header a,
+.wrapper,
+.letterSection,
+.letterSection .letters,
+.arrowButtons,
+.arrowButtons button,
+.illustration,
+.memoryGame.active,
+.memoryGame .box {
     display: flex;
-    justify-content: space-between;
+}
+
+header .logo,
+nav a,
+button,
+.box {
+    cursor: pointer;
+}
+
+header {
     position: fixed;
+    justify-content: space-between;
     width: 80%;
     left: 10%;
     top: 5%;
     color: rgb(255, 255, 255);
-    .logo,
-    nav,
-    a {
-        display: flex;
-    }
+
     .logo {
-        cursor: pointer;
         font-size: 1.6em;
         letter-spacing: 1px;
         text-transform: capitalize;
@@ -42,7 +62,6 @@ header {
     nav {
         justify-content: space-around;
         a {
-            cursor: pointer;
             padding: 5px;
             margin-right: 20px;
             font-size: 1.4em;
@@ -59,23 +78,17 @@ header {
 }
 
 .wrapper {
-    display: flex;
-    position: absolute;
     justify-content: space-around;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    background: $dirty-white;
+    @include centering(-50%, -50%);
+    @include borderMixin(10px);
     width: 1100px;
     height: 670px;
     padding: 5% 3%;
-    color: #333333;
+    color: $font-color;
     border-radius: 10px;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
-    background: $dirty-white;
-    border-left: 10px solid lighten($border-grey, 5%);
-    border-right: 10px solid lighten($border-grey, 17%);
-    border-top: 10px solid lighten($border-grey, 12%);
-    border-bottom: 10px solid $border-grey;
+
     &.game {
         background: transparent;
         border: none;
@@ -84,13 +97,11 @@ header {
 }
 
 .letterSection {
-    display: flex;
     flex-direction: column;
     width: 300px;
     margin-top: -20px;
     margin-right: -50px;
     .letters {
-        display: flex;
         justify-content: center;
         position: relative;
     }
@@ -111,7 +122,6 @@ header {
         border: none;
         border-bottom: 4px solid $border-button-burgendy;
         outline: none;
-        cursor: pointer;
         letter-spacing: 3px;
         font-size: 1.5em;
         background: $button-red;
@@ -137,12 +147,10 @@ header {
         }
     }
     .arrowButtons {
-        display: flex;
         height: 40px;
         justify-content: center;
         margin-right: -10px;
         button {
-            display: flex;
             border: none;
             width: 80px;
             height: 80px;
@@ -170,7 +178,6 @@ header {
 }
 
 .illustration {
-    display: flex;
     flex-direction: column;
     margin-top: -50px;
     margin-right: -50px;
@@ -192,7 +199,6 @@ header {
 .memoryGame {
     display: none;
     &.active {
-        display: flex;
         align-items: center;
         justify-content: space-around;
         flex-wrap: wrap;
@@ -200,12 +206,10 @@ header {
     }
 
     .box {
-        display: flex;
         position: relative;
         height: 220px;
         width: 220px;
         margin-bottom: 40px;
-        cursor: pointer;
         transition: 0.6s;
         animation: scalingIn 0.4s;
         &.active {
@@ -233,29 +237,21 @@ header {
         }
         .front,
         .back {
-            border-left: 5px solid lighten($border-grey, 5%);
-            border-right: 5px solid lighten($border-grey, 17%);
-            border-top: 5px solid lighten($border-grey, 12%);
-            border-bottom: 5px solid $border-grey;
+            @include borderMixin(5px);
             border-radius: 10px;
         }
         .front {
             transform: rotateY(90deg) skewY(-5deg) translateX(200px);
             transform-origin: right;
-            background: white;
-            img,
-            h2,
-            p {
-                position: absolute;
-            }
+            background: $dirty-white;
+
             img {
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -55%);
+                @include centering(-50%, -55%);
                 width: 160px;
                 height: 160px;
             }
             h2 {
+                position: absolute;
                 font-size: 2.2em;
                 left: 8%;
                 top: 2%;
@@ -265,15 +261,13 @@ header {
                 }
             }
             p {
+                @include centering(-50%, 75%);
                 bottom: 0%;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, 75%);
                 opacity: 0.8;
             }
         }
         .back {
-            background: white;
+            background: $dirty-white;
             transform-origin: left;
             text-align: center;
             justify-content: center;
@@ -285,54 +279,5 @@ header {
                 opacity: 0.95;
             }
         }
-    }
-}
-
-//Keyframes animation
-@keyframes scalingIn {
-    from {
-        opacity: 0;
-        transform: scale(0);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-@keyframes scalingOut {
-    from {
-        opacity: 1;
-        transform: scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: scale(0);
-    }
-}
-@keyframes capitalAndLower {
-    0% {
-        transform: scale(0) rotate(20deg);
-        opacity: 0;
-    }
-
-    40% {
-        transform: scale(1.5) rotate(-10deg);
-    }
-    60% {
-        transform: rotate(10deg);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
     }
 }
