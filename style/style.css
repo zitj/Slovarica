@@ -430,7 +430,7 @@ header nav a.active {
 
 .memoryGame .box.active .front.correct {
   border: 5px solid #24af42;
-  background: #c8ffc8;
+  background: #b9f1c5;
 }
 
 .memoryGame .box.active .back {

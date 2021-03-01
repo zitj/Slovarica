@@ -217,7 +217,7 @@ header {
                 transform: rotateY(0deg) translateX(0px);
                 &.correct {
                     border: 5px solid $button-green;
-                    background: rgb(200, 255, 200);
+                    background: lighten($button-green, 42%);
                 }
             }
             .back {

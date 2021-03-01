@@ -338,10 +338,14 @@ let shuffledArray = [];
 let temporaryArray = [];
 
 const formingArrayForMemoryGame = () => {
+    counter = vocabular[character].wordCounter;
+    counterTwo = vocabular[character + 1].wordCounter;
+    counterThree = vocabular[character + 2].wordCounter;
+
     for (let i = 0; unshuffledArray.length < 6; i++) {
-        unshuffledArray.push(vocabular[character].words[0]);
-        unshuffledArray.push(vocabular[character + 1].words[0]);
-        unshuffledArray.push(vocabular[character + 2].words[0]);
+        unshuffledArray.push(vocabular[character].words[counter]);
+        unshuffledArray.push(vocabular[character + 1].words[counterTwo]);
+        unshuffledArray.push(vocabular[character + 2].words[counterThree]);
     }
 
     shuffledArray = unshuffledArray
@@ -416,12 +420,16 @@ const clickingOnBoxes = () => {
             // Everything is paired
             if (score == 6) {
                 score = 0;
-                console.log(score);
                 character += 3;
                 if (character > 27) {
                     character = 0;
+                    for (word of vocabular) {
+                        word.wordCounter++;
+                        if (word.words.length <= word.wordCounter) {
+                            word.wordCounter = 0;
+                        }
+                    }
                 }
-                console.log(character);
                 unshuffledArray = [];
                 formingArrayForMemoryGame();
                 setTimeout(() => {
