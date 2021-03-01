@@ -215,6 +215,10 @@ header {
         &.active {
             .front {
                 transform: rotateY(0deg) translateX(0px);
+                &.correct {
+                    border: 5px solid $button-green;
+                    background: rgb(200, 255, 200);
+                }
             }
             .back {
                 transform: rotateY(90deg) skewY(5deg) translateY(-12px)
@@ -222,7 +226,8 @@ header {
             }
         }
         &.correct {
-            transform: scale(0);
+            animation: scalingOut 0.6s ease-out;
+            background: transparent;
             opacity: 0;
         }
         &.gone {

@@ -198,7 +198,7 @@ for (let sectionButton of sectionButtons) {
             character = 0;
             wrapper.classList.add('game');
             formingArrayForMemoryGame();
-            rednerBoxes();
+            renderBoxes();
         } else {
             letterSection.style.display = 'flex';
             illustration.style.display = 'flex';
@@ -348,11 +348,9 @@ const formingArrayForMemoryGame = () => {
         .map((a) => ({ sort: Math.random(), value: a }))
         .sort((a, b) => a.sort - b.sort)
         .map((a) => a.value);
-
-    console.log(shuffledArray);
 };
 
-const rednerBoxes = () => {
+const renderBoxes = () => {
     let template = '';
     shuffledArray.forEach((el) => {
         template += `
@@ -387,26 +385,24 @@ const clickingOnBoxes = () => {
 
         box.addEventListener('click', (e) => {
             box.classList.toggle('active');
+
             if (box.classList.contains('active')) {
                 temporaryArray.push(box.dataset.val);
-                console.log(temporaryArray);
             } else {
                 temporaryArray = [];
-                console.log(temporaryArray);
             }
 
             if (temporaryArray.length == 2) {
-                console.log(temporaryArray);
                 if (temporaryArray[0] === temporaryArray[1]) {
                     for (b of boxes) {
                         if (b.dataset.val == temporaryArray[0]) {
                             b.classList.add('correct');
+                            b.children[0].classList.add('correct');
                         }
                     }
                     temporaryArray = [];
                     score += 2;
                 } else {
-                    console.log('nisu isti!');
                     setTimeout(() => {
                         for (b of boxes) {
                             if (b.classList.contains('active')) {
@@ -432,7 +428,7 @@ const clickingOnBoxes = () => {
                     for (b of boxes) {
                         b.remove();
                     }
-                    rednerBoxes();
+                    renderBoxes();
                 }, 600);
             }
         });
