@@ -194,6 +194,8 @@ for (let sectionButton of sectionButtons) {
             letterSection.style.display = 'none';
             illustration.style.display = 'none';
             memoryGame.classList.add('active');
+            score = 0;
+            character = 0;
             wrapper.classList.add('game');
             formingArrayForMemoryGame();
             rednerBoxes();
@@ -382,15 +384,14 @@ const clickingOnBoxes = () => {
         setTimeout(() => {
             box.classList.remove('active');
         }, 500);
-        box.addEventListener('click', () => {
+
+        box.addEventListener('click', (e) => {
             box.classList.toggle('active');
             if (box.classList.contains('active')) {
                 temporaryArray.push(box.dataset.val);
-            }
-
-            if (temporaryArray.length > 2) {
-                temporaryArray.pop();
-                box.classList.remove('active');
+                console.log(temporaryArray);
+            } else {
+                temporaryArray = [];
                 console.log(temporaryArray);
             }
 
@@ -402,10 +403,21 @@ const clickingOnBoxes = () => {
                             b.classList.add('correct');
                         }
                     }
+                    temporaryArray = [];
                     score += 2;
+                } else {
+                    console.log('nisu isti!');
+                    setTimeout(() => {
+                        for (b of boxes) {
+                            if (b.classList.contains('active')) {
+                                b.classList.remove('active');
+                                temporaryArray = [];
+                            }
+                        }
+                    }, 400);
                 }
             }
-
+            // Everything is paired
             if (score == 6) {
                 score = 0;
                 console.log(score);
@@ -421,13 +433,8 @@ const clickingOnBoxes = () => {
                         b.remove();
                     }
                     rednerBoxes();
-                }, 1000);
+                }, 600);
             }
-            setTimeout(() => {
-                box.classList.remove('active');
-                temporaryArray.shift();
-                console.log(temporaryArray);
-            }, 800);
         });
     }
 };
