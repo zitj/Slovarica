@@ -23,6 +23,8 @@ const rightArrow = arrowButtons.querySelector('.arrowRight');
 let boxes = [];
 let boxTitles = [];
 let countingPairs = 0;
+let score = 0;
+
 let stopLetter = '';
 randomButton.style.display = 'none';
 
@@ -331,10 +333,9 @@ const startStop = () => {
 let unshuffledArray = [];
 let shuffledArray = [];
 
-let trialVersion = [];
+let temporaryArray = [];
 
 const formingArrayForMemoryGame = () => {
-    character = 12;
     for (let i = 0; unshuffledArray.length < 6; i++) {
         unshuffledArray.push(vocabular[character].words[0]);
         unshuffledArray.push(vocabular[character + 1].words[0]);
@@ -384,29 +385,48 @@ const clickingOnBoxes = () => {
         box.addEventListener('click', () => {
             box.classList.toggle('active');
             if (box.classList.contains('active')) {
-                trialVersion.push(box.dataset.val);
+                temporaryArray.push(box.dataset.val);
             }
 
-            if (trialVersion.length > 2) {
-                trialVersion.pop();
+            if (temporaryArray.length > 2) {
+                temporaryArray.pop();
                 box.classList.remove('active');
-                console.log(trialVersion);
+                console.log(temporaryArray);
             }
 
-            if (trialVersion.length == 2) {
-                console.log(trialVersion);
-                if (trialVersion[0] === trialVersion[1]) {
+            if (temporaryArray.length == 2) {
+                console.log(temporaryArray);
+                if (temporaryArray[0] === temporaryArray[1]) {
                     for (b of boxes) {
-                        if (b.dataset.val == trialVersion[0]) {
+                        if (b.dataset.val == temporaryArray[0]) {
                             b.classList.add('correct');
                         }
                     }
+                    score += 2;
                 }
+            }
+
+            if (score == 6) {
+                score = 0;
+                console.log(score);
+                character += 3;
+                if (character > 27) {
+                    character = 0;
+                }
+                console.log(character);
+                unshuffledArray = [];
+                formingArrayForMemoryGame();
+                setTimeout(() => {
+                    for (b of boxes) {
+                        b.remove();
+                    }
+                    rednerBoxes();
+                }, 1000);
             }
             setTimeout(() => {
                 box.classList.remove('active');
-                trialVersion.shift();
-                console.log(trialVersion);
+                temporaryArray.shift();
+                console.log(temporaryArray);
             }, 800);
         });
     }
@@ -416,6 +436,7 @@ const clickingOnBoxes = () => {
 randomButton.addEventListener('click', startStop);
 leftArrow.addEventListener('click', backward);
 rightArrow.addEventListener('click', forward);
+
 //Triggers on Keyboard
 document.body.onkeyup = function (e) {
     if (e.keyCode === 32) {
