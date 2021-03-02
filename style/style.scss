@@ -286,24 +286,7 @@ header {
         }
     }
 }
-progress {
-    display: none;
-    position: absolute;
-    top: 0%;
-    width: 60%;
-    height: 10px;
-    appearance: none;
 
-    &.active {
-        display: flex;
-    }
-    &::-webkit-progress-bar {
-        background: $border-grey;
-    }
-    &::-webkit-progress-value {
-        background: lighten($button-green, 5%);
-    }
-}
 .progressBar {
     position: absolute;
     display: none;
@@ -311,8 +294,9 @@ progress {
     width: 60%;
     border-radius: 15px;
     @include borderMixin(2px);
-    background: rgba(255, 255, 255, 0.849);
-    padding: 0.2em 0.5em 0.2em;
+    background: rgb(238, 238, 238);
+    box-shadow: inset 0px 0px 2px #000000;
+    padding: 0.2em 0.3em 0.2em;
     &.active {
         display: flex;
     }
@@ -320,7 +304,7 @@ progress {
         height: 0.5em;
         width: 5%;
         border-radius: 15px;
-        background: rgb(24, 199, 38);
+        background: rgb(26, 216, 42);
         transition: 0.3s ease-in-out;
     }
 }

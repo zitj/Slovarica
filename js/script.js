@@ -27,7 +27,7 @@ let boxes = [];
 let boxTitles = [];
 let countingPairs = 0;
 let score = 0;
-let progressValueCounter = 3.3;
+let progressValueCounter = 5;
 
 let stopLetter = '';
 randomButton.style.display = 'none';
@@ -201,6 +201,8 @@ for (let sectionButton of sectionButtons) {
             progressBar.classList.add('active');
             score = 0;
             character = 0;
+            progressValue.style.width = `5%`;
+            progressValueCounter = 5;
             wrapper.classList.add('game');
             formingArrayForMemoryGame();
             renderBoxes();
@@ -411,9 +413,13 @@ const clickingOnBoxes = () => {
                     }
                     temporaryArray = [];
                     score += 2;
-                    progressValueCounter += 3.3;
-                    if (progressValueCounter >= 100) {
-                        progressValueCounter = 3.3;
+                    progressValueCounter += 33.3;
+                    if (progressValueCounter >= 99) {
+                        progressValue.style.width = `100%`;
+                        setTimeout(() => {
+                            progressValue.style.width = `5%`;
+                            progressValueCounter = 5;
+                        }, 550);
                     }
                     progressValue.style.width = `${progressValueCounter}%`;
                 } else {

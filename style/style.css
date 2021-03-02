@@ -527,31 +527,6 @@ header nav a.active {
   opacity: 0.95;
 }
 
-progress {
-  display: none;
-  position: absolute;
-  top: 0%;
-  width: 60%;
-  height: 10px;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-
-progress.active {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-progress::-webkit-progress-bar {
-  background: dimgray;
-}
-
-progress::-webkit-progress-value {
-  background: #28c44a;
-}
-
 .progressBar {
   position: absolute;
   display: none;
@@ -562,8 +537,10 @@ progress::-webkit-progress-value {
   border-right: 2px solid #949494;
   border-top: 2px solid #888888;
   border-bottom: 2px solid dimgray;
-  background: rgba(255, 255, 255, 0.849);
-  padding: 0.2em 0.5em 0.2em;
+  background: #eeeeee;
+  -webkit-box-shadow: inset 0px 0px 2px #000000;
+          box-shadow: inset 0px 0px 2px #000000;
+  padding: 0.2em 0.3em 0.2em;
 }
 
 .progressBar.active {
@@ -576,7 +553,7 @@ progress::-webkit-progress-value {
   height: 0.5em;
   width: 5%;
   border-radius: 15px;
-  background: #18c726;
+  background: #1ad82a;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
