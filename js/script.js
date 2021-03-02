@@ -422,6 +422,10 @@ const clickingOnBoxes = () => {
                         }, 550);
                     }
                     progressValue.style.width = `${progressValueCounter}%`;
+                    progressBar.classList.add('correct');
+                    setTimeout(() => {
+                        progressBar.classList.remove('correct');
+                    }, 250);
                 } else {
                     setTimeout(() => {
                         for (b of boxes) {

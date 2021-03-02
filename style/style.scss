@@ -13,7 +13,9 @@ body {
     background: $background-green;
     font-family: 'Pangolin', cursive;
 }
-
+img {
+    pointer-events: none;
+}
 a,
 button,
 h1,
@@ -217,7 +219,7 @@ header {
                 transform: rotateY(0deg) translateX(0px);
                 &.correct {
                     border: 5px solid $button-green;
-                    background: lighten($button-green, 42%);
+                    background: lighten($button-green, 53%);
                 }
             }
             .back {
@@ -286,7 +288,10 @@ header {
         }
     }
 }
-
+.progressBar,
+.progressValue {
+    transition: 0.3s ease-in-out;
+}
 .progressBar {
     position: absolute;
     display: none;
@@ -300,11 +305,14 @@ header {
     &.active {
         display: flex;
     }
+    &.correct {
+        transform: scale(1.05);
+        border: 2px solid $button-green;
+    }
     .progressValue {
         height: 0.5em;
         width: 5%;
         border-radius: 15px;
-        background: rgb(26, 216, 42);
-        transition: 0.3s ease-in-out;
+        background: lighten($button-green, 5%);
     }
 }

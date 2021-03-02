@@ -158,6 +158,10 @@ body {
   font-family: 'Pangolin', cursive;
 }
 
+img {
+  pointer-events: none;
+}
+
 a,
 button,
 h1,
@@ -430,7 +434,7 @@ header nav a.active {
 
 .memoryGame .box.active .front.correct {
   border: 5px solid #24af42;
-  background: #b9f1c5;
+  background: #e7faeb;
 }
 
 .memoryGame .box.active .back {
@@ -527,6 +531,12 @@ header nav a.active {
   opacity: 0.95;
 }
 
+.progressBar,
+.progressValue {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
 .progressBar {
   position: absolute;
   display: none;
@@ -549,12 +559,16 @@ header nav a.active {
   display: flex;
 }
 
+.progressBar.correct {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  border: 2px solid #24af42;
+}
+
 .progressBar .progressValue {
   height: 0.5em;
   width: 5%;
   border-radius: 15px;
-  background: #1ad82a;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
+  background: #28c44a;
 }
 /*# sourceMappingURL=style.css.map */
