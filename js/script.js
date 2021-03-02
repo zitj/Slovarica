@@ -20,12 +20,14 @@ const arrowButtons = document.querySelector('.arrowButtons');
 const leftArrow = arrowButtons.querySelector('.arrowLeft');
 const rightArrow = arrowButtons.querySelector('.arrowRight');
 
-const progressBar = document.querySelector('progress');
-const progressDiv = document.querySelector('.progressDiv');
+const progressBar = document.querySelector('.progressBar');
+const progressValue = document.querySelector('.progressValue');
+
 let boxes = [];
 let boxTitles = [];
 let countingPairs = 0;
 let score = 0;
+let progressValueCounter = 3.3;
 
 let stopLetter = '';
 randomButton.style.display = 'none';
@@ -409,11 +411,11 @@ const clickingOnBoxes = () => {
                     }
                     temporaryArray = [];
                     score += 2;
-                    progressBar.value++;
-                    console.log(progressBar.value);
-                    if (progressBar.value >= progressBar.max) {
-                        progressBar.value = 1;
+                    progressValueCounter += 3.3;
+                    if (progressValueCounter >= 100) {
+                        progressValueCounter = 3.3;
                     }
+                    progressValue.style.width = `${progressValueCounter}%`;
                 } else {
                     setTimeout(() => {
                         for (b of boxes) {
