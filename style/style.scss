@@ -16,6 +16,9 @@ body {
 img {
     pointer-events: none;
 }
+button {
+    outline: none;
+}
 a,
 button,
 h1,
@@ -131,9 +134,11 @@ header {
         border-radius: 8px;
         padding: 20px;
         transition: 0.1s;
+        animation: scalingInButtons 0.35s ease-in-out;
         &:hover {
             opacity: 0.9;
         }
+
         &:active {
             opacity: 1;
             border-bottom: 2px solid $border-button-burgendy;
@@ -157,6 +162,7 @@ header {
             width: 80px;
             height: 80px;
             background: $button-green;
+
             &:active {
                 border: none;
                 transform: translateY(2px);

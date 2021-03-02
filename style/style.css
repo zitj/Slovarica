@@ -24,6 +24,42 @@
   }
 }
 
+@-webkit-keyframes scalingInButtons {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  80% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes scalingInButtons {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  80% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
 @-webkit-keyframes scalingOut {
   0% {
     opacity: 1;
@@ -113,19 +149,25 @@
 }
 
 @-webkit-keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  60% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }
 
 @keyframes fadeIn {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  60% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }
@@ -160,6 +202,10 @@ body {
 
 img {
   pointer-events: none;
+}
+
+button {
+  outline: none;
 }
 
 a,
@@ -312,6 +358,8 @@ header nav a.active {
   padding: 20px;
   -webkit-transition: 0.1s;
   transition: 0.1s;
+  -webkit-animation: scalingInButtons 0.35s ease-in-out;
+          animation: scalingInButtons 0.35s ease-in-out;
 }
 
 .letterSection button:hover {
