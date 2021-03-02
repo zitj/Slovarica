@@ -308,6 +308,7 @@ header {
     background: rgb(238, 238, 238);
     box-shadow: inset 0px 0px 2px #000000;
     padding: 0.2em 0.3em 0.2em;
+    animation: scalingInButtons 0.8s ease-in-out;
     &.active {
         display: flex;
     }

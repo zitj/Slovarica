@@ -233,6 +233,12 @@ const animatingElements = () => {
     }
 };
 
+const playAudio = (sound) => {
+    audio.src = `audio/${sound}.mp3`;
+    audio.loop = false;
+    audio.play();
+};
+
 const defaultLetter = () => {
     character = 0;
     letter.innerHTML =
@@ -240,9 +246,7 @@ const defaultLetter = () => {
         `<span>${azbukaArr[character].toLowerCase()}</span>`;
     displayWord.innerHTML = vocabular[character].words[0];
     img.src = `img/${vocabular[character].words[0]}.png`;
-    audio.src = `audio/${vocabular[character].words[0]}.mp3`;
-    audio.loop = false;
-    audio.play();
+    playAudio(vocabular[character].words[0]);
     for (word of vocabular) {
         word.wordCounter = 0;
     }
@@ -266,9 +270,8 @@ const changeLetter = () => {
         `<span>${azbukaArr[character].toLowerCase()}</span>`;
     displayWord.innerHTML = vocabular[character].words[counter];
     img.src = `img/${vocabular[character].words[counter]}.png`;
-    audio.src = `audio/${vocabular[character].words[counter]}.mp3`;
-    audio.loop = false;
-    audio.play();
+
+    playAudio(vocabular[character].words[counter]);
     animatingElements();
 };
 
@@ -323,16 +326,13 @@ const startStop = () => {
                 counter = word.wordCounter;
                 img.src = `img/${word.words[counter]}.png`;
                 displayWord.innerHTML = word.words[counter];
-                audio.src = `audio/${word.words[counter]}.mp3`;
-                audio.loop = false;
-                audio.play();
+
+                playAudio(word.words[counter]);
                 word.wordCounter++;
             }
         }
     } else if (!randomButton.classList.contains('start')) {
-        audio.src = 'audio/shuffle.mp3';
-        audio.loop = true;
-        audio.play();
+        playAudio('shuffle');
         //randomize letter
         timer = setInterval(randomizingLetter, 80);
         randomButton.innerHTML = 'СТАНИ';
@@ -483,4 +483,6 @@ document.onkeydown = (keyDownEvent) => {
         forward();
     }
 };
+
+playAudio(vocabular[0].words[0]);
 animatingElements();

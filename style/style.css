@@ -599,6 +599,8 @@ header nav a.active {
   -webkit-box-shadow: inset 0px 0px 2px #000000;
           box-shadow: inset 0px 0px 2px #000000;
   padding: 0.2em 0.3em 0.2em;
+  -webkit-animation: scalingInButtons 0.8s ease-in-out;
+          animation: scalingInButtons 0.8s ease-in-out;
 }
 
 .progressBar.active {
