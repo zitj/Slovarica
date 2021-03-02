@@ -286,3 +286,21 @@ header {
         }
     }
 }
+progress {
+    display: none;
+    position: absolute;
+    top: 0%;
+    width: 60%;
+    height: 10px;
+    appearance: none;
+
+    &.active {
+        display: flex;
+    }
+    &::-webkit-progress-bar {
+        background: $border-grey;
+    }
+    &::-webkit-progress-value {
+        background: lighten($button-green, 5%);
+    }
+}

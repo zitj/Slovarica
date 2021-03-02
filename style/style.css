@@ -526,4 +526,29 @@ header nav a.active {
 .memoryGame .box .back:hover {
   opacity: 0.95;
 }
+
+progress {
+  display: none;
+  position: absolute;
+  top: 0%;
+  width: 60%;
+  height: 10px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+progress.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+progress::-webkit-progress-bar {
+  background: dimgray;
+}
+
+progress::-webkit-progress-value {
+  background: #28c44a;
+}
 /*# sourceMappingURL=style.css.map */

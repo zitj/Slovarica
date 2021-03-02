@@ -20,6 +20,8 @@ const arrowButtons = document.querySelector('.arrowButtons');
 const leftArrow = arrowButtons.querySelector('.arrowLeft');
 const rightArrow = arrowButtons.querySelector('.arrowRight');
 
+const progressBar = document.querySelector('progress');
+const progressDiv = document.querySelector('.progressDiv');
 let boxes = [];
 let boxTitles = [];
 let countingPairs = 0;
@@ -194,6 +196,7 @@ for (let sectionButton of sectionButtons) {
             letterSection.style.display = 'none';
             illustration.style.display = 'none';
             memoryGame.classList.add('active');
+            progressBar.classList.add('active');
             score = 0;
             character = 0;
             wrapper.classList.add('game');
@@ -203,6 +206,7 @@ for (let sectionButton of sectionButtons) {
             letterSection.style.display = 'flex';
             illustration.style.display = 'flex';
             memoryGame.classList.remove('active');
+            progressBar.classList.remove('active');
             wrapper.classList.remove('game');
         }
     });
@@ -355,7 +359,7 @@ const formingArrayForMemoryGame = () => {
 };
 
 const renderBoxes = () => {
-    let template = '';
+    let template = ``;
     shuffledArray.forEach((el) => {
         template += `
         <div class="box" data-val="${el}" >
@@ -370,7 +374,6 @@ const renderBoxes = () => {
         </div>
         `;
     });
-
     memoryGame.innerHTML = template;
     boxes = document.querySelectorAll('.box');
     boxTitles = document.querySelectorAll('.boxTitle');
@@ -406,6 +409,11 @@ const clickingOnBoxes = () => {
                     }
                     temporaryArray = [];
                     score += 2;
+                    progressBar.value++;
+                    console.log(progressBar.value);
+                    if (progressBar.value >= progressBar.max) {
+                        progressBar.value = 1;
+                    }
                 } else {
                     setTimeout(() => {
                         for (b of boxes) {
