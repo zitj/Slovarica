@@ -61,7 +61,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Ђумбирко', 'Ђеврек'],
+        words: ['Ђеврек', 'Ђумбирко'],
     },
     {
         wordCounter: 0,
@@ -390,13 +390,14 @@ const renderBoxes = () => {
 const clickingOnBoxes = () => {
     for (let box of boxes) {
         box.classList.add('active');
+        playAudio('inout');
         setTimeout(() => {
             box.classList.remove('active');
-        }, 500);
+        }, 450);
 
         box.addEventListener('click', (e) => {
             box.classList.toggle('active');
-
+            playAudio('open');
             if (box.classList.contains('active')) {
                 temporaryArray.push(box.dataset.val);
             } else {
@@ -409,6 +410,7 @@ const clickingOnBoxes = () => {
                         if (b.dataset.val == temporaryArray[0]) {
                             b.classList.add('correct');
                             b.children[0].classList.add('correct');
+                            playAudio('success');
                         }
                     }
                     temporaryArray = [];
@@ -457,7 +459,7 @@ const clickingOnBoxes = () => {
                         b.remove();
                     }
                     renderBoxes();
-                }, 600);
+                }, 700);
             }
         });
     }
