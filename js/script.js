@@ -410,6 +410,7 @@ const clickingOnBoxes = () => {
                         if (b.dataset.val == temporaryArray[0]) {
                             b.classList.add('correct');
                             b.children[0].classList.add('correct');
+
                             playAudio('success');
                         }
                     }
