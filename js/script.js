@@ -61,7 +61,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Ђеврек', 'Ђумбирко'],
+        words: ['Ђумбирко', 'Ђеврек'],
     },
     {
         wordCounter: 0,
@@ -236,7 +236,13 @@ const animatingElements = () => {
 const playAudio = (sound) => {
     audio.src = `audio/${sound}.mp3`;
     audio.loop = false;
-    audio.play();
+
+    let playPromise = audio.play();
+    if (playPromise !== undefined) {
+        playPromise.then((_) => {}).catch((error) => {});
+    }
+
+    // audio.play();
 };
 
 const defaultLetter = () => {
