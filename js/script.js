@@ -241,8 +241,6 @@ const playAudio = (sound) => {
     if (playPromise !== undefined) {
         playPromise.then((_) => {}).catch((error) => {});
     }
-
-    // audio.play();
 };
 
 const defaultLetter = () => {
@@ -282,6 +280,12 @@ const changeLetter = () => {
 };
 
 const forward = () => {
+    if (
+        sectionButtons[2].classList.contains('active') ||
+        sectionButtons[1].classList.contains('active')
+    ) {
+        return;
+    }
     character++;
     if (character === azbukaArr.length) {
         character = 0;
@@ -294,10 +298,17 @@ const forward = () => {
 };
 
 const backward = () => {
+    if (
+        sectionButtons[2].classList.contains('active') ||
+        sectionButtons[1].classList.contains('active')
+    ) {
+        return;
+    }
     character--;
     if (character == -1) {
         character = azbukaArr.length - 1;
     }
+
     changeLetter();
 };
 
