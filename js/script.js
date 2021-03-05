@@ -163,6 +163,7 @@ const vocabular = [
 
 letter.innerHTML = azbukaArr[0] + `<span>${azbukaArr[0].toLowerCase()}</span>`;
 img.src = `img/${vocabular[0].words[0]}.png`;
+img.alt = vocabular[0].words[0];
 
 let counter = 0;
 let character = 0;
@@ -250,6 +251,7 @@ const defaultLetter = () => {
         `<span>${azbukaArr[character].toLowerCase()}</span>`;
     displayWord.innerHTML = vocabular[character].words[0];
     img.src = `img/${vocabular[character].words[0]}.png`;
+    img.alt = vocabular[character].words[0];
     playAudio(vocabular[character].words[0]);
     for (word of vocabular) {
         word.wordCounter = 0;
@@ -274,6 +276,7 @@ const changeLetter = () => {
         `<span>${azbukaArr[character].toLowerCase()}</span>`;
     displayWord.innerHTML = vocabular[character].words[counter];
     img.src = `img/${vocabular[character].words[counter]}.png`;
+    img.alt = vocabular[character].words[counter];
 
     playAudio(vocabular[character].words[counter]);
     animatingElements();
@@ -342,6 +345,7 @@ const startStop = () => {
             if (word.words[0].charAt(0) == stopLetter) {
                 counter = word.wordCounter;
                 img.src = `img/${word.words[counter]}.png`;
+                img.alt = word.words[counter];
                 displayWord.innerHTML = word.words[counter];
 
                 playAudio(word.words[counter]);
