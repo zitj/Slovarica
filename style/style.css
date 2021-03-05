@@ -632,4 +632,81 @@ header nav a.active {
   border-radius: 15px;
   background: #28c44a;
 }
+
+@media screen and (max-width: 1440px) {
+  .wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -43%);
+            transform: translate(-50%, -43%);
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  header {
+    width: 90%;
+    left: 5%;
+  }
+  .wrapper {
+    width: 1000px;
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -45%);
+            transform: translate(-50%, -45%);
+    width: 700px;
+    height: 950px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .wrapper.game {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-42%, -42%);
+            transform: translate(-42%, -42%);
+  }
+  .letterSection {
+    width: 100%;
+    margin-top: -100px;
+  }
+  .letterSection button {
+    width: 80%;
+    margin-left: 10%;
+  }
+  .letterSection .arrowButtons {
+    margin-bottom: 40px;
+  }
+  .letterSection .arrowButtons button {
+    height: 100px;
+    width: 100px;
+  }
+  .illustration {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+  .illustration img {
+    height: 400px;
+    width: 450px;
+    margin-top: -40px;
+    margin-left: 100px;
+  }
+  .illustration h3 {
+    margin-left: -30px;
+  }
+  .progressBar {
+    margin-left: 6.4%;
+  }
+}
 /*# sourceMappingURL=style.css.map */

@@ -49,7 +49,7 @@ const vocabular = [
     },
     {
         wordCounter: 0,
-        words: ['Вук', 'Веверица', 'Воће'],
+        words: ['Веверица', 'Вук', 'Воће'],
     },
     {
         wordCounter: 0,
