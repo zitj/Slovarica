@@ -706,7 +706,44 @@ header nav a.active {
     margin-left: -30px;
   }
   .progressBar {
-    margin-left: 6.4%;
+    margin-left: 6.8%;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .wrapper {
+    width: 500px;
+    height: 800px;
+  }
+  .illustration img {
+    height: 300px;
+    width: 350px;
+    margin-top: -40px;
+    margin-left: 50px;
+  }
+  .letterSection {
+    margin-top: -50px;
+  }
+  .letterSection h1 {
+    font-size: 16em;
+  }
+  .letterSection .arrowButtons {
+    margin-left: -10px;
+  }
+  .memoryGame .box {
+    height: 160px;
+    width: 160px;
+  }
+  .memoryGame .box .front img {
+    height: 110px;
+    width: 110px;
+  }
+  .memoryGame .box .front p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, 65%);
+            transform: translate(-50%, 65%);
   }
 }
 /*# sourceMappingURL=style.css.map */

@@ -389,6 +389,44 @@ header {
         }
     }
     .progressBar {
-        margin-left: 6.4%;
+        margin-left: 6.8%;
+    }
+}
+@media screen and (max-width: 740px) {
+    .wrapper {
+        width: 500px;
+        height: 800px;
+    }
+    .illustration {
+        img {
+            height: 300px;
+            width: 350px;
+            margin-top: -40px;
+            margin-left: 50px;
+        }
+    }
+    .letterSection {
+        margin-top: -50px;
+        h1 {
+            font-size: 16em;
+        }
+        .arrowButtons {
+            margin-left: -10px;
+        }
+    }
+    .memoryGame {
+        .box {
+            height: 160px;
+            width: 160px;
+            .front {
+                img {
+                    height: 110px;
+                    width: 110px;
+                }
+                p {
+                    @include centering(-50%, 65%);
+                }
+            }
+        }
     }
 }
