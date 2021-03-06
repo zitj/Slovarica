@@ -250,6 +250,10 @@ button,
   cursor: pointer;
 }
 
+.loadImagesContainer img {
+  display: none;
+}
+
 header {
   position: fixed;
   -webkit-box-pack: justify;

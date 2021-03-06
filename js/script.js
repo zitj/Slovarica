@@ -225,7 +225,6 @@ const loadAllImages = () => {
         array.words.forEach((word) => {
             template += `
                 <img src="img/${word}.png">
-                <audio src="audio/${word}.mp3"></audio>
             `;
         });
         loadImagesContainer.innerHTML = template;

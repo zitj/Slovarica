@@ -56,6 +56,12 @@ button,
     cursor: pointer;
 }
 
+.loadImagesContainer {
+    img {
+        display: none;
+    }
+}
+
 header {
     position: fixed;
     justify-content: space-between;
