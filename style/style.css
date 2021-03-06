@@ -746,4 +746,89 @@ header nav a.active {
             transform: translate(-50%, 65%);
   }
 }
+
+@media screen and (max-width: 590px) {
+  header .logo {
+    font-size: 1em;
+  }
+  header nav {
+    font-size: 0.6em;
+  }
+  header nav a {
+    margin-right: 0px;
+  }
+  .wrapper {
+    width: 300px;
+    height: 520px;
+    border-left: 4px solid #767676;
+    border-right: 4px solid #949494;
+    border-top: 4px solid #888888;
+    border-bottom: 4px solid dimgray;
+  }
+  .wrapper.game {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-41%, -39%);
+            transform: translate(-41%, -39%);
+  }
+  .illustration img {
+    height: 200px;
+    width: 200px;
+    margin-top: -30px;
+    margin-left: 30px;
+  }
+  .illustration h3 {
+    font-size: 2em;
+    margin-left: -40px;
+    margin-top: 40px;
+  }
+  .letterSection {
+    margin-top: -40px;
+  }
+  .letterSection h1 {
+    font-size: 9em;
+  }
+  .letterSection .arrowButtons {
+    margin-left: -20px;
+  }
+  .letterSection .arrowButtons button {
+    height: 70px;
+    width: 70px;
+  }
+  .memoryGame .box {
+    height: 100px;
+    width: 100px;
+  }
+  .memoryGame .box .front,
+  .memoryGame .box .back {
+    border-left: 4px solid #767676;
+    border-right: 4px solid #949494;
+    border-top: 4px solid #888888;
+    border-bottom: 4px solid dimgray;
+  }
+  .memoryGame .box.active .back {
+    -webkit-transform: rotateY(90deg) skewY(5deg) translateY(-2px) translateX(-50px);
+            transform: rotateY(90deg) skewY(5deg) translateY(-2px) translateX(-50px);
+  }
+  .memoryGame .box .front {
+    -webkit-transform: rotateY(90deg) skewY(-5deg) translateX(50px);
+            transform: rotateY(90deg) skewY(-5deg) translateX(50px);
+  }
+  .memoryGame .box .front img {
+    height: 70px;
+    width: 70px;
+  }
+  .memoryGame .box .front h2 {
+    font-size: 1.2em;
+  }
+  .memoryGame .box .front p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, 65%);
+            transform: translate(-50%, 65%);
+    font-size: 0.7em;
+  }
+}
 /*# sourceMappingURL=style.css.map */
