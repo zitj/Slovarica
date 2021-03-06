@@ -217,6 +217,15 @@ for (let sectionButton of sectionButtons) {
     });
 }
 
+const loadAllImages = () => {
+    vocabular.forEach((array) => {
+        array.words.forEach((word) => {
+            img.src = `img/${word}.png`;
+            audio.src = `audio/${word}.mp3`;
+        });
+    });
+};
+
 const stopRandomButton = () => {
     clearInterval(timer);
     randomButton.innerHTML = 'КРЕНИ';
@@ -510,3 +519,5 @@ document.onkeydown = (keyDownEvent) => {
 
 playAudio(vocabular[0].words[0]);
 animatingElements();
+loadAllImages();
+defaultLetter();
