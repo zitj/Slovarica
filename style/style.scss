@@ -441,11 +441,12 @@ header {
             font-size: 0.6em;
             a {
                 margin-right: 0px;
+                padding-top: 2px;
             }
         }
     }
     .wrapper {
-        width: 300px;
+        width: 320px;
         height: 520px;
         @include borderMixin(4px, $border-grey);
     }
@@ -454,15 +455,15 @@ header {
     }
     .illustration {
         img {
-            height: 200px;
-            width: 200px;
-            margin-top: -30px;
-            margin-left: 30px;
+            height: 210px;
+            width: 210px;
+            margin-top: -20px;
+            margin-left: 40px;
         }
         h3 {
             font-size: 2em;
             margin-left: -40px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
     }
     .letterSection {
@@ -473,8 +474,8 @@ header {
         .arrowButtons {
             margin-left: -20px;
             button {
-                height: 70px;
-                width: 70px;
+                height: 90px;
+                width: 90px;
             }
         }
     }
