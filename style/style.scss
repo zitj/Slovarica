@@ -452,12 +452,12 @@ header {
         }
     }
     .wrapper {
-        width: 300px;
+        width: 320px;
         height: 520px;
         @include borderMixin(4px, $border-grey);
     }
     .wrapper.game {
-        @include centering(-41%, -39%);
+        width: 300px;
     }
     .illustration {
         width: 300px;
@@ -465,11 +465,11 @@ header {
             height: 210px;
             width: 210px;
             margin-top: -20px;
-            margin-left: 30px;
+            margin-left: 40px;
         }
         h3 {
             font-size: 2em;
-            margin-left: -40px;
+            margin-left: 0px;
             margin-top: 30px;
         }
     }
