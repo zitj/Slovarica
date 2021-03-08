@@ -878,20 +878,30 @@ header nav a.active {
 @media screen and (max-width: 320px) {
   .wrapper {
     width: 280px;
-    height: 480px;
+    height: 380px;
   }
   .illustration {
     width: 200px;
   }
   .illustration img {
-    height: 200px;
-    width: 200px;
-    margin-top: -30px;
-    margin-left: 30px;
+    height: 150px;
+    width: 150px;
+    margin-left: 50px;
   }
   .illustration h3 {
+    font-size: 1.7em;
     margin-left: 60px;
     margin-top: 40px;
+  }
+  .letterSection h1 {
+    font-size: 6.5em;
+  }
+  .letterSection .arrowButtons {
+    margin-bottom: 10px;
+  }
+  .letterSection .arrowButtons button {
+    width: 60px;
+    height: 60px;
   }
 }
 /*# sourceMappingURL=style.css.map */

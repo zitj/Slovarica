@@ -579,20 +579,32 @@ header {
 @media screen and (max-width: 320px) {
     .wrapper {
         width: 280px;
-        height: 480px;
+        height: 380px;
     }
 
     .illustration {
         width: 200px;
         img {
-            height: 200px;
-            width: 200px;
-            margin-top: -30px;
-            margin-left: 30px;
+            height: 150px;
+            width: 150px;
+            margin-left: 50px;
         }
         h3 {
+            font-size: 1.7em;
             margin-left: 60px;
             margin-top: 40px;
+        }
+    }
+    .letterSection {
+        h1 {
+            font-size: 6.5em;
+        }
+        .arrowButtons {
+            margin-bottom: 10px;
+            button {
+                width: 60px;
+                height: 60px;
+            }
         }
     }
 }
