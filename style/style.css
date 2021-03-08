@@ -415,14 +415,14 @@ header nav a.active {
 }
 
 .letterSection .arrowButtons .arrowRight {
-  -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
-          clip-path: polygon(100% 50%, 0 0, 0 100%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+          clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 
 .letterSection .arrowButtons .arrowLeft {
   margin-right: 20px;
-  -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
-          clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+          clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
 }
 
 .letterSection .arrowButtons .buttonWrap {
@@ -763,15 +763,12 @@ header nav a.active {
     padding-top: 2px;
   }
   .wrapper {
-    width: 320px;
+    width: 300px;
     height: 520px;
     border-left: 4px solid #767676;
     border-right: 4px solid #949494;
     border-top: 4px solid #888888;
     border-bottom: 4px solid dimgray;
-  }
-  .wrapper.game {
-    width: 300px;
   }
   .illustration {
     width: 300px;
@@ -780,11 +777,11 @@ header nav a.active {
     height: 210px;
     width: 210px;
     margin-top: -20px;
-    margin-left: 40px;
+    margin-left: 30px;
   }
   .illustration h3 {
     font-size: 2em;
-    margin-left: 0px;
+    margin-left: -20px;
     margin-top: 30px;
   }
   .letterSection {
@@ -797,8 +794,8 @@ header nav a.active {
     margin-left: -20px;
   }
   .letterSection .arrowButtons button {
-    height: 90px;
-    width: 90px;
+    height: 80px;
+    width: 80px;
   }
   .memoryGame .box {
     height: 100px;
