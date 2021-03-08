@@ -452,7 +452,7 @@ header {
         }
     }
     .wrapper {
-        width: 320px;
+        width: 300px;
         height: 520px;
         @include borderMixin(4px, $border-grey);
     }
@@ -460,11 +460,12 @@ header {
         @include centering(-41%, -39%);
     }
     .illustration {
+        width: 300px;
         img {
             height: 210px;
             width: 210px;
             margin-top: -20px;
-            margin-left: 40px;
+            margin-left: 30px;
         }
         h3 {
             font-size: 2em;
