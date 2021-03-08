@@ -382,6 +382,7 @@ header {
     }
     .wrapper.game {
         @include centering(-42%, -42%);
+        width: 680px;
     }
 
     .letterSection {
@@ -415,7 +416,7 @@ header {
         margin-left: 6.8%;
     }
 }
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 768px) {
     .wrapper {
         width: 500px;
         height: 800px;
@@ -532,10 +533,9 @@ header {
         }
     }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
     .wrapper {
-        width: 280px;
-        height: 480px;
+        height: 470px;
     }
     .wrapper.game {
         padding: 0;
@@ -543,18 +543,20 @@ header {
         height: 400px;
         @include centering(-40%, -35%);
     }
-
     .illustration {
-        width: 200px;
         img {
-            height: 200px;
-            width: 200px;
-            margin-top: -30px;
-            margin-left: 30px;
+            height: 190px;
+            width: 190px;
+            margin-left: 40px;
         }
         h3 {
-            margin-left: 60px;
+            font-size: 1.8em;
             margin-top: 40px;
+        }
+    }
+    .letterSection {
+        h1 {
+            font-size: 8.5em;
         }
     }
     .memoryGame {
@@ -572,5 +574,25 @@ header {
     .progressBar {
         width: 65%;
         top: -10%;
+    }
+}
+@media screen and (max-width: 320px) {
+    .wrapper {
+        width: 280px;
+        height: 480px;
+    }
+
+    .illustration {
+        width: 200px;
+        img {
+            height: 200px;
+            width: 200px;
+            margin-top: -30px;
+            margin-left: 30px;
+        }
+        h3 {
+            margin-left: 60px;
+            margin-top: 40px;
+        }
     }
 }
