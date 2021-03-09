@@ -14,6 +14,7 @@ const displayWord = document.querySelector('h3');
 const img = document.querySelector('img');
 const audio = document.getElementById('my_audio');
 
+const logo = document.querySelector('.logo');
 const nav = document.querySelector('nav');
 const sectionButtons = nav.querySelectorAll('a');
 
@@ -538,7 +539,7 @@ const clickingOnBoxes = () => {
     }
 };
 const startApp = () => {
-    playAudio(vocabular[0].words[0]);
+    audio.play();
     animatingElements();
     loadAllImages();
     defaultLetter();
@@ -549,13 +550,16 @@ const endLoadingScreen = () => {
         loadingScreen.style.opacity = 0;
         loadingScreen.style.zIndex = -10;
         startApp();
-    }, 1500);
+    }, 1800);
 };
 
 //Triggers on Mouse
 randomButton.addEventListener('click', startStop);
 leftArrow.addEventListener('click', backward);
 rightArrow.addEventListener('click', forward);
+logo.addEventListener('click', () => {
+    location.reload();
+});
 
 //Triggers on Keyboard
 document.body.onkeyup = function (e) {
