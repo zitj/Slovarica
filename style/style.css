@@ -243,6 +243,8 @@ body {
   position: absolute;
   text-align: center;
   color: white;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
 }
 
 .loadingScreen #loadingTitle {

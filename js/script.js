@@ -546,9 +546,10 @@ const startApp = () => {
 
 const endLoadingScreen = () => {
     setTimeout(() => {
-        loadingScreen.style.display = 'none';
+        loadingScreen.style.opacity = 0;
+        loadingScreen.style.zIndex = -10;
         startApp();
-    }, 2000);
+    }, 1500);
 };
 
 //Triggers on Mouse
