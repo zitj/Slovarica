@@ -24,7 +24,7 @@ const rightArrow = arrowButtons.querySelector('.arrowRight');
 const progressBar = document.querySelector('.progressBar');
 const progressValue = document.querySelector('.progressValue');
 
-let zvuk = new Audio('../audio/inout.mp3');
+const inout = new Audio('../audio/inout.mp3');
 
 let boxes = [];
 let boxTitles = [];
@@ -260,6 +260,11 @@ const playAudio = (sound) => {
     }
 };
 
+const playSoundEffect = (soundEffect) => {
+    let sound = new Audio(`audio/${soundEffect}.mp3`);
+    sound.play();
+};
+
 const defaultLetter = () => {
     character = 0;
     letter.innerHTML =
@@ -427,14 +432,14 @@ const renderBoxes = () => {
 const clickingOnBoxes = () => {
     for (let box of boxes) {
         box.classList.add('active');
-        zvuk.play();
+        inout.play();
         setTimeout(() => {
             box.classList.remove('active');
         }, 450);
 
         box.addEventListener('click', (e) => {
             box.classList.toggle('active');
-            playAudio('open');
+            playSoundEffect('open');
             if (box.classList.contains('active')) {
                 temporaryArray.push(box.dataset.val);
             } else {
@@ -448,7 +453,7 @@ const clickingOnBoxes = () => {
                             b.classList.add('correct');
                             b.children[0].classList.add('correct');
 
-                            playAudio('success');
+                            playSoundEffect('success');
                         }
                     }
                     temporaryArray = [];
