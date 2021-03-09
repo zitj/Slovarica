@@ -254,10 +254,6 @@ button,
   display: none;
 }
 
-.loadAudioContainer audio {
-  display: none;
-}
-
 header {
   position: fixed;
   -webkit-box-pack: justify;

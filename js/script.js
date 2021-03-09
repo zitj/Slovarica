@@ -1,7 +1,6 @@
 const azbuka = 'АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ';
 const azbukaArr = azbuka.split('');
 
-const loadAudioContainer = document.querySelector('.loadAudioContainer');
 const loadImagesContainer = document.querySelector('.loadImagesContainer');
 const wrapper = document.querySelector('.wrapper');
 const letterSection = document.querySelector('.letterSection');
@@ -24,6 +23,8 @@ const rightArrow = arrowButtons.querySelector('.arrowRight');
 
 const progressBar = document.querySelector('.progressBar');
 const progressValue = document.querySelector('.progressValue');
+
+let zvuk = new Audio('../audio/inout.mp3');
 
 let boxes = [];
 let boxTitles = [];
@@ -221,19 +222,14 @@ for (let sectionButton of sectionButtons) {
 
 const loadAllImages = () => {
     let template = '';
-    let templateAudio = '';
 
     vocabular.forEach((array) => {
         array.words.forEach((word) => {
             template += `
                 <img src="img/${word}.png">
             `;
-            templateAudio += `
-                <audio src="audio/${word}.mp3"></audio>
-            `;
         });
         loadImagesContainer.innerHTML = template;
-        loadAudioContainer.innerHTML = templateAudio;
     });
 };
 
@@ -431,7 +427,7 @@ const renderBoxes = () => {
 const clickingOnBoxes = () => {
     for (let box of boxes) {
         box.classList.add('active');
-        playAudio('inout');
+        zvuk.play();
         setTimeout(() => {
             box.classList.remove('active');
         }, 450);
