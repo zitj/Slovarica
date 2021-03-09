@@ -181,8 +181,8 @@ const classRemover = () => {
 
 for (let sectionButton of sectionButtons) {
     sectionButton.addEventListener('click', () => {
-        classRemover();
         playSoundEffect('sectionClick');
+        classRemover();
         sectionButton.classList.add('active');
 
         if (sectionButtons[1].classList.contains('active')) {
@@ -454,7 +454,7 @@ const clickingOnBoxes = () => {
                             b.classList.add('correct');
                             b.children[0].classList.add('correct');
 
-                            playSoundEffect('success');
+                            playAudio('success');
                         }
                     }
                     temporaryArray = [];
