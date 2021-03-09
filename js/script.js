@@ -182,7 +182,7 @@ const classRemover = () => {
 for (let sectionButton of sectionButtons) {
     sectionButton.addEventListener('click', () => {
         classRemover();
-        playSoundEffect('klik');
+        playSoundEffect('sectionClick');
         sectionButton.classList.add('active');
 
         if (sectionButtons[1].classList.contains('active')) {
@@ -299,7 +299,7 @@ const changeLetter = () => {
     displayWord.innerHTML = vocabular[character].words[counter];
     img.src = `img/${vocabular[character].words[counter]}.png`;
     img.alt = vocabular[character].words[counter];
-    playSoundEffect('klik');
+    playSoundEffect('click');
     playAudio(vocabular[character].words[counter]);
     animatingElements();
 };
@@ -353,7 +353,7 @@ const randomizingLetter = () => {
 
 const startStop = () => {
     randomButton.classList.toggle('start');
-    playSoundEffect('randomKlik');
+    playSoundEffect('randomClick');
 
     if (randomButton.classList.contains('start')) {
         randomButton.innerHTML = 'КРЕНИ';

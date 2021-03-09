@@ -837,7 +837,7 @@ header nav a.active {
 
 @media screen and (max-width: 480px) {
   .wrapper {
-    height: 470px;
+    height: 420px;
   }
   .wrapper.game {
     padding: 0;
@@ -850,16 +850,27 @@ header nav a.active {
             transform: translate(-40%, -35%);
   }
   .illustration img {
-    height: 190px;
-    width: 190px;
-    margin-left: 40px;
+    height: 160px;
+    width: 160px;
+    margin-left: 55px;
+    margin-bottom: -30px;
   }
   .illustration h3 {
-    font-size: 1.8em;
-    margin-top: 40px;
+    font-size: 1.6em;
+    margin-top: 30px;
+  }
+  .letterSection {
+    margin-top: 0;
   }
   .letterSection h1 {
-    font-size: 8.5em;
+    font-size: 7em;
+  }
+  .letterSection .arrowButtons {
+    margin-bottom: 20px;
+  }
+  .letterSection .arrowButtons button {
+    height: 60px;
+    width: 60px;
   }
   .memoryGame .box {
     height: 90px;
