@@ -182,6 +182,7 @@ const classRemover = () => {
 for (let sectionButton of sectionButtons) {
     sectionButton.addEventListener('click', () => {
         classRemover();
+        playSoundEffect('klik');
         sectionButton.classList.add('active');
 
         if (sectionButtons[1].classList.contains('active')) {
@@ -250,9 +251,9 @@ const animatingElements = () => {
     }
 };
 
-const playAudio = (sound) => {
+const playAudio = (sound, loop) => {
     audio.src = `audio/${sound}.mp3`;
-    audio.loop = false;
+    audio.loop = loop;
 
     let playPromise = audio.play();
     if (playPromise !== undefined) {
@@ -298,7 +299,7 @@ const changeLetter = () => {
     displayWord.innerHTML = vocabular[character].words[counter];
     img.src = `img/${vocabular[character].words[counter]}.png`;
     img.alt = vocabular[character].words[counter];
-
+    playSoundEffect('klik');
     playAudio(vocabular[character].words[counter]);
     animatingElements();
 };
@@ -352,6 +353,7 @@ const randomizingLetter = () => {
 
 const startStop = () => {
     randomButton.classList.toggle('start');
+    playSoundEffect('randomKlik');
 
     if (randomButton.classList.contains('start')) {
         randomButton.innerHTML = 'КРЕНИ';
@@ -368,13 +370,12 @@ const startStop = () => {
                 img.src = `img/${word.words[counter]}.png`;
                 img.alt = word.words[counter];
                 displayWord.innerHTML = word.words[counter];
-
                 playAudio(word.words[counter]);
                 word.wordCounter++;
             }
         }
     } else if (!randomButton.classList.contains('start')) {
-        playAudio('shuffle');
+        playAudio('shuffle', true);
         //randomize letter
         timer = setInterval(randomizingLetter, 80);
         randomButton.innerHTML = 'СТАНИ';
