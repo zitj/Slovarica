@@ -61,6 +61,11 @@ button,
         display: none;
     }
 }
+.loadAudioContainer {
+    audio {
+        display: none;
+    }
+}
 
 header {
     position: fixed;

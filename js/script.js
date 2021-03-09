@@ -1,6 +1,7 @@
 const azbuka = 'АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ';
 const azbukaArr = azbuka.split('');
 
+const loadAudioContainer = document.querySelector('.loadAudioContainer');
 const loadImagesContainer = document.querySelector('.loadImagesContainer');
 const wrapper = document.querySelector('.wrapper');
 const letterSection = document.querySelector('.letterSection');
@@ -220,14 +221,19 @@ for (let sectionButton of sectionButtons) {
 
 const loadAllImages = () => {
     let template = '';
+    let templateAudio = '';
 
     vocabular.forEach((array) => {
         array.words.forEach((word) => {
             template += `
                 <img src="img/${word}.png">
             `;
+            templateAudio += `
+                <audio src="audio/${word}.mp3"></audio>
+            `;
         });
         loadImagesContainer.innerHTML = template;
+        loadAudioContainer.innerHTML = templateAudio;
     });
 };
 
