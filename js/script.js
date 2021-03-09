@@ -164,6 +164,35 @@ const vocabular = [
     },
 ];
 
+//Loading Screen
+
+const loadingScreen = document.querySelector('.loadingScreen');
+const loadingTitlte = document.getElementById('loadingTitle');
+const strText = loadingTitlte.textContent;
+
+const splitText = strText.split('');
+
+loadingTitlte.textContent = '';
+
+for (let i = 0; i < splitText.length; i++) {
+    loadingTitlte.innerHTML += '<span>' + splitText[i] + '</span>';
+}
+
+const increase = () => {
+    const span = loadingTitlte.querySelectorAll('span')[char];
+    span.classList.add('fadeIn');
+    char++;
+    if (char === splitText.length) {
+        clearInterval(time);
+        time = null;
+        return;
+    }
+};
+
+let char = 0;
+let time = setInterval(increase, 50);
+
+//Application
 letter.innerHTML = azbukaArr[0] + `<span>${azbukaArr[0].toLowerCase()}</span>`;
 img.src = `img/${vocabular[0].words[0]}.png`;
 img.alt = vocabular[0].words[0];
@@ -508,6 +537,19 @@ const clickingOnBoxes = () => {
         });
     }
 };
+const startApp = () => {
+    playAudio(vocabular[0].words[0]);
+    animatingElements();
+    loadAllImages();
+    defaultLetter();
+};
+
+const endLoadingScreen = () => {
+    setTimeout(() => {
+        loadingScreen.style.display = 'none';
+        startApp();
+    }, 2000);
+};
 
 //Triggers on Mouse
 randomButton.addEventListener('click', startStop);
@@ -530,7 +572,4 @@ document.onkeydown = (keyDownEvent) => {
     }
 };
 
-playAudio(vocabular[0].words[0]);
-animatingElements();
-loadAllImages();
-defaultLetter();
+endLoadingScreen();
