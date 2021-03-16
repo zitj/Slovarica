@@ -1,0 +1,18 @@
+.wrapper {
+    justify-content: space-around;
+    background: $dirty-white;
+    @include centering(-50%, -50%);
+    @include borderMixin(10px, $border-grey);
+    width: 1100px;
+    height: 670px;
+    padding: 5% 3%;
+    color: $font-color;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
+
+    &.game {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+}

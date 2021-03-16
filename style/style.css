@@ -206,21 +206,183 @@
   }
 }
 
-@font-face {
-  font-family: 'pangolin';
-  src: url(../fonts/Pangolin-Regular.ttf);
+.memoryGame {
+  display: none;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+.memoryGame.active {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
 }
 
-body {
-  background: #28422b;
-  font-family: pangolin;
+.memoryGame .box {
+  position: relative;
+  height: 220px;
+  width: 220px;
+  margin-bottom: 40px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-animation: scalingIn 0.4s;
+          animation: scalingIn 0.4s;
+}
+
+.memoryGame .box.active .front {
+  -webkit-transform: rotateY(0deg) translateX(0px);
+          transform: rotateY(0deg) translateX(0px);
+}
+
+.memoryGame .box.active .front.correct {
+  border-left: 5px solid #28c44a;
+  border-right: 5px solid #4fdb6d;
+  border-top: 5px solid #3ad65c;
+  border-bottom: 5px solid #24af42;
+  background: #e7faeb;
+}
+
+.memoryGame .box.active .back {
+  -webkit-transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
+          transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
+}
+
+.memoryGame .box.correct {
+  -webkit-animation: scalingOut 0.6s ease-out;
+          animation: scalingOut 0.6s ease-out;
+  background: transparent;
+  opacity: 0;
+}
+
+.memoryGame .box.gone {
+  display: none;
+}
+
+.memoryGame .box .square {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.memoryGame .box .front,
+.memoryGame .box .back {
+  border-left: 5px solid #767676;
+  border-right: 5px solid #949494;
+  border-top: 5px solid #888888;
+  border-bottom: 5px solid dimgray;
+  border-radius: 10px;
+}
+
+.memoryGame .box .front {
+  -webkit-transform: rotateY(90deg) skewY(-5deg) translateX(200px);
+          transform: rotateY(90deg) skewY(-5deg) translateX(200px);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  background: #eeeeee;
+}
+
+.memoryGame .box .front img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -55%);
+          transform: translate(-50%, -55%);
+  width: 160px;
+  height: 160px;
+}
+
+.memoryGame .box .front h2 {
+  position: absolute;
+  font-size: 2.2em;
+  left: 8%;
+  top: 2%;
+}
+
+.memoryGame .box .front h2 span {
+  margin-left: 5px;
+  font-size: 0.6em;
+}
+
+.memoryGame .box .front p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, 75%);
+          transform: translate(-50%, 75%);
+  bottom: 0%;
+  opacity: 0.8;
+}
+
+.memoryGame .box .back {
+  background: #eeeeee;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.memoryGame .box .back img {
+  height: 100%;
+  width: 100%;
+}
+
+.memoryGame .box .back:hover {
+  opacity: 0.95;
+}
+
+.progressBar,
+.progressValue {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+.progressBar {
+  position: absolute;
+  display: none;
+  top: 0%;
+  width: 60%;
+  border-radius: 15px;
+  border-left: 2px solid #767676;
+  border-right: 2px solid #949494;
+  border-top: 2px solid #888888;
+  border-bottom: 2px solid dimgray;
+  background: #eeeeee;
+  -webkit-box-shadow: inset 0px 0px 2px #000000;
+          box-shadow: inset 0px 0px 2px #000000;
+  padding: 0.2em 0.3em 0.2em;
+  -webkit-animation: scalingInButtons 0.7s ease-in-out;
+          animation: scalingInButtons 0.7s ease-in-out;
+}
+
+.progressBar.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.progressBar.correct {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  border-left: 2px solid #28c44a;
+  border-right: 2px solid #4fdb6d;
+  border-top: 2px solid #3ad65c;
+  border-bottom: 2px solid #24af42;
+}
+
+.progressBar .progressValue {
+  height: 0.5em;
+  width: 5%;
+  border-radius: 15px;
+  background: #28c44a;
 }
 
 .loadingScreen {
@@ -254,60 +416,6 @@ body {
 .loadingScreen #loadingTitle span.fadeIn {
   -webkit-animation: fadeInTitle 1s ease-in-out infinite;
           animation: fadeInTitle 1s ease-in-out infinite;
-}
-
-img {
-  pointer-events: none;
-}
-
-button {
-  outline: none;
-}
-
-a,
-button,
-h1,
-h2,
-h3,
-h4,
-img,
-.box,
-.front,
-.back,
-.logo {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-header,
-header .logo,
-header nav,
-header a,
-.wrapper,
-.letterSection,
-.letterSection .letters,
-.arrowButtons,
-.arrowButtons button,
-.illustration,
-.memoryGame.active,
-.memoryGame .box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-header .logo,
-nav a,
-button,
-.box {
-  cursor: pointer;
-}
-
-.loadImagesContainer img {
-  display: none;
 }
 
 header {
@@ -514,183 +622,75 @@ header nav a.active {
   font-family: 'Pangolin', cursive;
 }
 
-.memoryGame {
-  display: none;
+@font-face {
+  font-family: 'pangolin';
+  src: url(../fonts/Pangolin-Regular.ttf);
 }
 
-.memoryGame.active {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 80%;
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
+body {
+  background: #28422b;
+  font-family: pangolin;
+}
+
+img {
+  pointer-events: none;
+}
+
+button {
+  outline: none;
+}
+
+a,
+button,
+h1,
+h2,
+h3,
+h4,
+img,
+.box,
+.front,
+.back,
+.logo {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+header,
+header .logo,
+header nav,
+header a,
+.wrapper,
+.letterSection,
+.letterSection .letters,
+.arrowButtons,
+.arrowButtons button,
+.illustration,
+.memoryGame.active,
 .memoryGame .box {
-  position: relative;
-  height: 220px;
-  width: 220px;
-  margin-bottom: 40px;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
-  -webkit-animation: scalingIn 0.4s;
-          animation: scalingIn 0.4s;
-}
-
-.memoryGame .box.active .front {
-  -webkit-transform: rotateY(0deg) translateX(0px);
-          transform: rotateY(0deg) translateX(0px);
-}
-
-.memoryGame .box.active .front.correct {
-  border-left: 5px solid #28c44a;
-  border-right: 5px solid #4fdb6d;
-  border-top: 5px solid #3ad65c;
-  border-bottom: 5px solid #24af42;
-  background: #e7faeb;
-}
-
-.memoryGame .box.active .back {
-  -webkit-transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
-          transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
-}
-
-.memoryGame .box.correct {
-  -webkit-animation: scalingOut 0.6s ease-out;
-          animation: scalingOut 0.6s ease-out;
-  background: transparent;
-  opacity: 0;
-}
-
-.memoryGame .box.gone {
-  display: none;
-}
-
-.memoryGame .box .square {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-}
-
-.memoryGame .box .front,
-.memoryGame .box .back {
-  border-left: 5px solid #767676;
-  border-right: 5px solid #949494;
-  border-top: 5px solid #888888;
-  border-bottom: 5px solid dimgray;
-  border-radius: 10px;
-}
-
-.memoryGame .box .front {
-  -webkit-transform: rotateY(90deg) skewY(-5deg) translateX(200px);
-          transform: rotateY(90deg) skewY(-5deg) translateX(200px);
-  -webkit-transform-origin: right;
-          transform-origin: right;
-  background: #eeeeee;
-}
-
-.memoryGame .box .front img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -55%);
-          transform: translate(-50%, -55%);
-  width: 160px;
-  height: 160px;
-}
-
-.memoryGame .box .front h2 {
-  position: absolute;
-  font-size: 2.2em;
-  left: 8%;
-  top: 2%;
-}
-
-.memoryGame .box .front h2 span {
-  margin-left: 5px;
-  font-size: 0.6em;
-}
-
-.memoryGame .box .front p {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, 75%);
-          transform: translate(-50%, 75%);
-  bottom: 0%;
-  opacity: 0.8;
-}
-
-.memoryGame .box .back {
-  background: #eeeeee;
-  -webkit-transform-origin: left;
-          transform-origin: left;
-  text-align: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.memoryGame .box .back img {
-  height: 100%;
-  width: 100%;
-}
-
-.memoryGame .box .back:hover {
-  opacity: 0.95;
-}
-
-.progressBar,
-.progressValue {
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-
-.progressBar {
-  position: absolute;
-  display: none;
-  top: 0%;
-  width: 60%;
-  border-radius: 15px;
-  border-left: 2px solid #767676;
-  border-right: 2px solid #949494;
-  border-top: 2px solid #888888;
-  border-bottom: 2px solid dimgray;
-  background: #eeeeee;
-  -webkit-box-shadow: inset 0px 0px 2px #000000;
-          box-shadow: inset 0px 0px 2px #000000;
-  padding: 0.2em 0.3em 0.2em;
-  -webkit-animation: scalingInButtons 0.7s ease-in-out;
-          animation: scalingInButtons 0.7s ease-in-out;
-}
-
-.progressBar.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.progressBar.correct {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-  border-left: 2px solid #28c44a;
-  border-right: 2px solid #4fdb6d;
-  border-top: 2px solid #3ad65c;
-  border-bottom: 2px solid #24af42;
+header .logo,
+nav a,
+button,
+.box {
+  cursor: pointer;
 }
 
-.progressBar .progressValue {
-  height: 0.5em;
-  width: 5%;
-  border-radius: 15px;
-  background: #28c44a;
+.loadImagesContainer img {
+  display: none;
 }
 
 @media screen and (max-width: 1440px) {
