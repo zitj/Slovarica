@@ -1,0 +1,268 @@
+//Responsive
+@mixin responsive() {
+    //Laptops
+
+    @media screen and (max-width: 1440px) {
+        .wrapper {
+            @include centering(-50%, -43%);
+        }
+    }
+    @media screen and (max-width: 1280px) {
+        header {
+            width: 90%;
+            left: 5%;
+        }
+        .wrapper {
+            width: 1000px;
+            height: 600px;
+        }
+    }
+
+    //Tablets
+    @media screen and (max-width: 1000px) {
+        .wrapper {
+            @include centering(-50%, -45%);
+            width: 700px;
+            height: 950px;
+            flex-direction: column-reverse;
+        }
+        .wrapper.game {
+            @include centering(-42%, -42%);
+            width: 680px;
+        }
+
+        .letterSection {
+            width: 100%;
+            margin-top: -100px;
+            button {
+                width: 80%;
+                margin-left: 10%;
+            }
+            .arrowButtons {
+                margin-bottom: 40px;
+                button {
+                    height: 100px;
+                    width: 100px;
+                }
+            }
+        }
+        .illustration {
+            flex-direction: column-reverse;
+            img {
+                height: 400px;
+                width: 450px;
+                margin-top: -40px;
+                margin-left: 100px;
+            }
+            h3 {
+                margin-left: -30px;
+            }
+        }
+        .progressBar {
+            margin-left: 6.8%;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .wrapper {
+            width: 500px;
+            height: 800px;
+        }
+        .illustration {
+            img {
+                height: 300px;
+                width: 350px;
+                margin-top: -40px;
+                margin-left: 50px;
+            }
+        }
+        .letterSection {
+            margin-top: -50px;
+            h1 {
+                font-size: 16em;
+            }
+            .arrowButtons {
+                margin-left: -10px;
+            }
+        }
+        .memoryGame {
+            .box {
+                height: 160px;
+                width: 160px;
+                .front {
+                    img {
+                        height: 110px;
+                        width: 110px;
+                    }
+                    p {
+                        @include centering(-50%, 65%);
+                    }
+                }
+            }
+        }
+    }
+
+    //Mobile
+    @media screen and (max-width: 590px) {
+        header {
+            .logo {
+                font-size: 1em;
+            }
+            nav {
+                font-size: 0.6em;
+                a {
+                    margin-right: 0px;
+                    padding-top: 2px;
+                }
+            }
+        }
+        .wrapper {
+            width: 300px;
+            height: 520px;
+            @include borderMixin(4px, $border-grey);
+        }
+
+        .illustration {
+            width: 300px;
+            img {
+                height: 210px;
+                width: 210px;
+                margin-top: -20px;
+                margin-left: 30px;
+            }
+            h3 {
+                font-size: 2em;
+                margin-left: -20px;
+                margin-top: 30px;
+            }
+        }
+        .letterSection {
+            margin-top: -40px;
+            h1 {
+                font-size: 9em;
+            }
+            .arrowButtons {
+                margin-left: -20px;
+                button {
+                    height: 80px;
+                    width: 80px;
+                }
+            }
+        }
+        .memoryGame {
+            .box {
+                height: 100px;
+                width: 100px;
+                .front,
+                .back {
+                    @include borderMixin(4px, $border-grey);
+                }
+                &.active {
+                    .back {
+                        transform: rotateY(90deg) skewY(5deg) translateY(-2px)
+                            translateX(-50px);
+                    }
+                }
+                .front {
+                    transform: rotateY(90deg) skewY(-5deg) translateX(50px);
+                    img {
+                        height: 70px;
+                        width: 70px;
+                    }
+                    h2 {
+                        font-size: 1.2em;
+                    }
+                    p {
+                        @include centering(-50%, 65%);
+                        font-size: 0.7em;
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 540px) {
+        .wrapper {
+            height: 420px;
+        }
+        .wrapper.game {
+            padding: 0;
+            width: 260px;
+            height: 400px;
+            @include centering(-40%, -35%);
+        }
+
+        .illustration {
+            img {
+                height: 160px;
+                width: 160px;
+                margin-left: 55px;
+                margin-bottom: -30px;
+            }
+            h3 {
+                font-size: 1.6em;
+                margin-top: 30px;
+            }
+        }
+        .letterSection {
+            margin-top: 0;
+            h1 {
+                font-size: 7em;
+            }
+            .arrowButtons {
+                margin-bottom: 20px;
+                button {
+                    height: 60px;
+                    width: 60px;
+                }
+            }
+        }
+
+        .memoryGame {
+            .box {
+                height: 90px;
+                width: 90px;
+                .front {
+                    img {
+                        height: 60px;
+                        width: 60px;
+                    }
+                }
+            }
+        }
+        .progressBar {
+            width: 65%;
+            top: -10%;
+        }
+    }
+    @media screen and (max-width: 320px) {
+        .wrapper {
+            width: 280px;
+            height: 380px;
+        }
+
+        .illustration {
+            width: 200px;
+            img {
+                height: 150px;
+                width: 150px;
+                margin-left: 50px;
+            }
+            h3 {
+                font-size: 1.7em;
+                margin-left: 60px;
+                margin-top: 40px;
+            }
+        }
+        .letterSection {
+            h1 {
+                font-size: 6.5em;
+            }
+            .arrowButtons {
+                margin-bottom: 10px;
+                button {
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+        }
+    }
+}
