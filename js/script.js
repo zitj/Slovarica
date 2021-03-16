@@ -1,3 +1,4 @@
+import { vocabular } from '../data/data.js';
 const azbuka = 'АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ';
 const azbukaArr = azbuka.split('');
 
@@ -37,133 +38,133 @@ let stopLetter = '';
 randomButton.style.display = 'none';
 
 //Keyboard
-isKeyPressed = {
+const isKeyPressed = {
     a: false,
 };
 
 //DATA
-const vocabular = [
-    {
-        wordCounter: 0,
-        words: ['Авион', 'Ауто', 'Астронаут'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Банана', 'Балон', 'Буре'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Веверица', 'Вук', 'Воће'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Грожђе', 'Гром', 'Гитара'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Домине', 'Дрво', 'Диносаурус'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Ђумбирко', 'Ђеврек'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Ексери'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Жирафа', 'Жир', 'Жаба'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Зомби', 'Зец', 'Звезда'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Играчке', 'Игла', 'Индијанaц'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Јабука', 'Јастук', 'Јаје'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Крокодил', 'Компас', 'Корњача'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Лубеница', 'Лизалица', 'Ловац'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Љуљашка', 'Људи'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Миш', 'Магнет', 'Микрофон'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Нож', 'Ној', 'Наранџа'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Њива', 'Њушка'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Око', 'Октопод', 'Ован'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Пица', 'Паприка', 'Папагај'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Ранац', 'Ракета', 'Риба'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Сат', 'Слон'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Трактор', 'Телевизор', 'Труба'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Ћурка', 'Ћуп'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Уво', 'Удица'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Фрула', 'Фењер', 'Фијакер'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Хлеб', 'Храм', 'Хармоника'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Цвекла', 'Цуцла', 'Цигле'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Чарапе', 'Чизме', 'Чесма'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Џак', 'Џемпер'],
-    },
-    {
-        wordCounter: 0,
-        words: ['Шешир', 'Шишарка'],
-    },
-];
+// const vocabular = [
+//     {
+//         wordCounter: 0,
+//         words: ['Авион', 'Ауто', 'Астронаут'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Банана', 'Балон', 'Буре'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Веверица', 'Вук', 'Воће'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Грожђе', 'Гром', 'Гитара'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Домине', 'Дрво', 'Диносаурус'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Ђумбирко', 'Ђеврек'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Ексери'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Жирафа', 'Жир', 'Жаба'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Зомби', 'Зец', 'Звезда'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Играчке', 'Игла', 'Индијанaц'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Јабука', 'Јастук', 'Јаје'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Крокодил', 'Компас', 'Корњача'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Лубеница', 'Лизалица', 'Ловац'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Љуљашка', 'Људи'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Миш', 'Магнет', 'Микрофон'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Нож', 'Ној', 'Наранџа'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Њива', 'Њушка'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Око', 'Октопод', 'Ован'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Пица', 'Паприка', 'Папагај'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Ранац', 'Ракета', 'Риба'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Сат', 'Слон'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Трактор', 'Телевизор', 'Труба'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Ћурка', 'Ћуп'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Уво', 'Удица'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Фрула', 'Фењер', 'Фијакер'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Хлеб', 'Храм', 'Хармоника'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Цвекла', 'Цуцла', 'Цигле'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Чарапе', 'Чизме', 'Чесма'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Џак', 'Џемпер'],
+//     },
+//     {
+//         wordCounter: 0,
+//         words: ['Шешир', 'Шишарка'],
+//     },
+// ];
 
 //Loading Screen
 
@@ -305,9 +306,10 @@ const defaultLetter = () => {
     img.src = `img/${vocabular[character].words[0]}.png`;
     img.alt = vocabular[character].words[0];
     playAudio(vocabular[character].words[0]);
-    for (word of vocabular) {
-        word.wordCounter = 0;
-    }
+
+    vocabular.forEach((array) => {
+        array.wordCounter = 0;
+    });
     animatingElements();
 };
 
@@ -420,8 +422,8 @@ let temporaryArray = [];
 
 const formingArrayForMemoryGame = () => {
     counter = vocabular[character].wordCounter;
-    counterTwo = vocabular[character + 1].wordCounter;
-    counterThree = vocabular[character + 2].wordCounter;
+    let counterTwo = vocabular[character + 1].wordCounter;
+    let counterThree = vocabular[character + 2].wordCounter;
 
     for (let i = 0; unshuffledArray.length < 6; i++) {
         unshuffledArray.push(vocabular[character].words[counter]);
@@ -479,7 +481,7 @@ const clickingOnBoxes = () => {
 
             if (temporaryArray.length == 2) {
                 if (temporaryArray[0] === temporaryArray[1]) {
-                    for (b of boxes) {
+                    for (let b of boxes) {
                         if (b.dataset.val == temporaryArray[0]) {
                             b.classList.add('correct');
                             b.children[0].classList.add('correct');
@@ -504,7 +506,7 @@ const clickingOnBoxes = () => {
                     }, 250);
                 } else {
                     setTimeout(() => {
-                        for (b of boxes) {
+                        for (let b of boxes) {
                             if (b.classList.contains('active')) {
                                 b.classList.remove('active');
                                 temporaryArray = [];
@@ -519,7 +521,7 @@ const clickingOnBoxes = () => {
                 character += 3;
                 if (character > 27) {
                     character = 0;
-                    for (word of vocabular) {
+                    for (let word of vocabular) {
                         word.wordCounter++;
                         if (word.words.length <= word.wordCounter) {
                             word.wordCounter = 0;
@@ -529,7 +531,7 @@ const clickingOnBoxes = () => {
                 unshuffledArray = [];
                 formingArrayForMemoryGame();
                 setTimeout(() => {
-                    for (b of boxes) {
+                    for (let b of boxes) {
                         b.remove();
                     }
                     renderBoxes();
@@ -539,7 +541,6 @@ const clickingOnBoxes = () => {
     }
 };
 const startApp = () => {
-    audio.play();
     animatingElements();
     loadAllImages();
     defaultLetter();
