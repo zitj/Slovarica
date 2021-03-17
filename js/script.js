@@ -1,8 +1,13 @@
 import { vocabular } from '../data/data.js';
+import { loadAllImages } from './utilities/load-images.js';
+import { animatingElements } from './utilities/animating-elements.js';
+import { playAudio, playSoundEffect } from './utilities/sounds.js';
+import { sections, sectionButtons, nav } from './utilities/proba.js';
+import { loadingScreen } from './utilities/loading-screen.js';
+
 const azbuka = 'АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ';
 const azbukaArr = azbuka.split('');
 
-const loadImagesContainer = document.querySelector('.loadImagesContainer');
 const wrapper = document.querySelector('.wrapper');
 const letterSection = document.querySelector('.letterSection');
 const illustration = document.querySelector('.illustration');
@@ -16,8 +21,8 @@ const img = document.querySelector('img');
 const audio = document.getElementById('my_audio');
 
 const logo = document.querySelector('.logo');
-const nav = document.querySelector('nav');
-const sectionButtons = nav.querySelectorAll('a');
+// const nav = document.querySelector('nav');
+// const sectionButtons = nav.querySelectorAll('a');
 
 const arrowButtons = document.querySelector('.arrowButtons');
 const leftArrow = arrowButtons.querySelector('.arrowLeft');
@@ -44,31 +49,31 @@ const isKeyPressed = {
 
 //Loading Screen
 
-const loadingScreen = document.querySelector('.loadingScreen');
-const loadingTitlte = document.getElementById('loadingTitle');
-const strText = loadingTitlte.textContent;
+// const loadingScreen = document.querySelector('.loadingScreen');
+// const loadingTitlte = document.getElementById('loadingTitle');
+// const strText = loadingTitlte.textContent;
 
-const splitText = strText.split('');
+// const splitText = strText.split('');
 
-loadingTitlte.textContent = '';
+// loadingTitlte.textContent = '';
 
-for (let i = 0; i < splitText.length; i++) {
-    loadingTitlte.innerHTML += '<span>' + splitText[i] + '</span>';
-}
+// for (let i = 0; i < splitText.length; i++) {
+//     loadingTitlte.innerHTML += '<span>' + splitText[i] + '</span>';
+// }
 
-const increase = () => {
-    const span = loadingTitlte.querySelectorAll('span')[char];
-    span.classList.add('fadeIn');
-    char++;
-    if (char === splitText.length) {
-        clearInterval(time);
-        time = null;
-        return;
-    }
-};
+// const increase = () => {
+//     const span = loadingTitlte.querySelectorAll('span')[char];
+//     span.classList.add('fadeIn');
+//     char++;
+//     if (char === splitText.length) {
+//         clearInterval(time);
+//         time = null;
+//         return;
+//     }
+// };
 
-let char = 0;
-let time = setInterval(increase, 50);
+// let char = 0;
+// let time = setInterval(increase, 50);
 
 //Application
 letter.innerHTML = azbukaArr[0] + `<span>${azbukaArr[0].toLowerCase()}</span>`;
@@ -128,18 +133,18 @@ for (let sectionButton of sectionButtons) {
     });
 }
 
-const loadAllImages = () => {
-    let template = '';
+// const loadAllImages = () => {
+//     let template = '';
 
-    vocabular.forEach((array) => {
-        array.words.forEach((word) => {
-            template += `
-                <img src="img/${word}.png">
-            `;
-        });
-        loadImagesContainer.innerHTML = template;
-    });
-};
+//     vocabular.forEach((array) => {
+//         array.words.forEach((word) => {
+//             template += `
+//                 <img src="img/${word}.png">
+//             `;
+//         });
+//         loadImagesContainer.innerHTML = template;
+//     });
+// };
 
 const stopRandomButton = () => {
     clearInterval(timer);
@@ -148,30 +153,30 @@ const stopRandomButton = () => {
     audio.src = '';
 };
 
-const animatingElements = () => {
-    let elements = [letter, img, displayWord];
-    for (let element of elements) {
-        element.classList.add('animate');
-        element.addEventListener('animationend', () => {
-            element.classList.remove('animate');
-        });
-    }
-};
+// const animatingElements = () => {
+//     let elements = [letter, img, displayWord];
+//     for (let element of elements) {
+//         element.classList.add('animate');
+//         element.addEventListener('animationend', () => {
+//             element.classList.remove('animate');
+//         });
+//     }
+// };
 
-const playAudio = (sound, loop) => {
-    audio.src = `audio/${sound}.mp3`;
-    audio.loop = loop;
+// const playAudio = (sound, loop) => {
+//     audio.src = `audio/${sound}.mp3`;
+//     audio.loop = loop;
 
-    let playPromise = audio.play();
-    if (playPromise !== undefined) {
-        playPromise.then((_) => {}).catch((error) => {});
-    }
-};
+//     let playPromise = audio.play();
+//     if (playPromise !== undefined) {
+//         playPromise.then((_) => {}).catch((error) => {});
+//     }
+// };
 
-const playSoundEffect = (soundEffect) => {
-    let sound = new Audio(`audio/${soundEffect}.mp3`);
-    sound.play();
-};
+// const playSoundEffect = (soundEffect) => {
+//     let sound = new Audio(`audio/${soundEffect}.mp3`);
+//     sound.play();
+// };
 
 const defaultLetter = () => {
     character = 0;
@@ -181,12 +186,13 @@ const defaultLetter = () => {
     displayWord.innerHTML = vocabular[character].words[0];
     img.src = `img/${vocabular[character].words[0]}.png`;
     img.alt = vocabular[character].words[0];
-    playAudio(vocabular[character].words[0]);
+    playAudio(audio, vocabular[character].words[0]);
 
     vocabular.forEach((array) => {
         array.wordCounter = 0;
     });
-    animatingElements();
+
+    animatingElements(letter, img, displayWord);
 };
 
 //Lectures section
@@ -208,8 +214,8 @@ const changeLetter = () => {
     img.src = `img/${vocabular[character].words[counter]}.png`;
     img.alt = vocabular[character].words[counter];
     playSoundEffect('click');
-    playAudio(vocabular[character].words[counter]);
-    animatingElements();
+    playAudio(audio, vocabular[character].words[counter]);
+    animatingElements(letter, img, displayWord);
 };
 
 const forward = () => {
@@ -267,7 +273,7 @@ const startStop = () => {
         randomButton.innerHTML = 'КРЕНИ';
         clearInterval(timer);
         stopLetter = letter.textContent[0];
-        animatingElements();
+        animatingElements(letter, img, displayWord);
 
         for (let word of vocabular) {
             if (word.wordCounter > word.words.length - 1) {
@@ -278,12 +284,12 @@ const startStop = () => {
                 img.src = `img/${word.words[counter]}.png`;
                 img.alt = word.words[counter];
                 displayWord.innerHTML = word.words[counter];
-                playAudio(word.words[counter]);
+                playAudio(audio, word.words[counter]);
                 word.wordCounter++;
             }
         }
     } else if (!randomButton.classList.contains('start')) {
-        playAudio('shuffle', true);
+        playAudio(audio, 'shuffle', true);
         //randomize letter
         timer = setInterval(randomizingLetter, 80);
         randomButton.innerHTML = 'СТАНИ';
@@ -362,7 +368,7 @@ const clickingOnBoxes = () => {
                             b.classList.add('correct');
                             b.children[0].classList.add('correct');
 
-                            playAudio('success');
+                            playAudio(audio, 'success');
                         }
                     }
                     temporaryArray = [];
@@ -417,9 +423,10 @@ const clickingOnBoxes = () => {
     }
 };
 const startApp = () => {
-    animatingElements();
-    loadAllImages();
+    animatingElements(letter, img, displayWord);
+    loadAllImages(vocabular);
     defaultLetter();
+    sections();
 };
 
 const endLoadingScreen = () => {
