@@ -1,32 +1,32 @@
 import { vocabular } from '../data/data.js';
 import { loadAllImages } from './utilities/load-images.js';
 import { animatingElements } from './utilities/animating-elements.js';
-import { playAudio, playSoundEffect } from './utilities/sounds.js';
-import { sections, sectionButtons, nav } from './utilities/proba.js';
+import { playAudio, playSoundEffect, audio } from './utilities/sounds.js';
+import {
+    sectionButtons,
+    randomButton,
+    stopRandomButton,
+    logo,
+    leftArrow,
+    rightArrow,
+    arrowButtons,
+} from './utilities/buttons.js';
 import { loadingScreen } from './utilities/loading-screen.js';
-
-const azbuka = 'АБВГДЂЕЖЗИЈКЛЉМНЊОПРСТЋУФХЦЧЏШ';
-const azbukaArr = azbuka.split('');
-
-const wrapper = document.querySelector('.wrapper');
-const letterSection = document.querySelector('.letterSection');
-const illustration = document.querySelector('.illustration');
-const memoryGame = document.querySelector('.memoryGame');
+import { changeLetter } from './utilities/change-letter.js';
+import {
+    wrapper,
+    letterSection,
+    illustration,
+    memoryGame,
+    displayWord,
+    letter,
+    azbukaArr,
+    img,
+    randomizingLetter,
+    startStop,
+} from './utilities/randomising-letter.js';
 
 const span = document.querySelector('span');
-const randomButton = document.querySelector('.start');
-const letter = document.querySelector('h1');
-const displayWord = document.querySelector('h3');
-const img = document.querySelector('img');
-const audio = document.getElementById('my_audio');
-
-const logo = document.querySelector('.logo');
-// const nav = document.querySelector('nav');
-// const sectionButtons = nav.querySelectorAll('a');
-
-const arrowButtons = document.querySelector('.arrowButtons');
-const leftArrow = arrowButtons.querySelector('.arrowLeft');
-const rightArrow = arrowButtons.querySelector('.arrowRight');
 
 const progressBar = document.querySelector('.progressBar');
 const progressValue = document.querySelector('.progressValue');
@@ -46,34 +46,6 @@ randomButton.style.display = 'none';
 const isKeyPressed = {
     a: false,
 };
-
-//Loading Screen
-
-// const loadingScreen = document.querySelector('.loadingScreen');
-// const loadingTitlte = document.getElementById('loadingTitle');
-// const strText = loadingTitlte.textContent;
-
-// const splitText = strText.split('');
-
-// loadingTitlte.textContent = '';
-
-// for (let i = 0; i < splitText.length; i++) {
-//     loadingTitlte.innerHTML += '<span>' + splitText[i] + '</span>';
-// }
-
-// const increase = () => {
-//     const span = loadingTitlte.querySelectorAll('span')[char];
-//     span.classList.add('fadeIn');
-//     char++;
-//     if (char === splitText.length) {
-//         clearInterval(time);
-//         time = null;
-//         return;
-//     }
-// };
-
-// let char = 0;
-// let time = setInterval(increase, 50);
 
 //Application
 letter.innerHTML = azbukaArr[0] + `<span>${azbukaArr[0].toLowerCase()}</span>`;
@@ -103,7 +75,7 @@ for (let sectionButton of sectionButtons) {
             defaultLetter();
         } else {
             randomButton.style.display = 'none';
-            stopRandomButton();
+            stopRandomButton(timer);
         }
 
         if (sectionButtons[0].classList.contains('active')) {
@@ -116,6 +88,7 @@ for (let sectionButton of sectionButtons) {
             illustration.style.display = 'none';
             memoryGame.classList.add('active');
             progressBar.classList.add('active');
+            vocabular.forEach((el) => (el.wordCounter = 0));
             score = 0;
             character = 0;
             progressValue.style.width = `5%`;
@@ -133,51 +106,6 @@ for (let sectionButton of sectionButtons) {
     });
 }
 
-// const loadAllImages = () => {
-//     let template = '';
-
-//     vocabular.forEach((array) => {
-//         array.words.forEach((word) => {
-//             template += `
-//                 <img src="img/${word}.png">
-//             `;
-//         });
-//         loadImagesContainer.innerHTML = template;
-//     });
-// };
-
-const stopRandomButton = () => {
-    clearInterval(timer);
-    randomButton.innerHTML = 'КРЕНИ';
-    randomButton.classList.add('start');
-    audio.src = '';
-};
-
-// const animatingElements = () => {
-//     let elements = [letter, img, displayWord];
-//     for (let element of elements) {
-//         element.classList.add('animate');
-//         element.addEventListener('animationend', () => {
-//             element.classList.remove('animate');
-//         });
-//     }
-// };
-
-// const playAudio = (sound, loop) => {
-//     audio.src = `audio/${sound}.mp3`;
-//     audio.loop = loop;
-
-//     let playPromise = audio.play();
-//     if (playPromise !== undefined) {
-//         playPromise.then((_) => {}).catch((error) => {});
-//     }
-// };
-
-// const playSoundEffect = (soundEffect) => {
-//     let sound = new Audio(`audio/${soundEffect}.mp3`);
-//     sound.play();
-// };
-
 const defaultLetter = () => {
     character = 0;
     letter.innerHTML =
@@ -186,7 +114,7 @@ const defaultLetter = () => {
     displayWord.innerHTML = vocabular[character].words[0];
     img.src = `img/${vocabular[character].words[0]}.png`;
     img.alt = vocabular[character].words[0];
-    playAudio(audio, vocabular[character].words[0]);
+    playAudio(vocabular[character].words[0]);
 
     vocabular.forEach((array) => {
         array.wordCounter = 0;
@@ -196,28 +124,8 @@ const defaultLetter = () => {
 };
 
 //Lectures section
-const changeLetter = () => {
-    if (
-        vocabular[character].wordCounter >
-        vocabular[character].words.length - 1
-    ) {
-        vocabular[character].wordCounter = 0;
-        counter = 0;
-    } else {
-        counter = vocabular[character].wordCounter;
-    }
 
-    letter.innerHTML =
-        azbukaArr[character] +
-        `<span>${azbukaArr[character].toLowerCase()}</span>`;
-    displayWord.innerHTML = vocabular[character].words[counter];
-    img.src = `img/${vocabular[character].words[counter]}.png`;
-    img.alt = vocabular[character].words[counter];
-    playSoundEffect('click');
-    playAudio(audio, vocabular[character].words[counter]);
-    animatingElements(letter, img, displayWord);
-};
-
+// Arrow next
 const forward = () => {
     if (
         sectionButtons[2].classList.contains('active') ||
@@ -226,6 +134,7 @@ const forward = () => {
         return;
     }
     character++;
+
     if (character === azbukaArr.length) {
         character = 0;
         for (let word of vocabular) {
@@ -233,9 +142,10 @@ const forward = () => {
         }
     }
 
-    changeLetter();
+    changeLetter(vocabular, character, counter);
 };
 
+// Arrow back
 const backward = () => {
     if (
         sectionButtons[2].classList.contains('active') ||
@@ -248,52 +158,7 @@ const backward = () => {
         character = azbukaArr.length - 1;
     }
 
-    changeLetter();
-};
-
-//Randomizing letter section
-const randomizingLetter = () => {
-    letter.innerHTML =
-        azbukaArr[character] +
-        `<span>${azbukaArr[character].toLowerCase()}</span>`;
-    displayWord.innerHTML = vocabular[character].words[0];
-    img.src = `img/${vocabular[character].words[0]}.png`;
-
-    character++;
-    if (character === azbukaArr.length) {
-        character = 0;
-    }
-};
-
-const startStop = () => {
-    randomButton.classList.toggle('start');
-    playSoundEffect('randomClick');
-
-    if (randomButton.classList.contains('start')) {
-        randomButton.innerHTML = 'КРЕНИ';
-        clearInterval(timer);
-        stopLetter = letter.textContent[0];
-        animatingElements(letter, img, displayWord);
-
-        for (let word of vocabular) {
-            if (word.wordCounter > word.words.length - 1) {
-                word.wordCounter = 0;
-            }
-            if (word.words[0].charAt(0) == stopLetter) {
-                counter = word.wordCounter;
-                img.src = `img/${word.words[counter]}.png`;
-                img.alt = word.words[counter];
-                displayWord.innerHTML = word.words[counter];
-                playAudio(audio, word.words[counter]);
-                word.wordCounter++;
-            }
-        }
-    } else if (!randomButton.classList.contains('start')) {
-        playAudio(audio, 'shuffle', true);
-        //randomize letter
-        timer = setInterval(randomizingLetter, 80);
-        randomButton.innerHTML = 'СТАНИ';
-    }
+    changeLetter(vocabular, character, counter);
 };
 
 //Memory game
@@ -368,7 +233,7 @@ const clickingOnBoxes = () => {
                             b.classList.add('correct');
                             b.children[0].classList.add('correct');
 
-                            playAudio(audio, 'success');
+                            playAudio('success');
                         }
                     }
                     temporaryArray = [];
@@ -426,7 +291,6 @@ const startApp = () => {
     animatingElements(letter, img, displayWord);
     loadAllImages(vocabular);
     defaultLetter();
-    sections();
 };
 
 const endLoadingScreen = () => {

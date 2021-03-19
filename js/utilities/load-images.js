@@ -13,5 +13,4 @@ export const loadAllImages = (data) => {
         });
         loadImagesContainer.innerHTML = template;
     });
-    console.log('Whatevs!');
 };

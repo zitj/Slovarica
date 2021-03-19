@@ -1,4 +1,6 @@
-export const playAudio = (audio, sound, loop) => {
+export const audio = document.getElementById('my_audio');
+
+export const playAudio = (sound, loop) => {
     audio.src = `audio/${sound}.mp3`;
     audio.loop = loop;
 
