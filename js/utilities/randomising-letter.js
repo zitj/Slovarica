@@ -1,6 +1,6 @@
 import { vocabular } from '../../data/data.js';
 import { randomButton } from './buttons.js';
-import { playAudio, playSoundEffect } from './sounds.js';
+import { playAudio, playSoundEffect, audio } from './sounds.js';
 import { animatingElements } from './animating-elements.js';
 
 export const displayWord = document.querySelector('h3');
@@ -12,12 +12,18 @@ export const img = document.querySelector('img');
 export const wrapper = document.querySelector('.wrapper');
 export const letterSection = document.querySelector('.letterSection');
 export const illustration = document.querySelector('.illustration');
-export const memoryGame = document.querySelector('.memoryGame');
 
 export let character = 0;
 export let timer = 0;
 export let counter = 0;
 export let stopLetter = '';
+
+export const stopRandomButton = () => {
+    clearInterval(timer);
+    randomButton.innerHTML = 'КРЕНИ';
+    randomButton.classList.add('start');
+    audio.src = '';
+};
 
 export const randomizingLetter = () => {
     letter.innerHTML =
