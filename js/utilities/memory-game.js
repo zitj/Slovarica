@@ -73,6 +73,9 @@ const clickingOnBoxes = () => {
         }, 450);
 
         box.addEventListener('click', (e) => {
+            if (box.classList.contains('correct')) {
+                return;
+            }
             box.classList.toggle('active');
             playSoundEffect('open');
             if (box.classList.contains('active')) {
