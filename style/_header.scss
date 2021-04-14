@@ -1,0 +1,31 @@
+header {
+    position: fixed;
+    justify-content: space-between;
+    width: 80%;
+    left: 10%;
+    top: 5%;
+    color: rgb(255, 255, 255);
+    z-index: 55;
+
+    .logo {
+        font-size: 1.6em;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+    }
+    nav {
+        justify-content: space-around;
+        a {
+            padding: 5px;
+            margin-right: 20px;
+            font-size: 1.4em;
+            transition: 0.1s ease-in-out;
+            &:hover {
+                font-size: 1.5em;
+            }
+            &.active {
+                border-bottom: 1px solid white;
+                font-size: 1.5em;
+            }
+        }
+    }
+}
