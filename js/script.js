@@ -1,5 +1,6 @@
 import { vocabular } from '../data/data.js';
 import { loadAllImages } from './utilities/load-images.js';
+import { loadAllAudio } from './utilities/load-audio.js';
 import { animatingElements } from './utilities/animating-elements.js';
 import { playSoundEffect } from './utilities/sounds.js';
 import {
@@ -102,6 +103,7 @@ for (let sectionButton of sectionButtons) {
 }
 
 const startApp = () => {
+    loadAllAudio(vocabular);
     animatingElements(letter, img, displayWord);
     loadAllImages(vocabular);
     defaultLetter(vocabular);
@@ -109,10 +111,10 @@ const startApp = () => {
 
 const endLoadingScreen = () => {
     setTimeout(() => {
+        startApp();
         loadingScreen.style.opacity = 0;
         loadingScreen.style.zIndex = -10;
-        startApp();
-    }, 1800);
+    }, 2000);
 };
 
 //Triggers on Mouse
