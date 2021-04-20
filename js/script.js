@@ -109,8 +109,8 @@ const startApp = () => {
     defaultLetter(vocabular);
 };
 
-const endLoadingScreen = () => {
-    startApp();
+const endLoadingScreen = async () => {
+    await startApp();
     setTimeout(() => {
         loadingScreen.style.opacity = 0;
         loadingScreen.style.zIndex = -10;
