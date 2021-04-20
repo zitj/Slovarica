@@ -109,12 +109,12 @@ const startApp = () => {
     defaultLetter(vocabular);
 };
 
-const endLoadingScreen = async () => {
-    await startApp();
+const endLoadingScreen = () => {
     setTimeout(() => {
+        startApp();
         loadingScreen.style.opacity = 0;
         loadingScreen.style.zIndex = -10;
-    }, 2000);
+    }, 2400);
 };
 
 //Triggers on Mouse
