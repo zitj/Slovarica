@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
 @-webkit-keyframes scalingIn {
   from {
     opacity: 0;
@@ -10,7 +11,6 @@
             transform: scale(1);
   }
 }
-
 @keyframes scalingIn {
   from {
     opacity: 0;
@@ -622,11 +622,6 @@ header nav a.active {
   font-family: 'Pangolin', cursive;
 }
 
-@font-face {
-  font-family: 'pangolin';
-  src: url(../fonts/Pangolin-Regular.ttf);
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -636,7 +631,7 @@ header nav a.active {
 
 body {
   background: #28422b;
-  font-family: pangolin;
+  font-family: 'Pangolin', cursive;
 }
 
 img {

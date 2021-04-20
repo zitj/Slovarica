@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
 @import 'variables';
 @import 'mixins';
 @import 'animations';
@@ -9,10 +10,10 @@
 @import './letterSection';
 @import './illustrationSection';
 
-@font-face {
-    font-family: 'pangolin';
-    src: url(../fonts/Pangolin-Regular.ttf);
-}
+// @font-face {
+//     font-family: 'pangolin';
+//     src: url(../fonts/Pangolin-Regular.ttf);
+// }
 * {
     margin: 0;
     padding: 0;
@@ -21,7 +22,8 @@
 
 body {
     background: $background-green;
-    font-family: pangolin;
+    font-family: 'Pangolin', cursive;
+    // font-family: pangolin;
 }
 
 img {
