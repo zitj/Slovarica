@@ -103,15 +103,15 @@ for (let sectionButton of sectionButtons) {
 }
 
 const startApp = () => {
-    loadAllAudio(vocabular);
     animatingElements(letter, img, displayWord);
+    loadAllAudio(vocabular);
     loadAllImages(vocabular);
     defaultLetter(vocabular);
 };
 
 const endLoadingScreen = () => {
+    startApp();
     setTimeout(() => {
-        startApp();
         loadingScreen.style.opacity = 0;
         loadingScreen.style.zIndex = -10;
     }, 2000);
