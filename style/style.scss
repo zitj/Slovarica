@@ -1,13 +1,13 @@
-@import 'variables';
-@import 'mixins';
-@import 'animations';
-@import './responsive';
-@import './memoryGame';
-@import './loadingScreen';
-@import './header';
-@import './wrapper';
-@import './letterSection';
-@import './illustrationSection';
+@import './utilities/variables';
+@import './utilities/animations';
+@import './utilities/mixins';
+@import './utilities/responsive';
+@import './components/loadingScreen';
+@import './components/header';
+@import './components/wrapper';
+@import './sections/memoryGame';
+@import './sections/letterSection';
+@import './sections/illustrationSection';
 
 * {
     margin: 0;

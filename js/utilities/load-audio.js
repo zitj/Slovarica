@@ -9,7 +9,7 @@ const soundEffects = [
 ];
 
 const preloadEachAudio = (name) => {
-    let audio = new Audio(`../../audio/${name}.mp3`);
+    let audio = new Audio(`../../assets/audio/${name}.mp3`);
     audio.volume = 0;
     return audio.play();
 };

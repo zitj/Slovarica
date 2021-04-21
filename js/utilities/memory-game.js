@@ -9,7 +9,7 @@ export let score = 0;
 export let progressValueCounter = 5;
 
 export const memoryGame = document.querySelector('.memoryGame');
-export const inout = new Audio('../audio/inout.mp3');
+export const inout = new Audio('assets/audio/inout.mp3');
 
 export let boxes = [];
 export let boxTitles = [];
@@ -47,10 +47,10 @@ export const renderBoxes = () => {
         <div class="front square">
             <h2>${el[0]}<span>${el[0].toLowerCase()}</span></h2>
             <p class="boxTitle">${el}</p>
-            <img src="img/${el}.png" alt="${el}" />
+            <img src="assets/img/${el}.png" alt="${el}" />
             </div>
             <div class="back square">
-            <img src="gif/questionMark.gif" alt="question mark gif" />
+            <img src="assets/gif/questionMark.gif" alt="question mark gif" />
          </div>
         </div>
         `;
