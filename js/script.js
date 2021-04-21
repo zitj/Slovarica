@@ -44,7 +44,7 @@ const isKeyPressed = {
 
 //Application
 letter.innerHTML = azbukaArr[0] + `<span>${azbukaArr[0].toLowerCase()}</span>`;
-img.src = `img/${vocabular[0].words[0]}.png`;
+img.src = `assets/img/${vocabular[0].words[0]}.png`;
 img.alt = vocabular[0].words[0];
 
 let counter = 0;

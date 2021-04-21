@@ -8,7 +8,7 @@ export const loadAllImages = (data) => {
     data.forEach((array) => {
         array.words.forEach((word) => {
             template += `
-                <img src="img/${word}.png">
+                <img src="assets/img/${word}.png">
             `;
         });
         loadImagesContainer.innerHTML = template;

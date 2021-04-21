@@ -19,7 +19,7 @@ export const changeLetter = (data, dataCounter, actualCounter) => {
         azbukaArr[dataCounter] +
         `<span>${azbukaArr[dataCounter].toLowerCase()}</span>`;
     displayWord.innerHTML = data[dataCounter].words[actualCounter];
-    img.src = `img/${data[dataCounter].words[actualCounter]}.png`;
+    img.src = `assets/img/${data[dataCounter].words[actualCounter]}.png`;
     img.alt = data[dataCounter].words[actualCounter];
     playSoundEffect('click');
     playAudio(data[dataCounter].words[actualCounter]);
@@ -32,7 +32,7 @@ export const defaultLetter = (data) => {
         azbukaArr[character] +
         `<span>${azbukaArr[character].toLowerCase()}</span>`;
     displayWord.innerHTML = data[character].words[0];
-    img.src = `img/${data[character].words[0]}.png`;
+    img.src = `assets/img/${data[character].words[0]}.png`;
     img.alt = data[character].words[0];
     playAudio(data[character].words[0]);
 
