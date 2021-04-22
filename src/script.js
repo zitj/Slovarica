@@ -114,7 +114,7 @@ const endLoadingScreen = () => {
         startApp();
         loadingScreen.style.opacity = 0;
         loadingScreen.style.zIndex = -10;
-    }, 2400);
+    }, 2800);
 };
 
 //Triggers on Mouse

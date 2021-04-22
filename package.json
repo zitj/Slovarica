@@ -1,0 +1,24 @@
+{
+    "name": "slovarica",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zitj/let-it-be-letter.git"
+    },
+    "author": "Aleksandar Veljkovic",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/zitj/let-it-be-letter/issues"
+    },
+    "homepage": "https://github.com/zitj/let-it-be-letter#readme",
+    "devDependencies": {
+        "webpack": "^5.35.0",
+        "webpack-cli": "^4.6.0"
+    }
+}
