@@ -22,4 +22,4 @@ const increase = () => {
 };
 
 export let char = 0;
-export let time = setInterval(increase, 50);
+export let time = setInterval(increase, 30);
