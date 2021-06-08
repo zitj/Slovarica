@@ -116,7 +116,7 @@ const endLoadingScreen = () => {
         loadingScreen.style.opacity = 0;
         loadingScreen.style.zIndex = -10;
         wrapper.style.opacity = 1;
-    }, 2000);
+    }, 2600);
 };
 
 //Triggers on Mouse
