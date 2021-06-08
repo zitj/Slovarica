@@ -111,10 +111,12 @@ const startApp = () => {
 
 const endLoadingScreen = () => {
     startApp();
+    wrapper.style.opacity = 0;
     setTimeout(() => {
         loadingScreen.style.opacity = 0;
         loadingScreen.style.zIndex = -10;
-    }, 2800);
+        wrapper.style.opacity = 1;
+    }, 2000);
 };
 
 //Triggers on Mouse
