@@ -10,21 +10,21 @@
 @import './sections/illustrationSection';
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    background: $background-green;
-    font-family: 'Pangolin', cursive;
+	background: $background-green;
+	font-family: 'Pangolin', cursive;
 }
 
 img {
-    pointer-events: none;
+	pointer-events: none;
 }
 button {
-    outline: none;
+	outline: none;
 }
 a,
 button,
@@ -37,8 +37,8 @@ img,
 .front,
 .back,
 .logo {
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
+	user-select: none;
+	-webkit-tap-highlight-color: transparent;
 }
 
 header,
@@ -52,21 +52,22 @@ header a,
 .arrowButtons button,
 .illustration,
 .memoryGame.active,
-.memoryGame .box {
-    display: flex;
+.memoryGame .box,
+.tatkoNaWrapper {
+	display: flex;
 }
 
 header .logo,
 nav a,
 button,
 .box {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .loadImagesContainer {
-    img {
-        display: none;
-    }
+	img {
+		display: none;
+	}
 }
 
-@include responsive();
+// @include responsive();

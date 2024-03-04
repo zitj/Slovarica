@@ -1,18 +1,60 @@
 .illustration {
-    flex-direction: column;
-    margin-top: -50px;
-    margin-right: -50px;
-    img,
-    h3 {
-        &.animate {
-            animation: fadeIn 0.8s;
-        }
-    }
+	flex-direction: column;
+	margin-top: -50px;
+	margin-right: -50px;
+	justify-content: center;
+	align-items: center;
+	img,
+	h3 {
+		&.animate {
+			animation: fadeIn 0.8s;
+		}
+	}
 
-    h3 {
-        text-align: center;
-        font-size: 3em;
-        margin-top: 20px;
-        font-family: 'Pangolin', cursive;
-    }
+	h3 {
+		text-align: center;
+		font-size: 3em;
+		margin-top: 20px;
+		font-family: 'Pangolin', cursive;
+	}
+	@media screen and (max-width: 1024px) and (orientation: landscape) {
+		transform: scale(0.8);
+	}
+	@media screen and (max-width: 1000px) and (orientation: portrait) {
+		margin: 0;
+		flex-direction: column-reverse;
+		h3 {
+			margin: 0;
+			margin-top: 50px;
+		}
+	}
+	@media screen and (max-width: 799px) and (orientation: portrait) {
+		img {
+			width: 400px;
+		}
+		h3 {
+			margin-top: 0px;
+		}
+	}
+	@media screen and (max-width: 500px) and (orientation: portrait) {
+		img {
+			width: 300px;
+		}
+	}
+	@media screen and (max-width: 420px) and (orientation: portrait) {
+		img {
+			width: 200px;
+		}
+		h3 {
+			font-size: 32px;
+		}
+	}
+	@media screen and (max-width: 320px) and (orientation: portrait) {
+		img {
+			width: 150px;
+		}
+		h3 {
+			font-size: 32px;
+		}
+	}
 }
