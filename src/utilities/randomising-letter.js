@@ -19,52 +19,50 @@ export let counter = 0;
 export let stopLetter = '';
 
 export const stopRandomButton = () => {
-    clearInterval(timer);
-    randomButton.innerHTML = 'КРЕНИ';
-    randomButton.classList.add('start');
-    audio.src = '';
+	clearInterval(timer);
+	randomButton.innerHTML = 'КРЕНИ';
+	randomButton.classList.add('start');
+	audio.src = '';
 };
 
 export const randomizingLetter = () => {
-    letter.innerHTML =
-        azbukaArr[character] +
-        `<span>${azbukaArr[character].toLowerCase()}</span>`;
-    displayWord.innerHTML = vocabular[character].words[0];
-    img.src = `assets/img/${vocabular[character].words[0]}.png`;
+	letter.innerHTML = azbukaArr[character] + `<span>${azbukaArr[character].toLowerCase()}</span>`;
+	displayWord.innerHTML = vocabular[character].words[0].name;
+	img.src = `assets/img/${vocabular[character].words[0].bind}.png`;
 
-    character++;
-    if (character === azbukaArr.length) {
-        character = 0;
-    }
+	character++;
+	if (character === azbukaArr.length) {
+		character = 0;
+	}
 };
 
 export const startStop = () => {
-    randomButton.classList.toggle('start');
-    playSoundEffect('randomClick');
+	randomButton.classList.toggle('start');
+	playSoundEffect('randomClick');
 
-    if (randomButton.classList.contains('start')) {
-        randomButton.innerHTML = 'КРЕНИ';
-        clearInterval(timer);
-        stopLetter = letter.textContent[0];
-        animatingElements(letter, img, displayWord);
+	if (randomButton.classList.contains('start')) {
+		randomButton.innerHTML = 'КРЕНИ';
+		clearInterval(timer);
+		stopLetter = letter.textContent[0];
+		animatingElements(letter, img, displayWord);
 
-        for (let word of vocabular) {
-            if (word.wordCounter > word.words.length - 1) {
-                word.wordCounter = 0;
-            }
-            if (word.words[0].charAt(0) == stopLetter) {
-                counter = word.wordCounter;
-                img.src = `assets/img/${word.words[counter]}.png`;
-                img.alt = word.words[counter];
-                displayWord.innerHTML = word.words[counter];
-                playAudio(word.words[counter]);
-                word.wordCounter++;
-            }
-        }
-    } else if (!randomButton.classList.contains('start')) {
-        playAudio('shuffle', true);
-        //randomize letter
-        timer = setInterval(randomizingLetter, 80);
-        randomButton.innerHTML = 'СТАНИ';
-    }
+		for (let word of vocabular) {
+			if (word.wordCounter > word.words.length - 1) {
+				word.wordCounter = 0;
+			}
+			if (word.words[0].name.charAt(0) == stopLetter) {
+				counter = word.wordCounter;
+				img.src = `assets/img/${word.words[counter].bind}.png`;
+				img.alt = word.words[counter].name;
+				displayWord.innerHTML = word.words[counter].name;
+				playAudio(word.words[counter].bind);
+				word.wordCounter++;
+			}
+		}
+	} else if (!randomButton.classList.contains('start')) {
+		playAudio('shuffle', true);
+		//randomize letter
+		timer = setInterval(randomizingLetter, 80);
+		randomButton.innerHTML = 'СТАНИ';
+	}
 };
