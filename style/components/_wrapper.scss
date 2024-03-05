@@ -1,18 +1,36 @@
 .wrapper {
-    justify-content: space-around;
-    background: $dirty-white;
-    @include centering(-50%, -50%);
-    @include borderMixin(10px, $border-grey);
-    width: 1100px;
-    height: 670px;
-    padding: 5% 3%;
-    color: $font-color;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
-
-    &.game {
-        background: transparent;
-        border: none;
-        box-shadow: none;
-    }
+	justify-content: space-between;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4em;
+	background: $dirty-white;
+	@include borderMixin(10px, $border-grey);
+	padding: 10px;
+	color: $font-color;
+	border-radius: 10px;
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
+	margin: 0% auto;
+	&.game {
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		flex-direction: column-reverse;
+	}
+	width: 90%;
+	@media screen and (min-width: 1024px) {
+		height: 80vh;
+		gap: 10em;
+	}
+	@media screen and (max-width: 1000px) and (orientation: landscape) {
+		height: 78vh;
+	}
+	@media screen and (max-width: 1025px) and (orientation: portrait) {
+		flex-direction: column-reverse;
+		gap: 0em;
+		height: 90vh;
+	}
+	@media screen and (max-width: 500px) and (orientation: portrait) {
+		height: 85vh;
+	}
 }
