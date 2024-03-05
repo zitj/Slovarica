@@ -6,11 +6,12 @@ import { loadingScreen } from './utilities/loading-screen.js';
 import { defaultLetter, forward, backward } from './utilities/change-letter.js';
 import { wrapper, letterSection, illustration, displayWord, letter, azbukaArr, img, stopRandomButton, startStop } from './utilities/randomising-letter.js';
 
-import { memoryGame, formingArrayForMemoryGame, renderBoxes, progressBar, progressValue, shuffledArray } from './utilities/memory-game.js';
+import { memoryGame, formingArrayForMemoryGame, renderBoxes, progressBar, progressValue, shuffledArray, startTimer, intervalId, unshuffledArray, score, stopTimer } from './utilities/memory-game.js';
 
 const span = document.querySelector('span');
 let stopLetter = '';
 randomButton.style.display = 'none';
+let timerInterval;
 
 //Keyboard
 const isKeyPressed = {
@@ -37,6 +38,7 @@ const classRemover = () => {
 for (let sectionButton of sectionButtons) {
 	sectionButton.addEventListener('click', () => {
 		playSoundEffect('sectionClick');
+		stopTimer();
 		classRemover();
 		sectionButton.classList.add('active');
 
@@ -60,12 +62,9 @@ for (let sectionButton of sectionButtons) {
 			memoryGame.classList.add('active');
 			progressBar.classList.add('active');
 			vocabular.forEach((el) => (el.wordCounter = 0));
-			// score = 0;
-			character = 0;
-			progressValue.style.width = `5%`;
-			// progressValueCounter = 5;
 			wrapper.classList.add('game');
-			formingArrayForMemoryGame(shuffledArray + 4);
+			startTimer();
+			formingArrayForMemoryGame(4);
 			renderBoxes();
 		} else {
 			letterSection.style.display = 'flex';

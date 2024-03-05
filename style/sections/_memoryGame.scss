@@ -87,13 +87,10 @@
 		}
 	}
 	@media screen and (min-width: 1400px) {
-		gap: 10em;
 	}
 	@media screen and (max-width: 1280px) {
-		gap: 3em;
 	}
 	@media screen and (max-width: 1025px) and (orientation: landscape) {
-		gap: 2em;
 		.box {
 			height: 90px;
 			width: 90px;

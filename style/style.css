@@ -336,20 +336,7 @@ header nav a.active {
 .memoryGame .box .back:hover {
   opacity: 0.95;
 }
-@media screen and (min-width: 1400px) {
-  .memoryGame {
-    gap: 10em;
-  }
-}
-@media screen and (max-width: 1280px) {
-  .memoryGame {
-    gap: 3em;
-  }
-}
 @media screen and (max-width: 1025px) and (orientation: landscape) {
-  .memoryGame {
-    gap: 2em;
-  }
   .memoryGame .box {
     height: 90px;
     width: 90px;
