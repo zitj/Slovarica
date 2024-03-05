@@ -22,17 +22,22 @@ export let temporaryArray = [];
 export let counter = 0;
 export let character = 0;
 
-export const formingArrayForMemoryGame = () => {
-	counter = vocabular[character].wordCounter;
-	let counterTwo = vocabular[character + 1].wordCounter;
-	let counterThree = vocabular[character + 2].wordCounter;
-
-	for (let i = 0; unshuffledArray.length < 6; i++) {
-		unshuffledArray.push(vocabular[character].words[counter]);
-		unshuffledArray.push(vocabular[character + 1].words[counterTwo]);
-		unshuffledArray.push(vocabular[character + 2].words[counterThree]);
+export const formingArrayForMemoryGame = (numberOfPairs) => {
+	let numberOfDifferentWords = numberOfPairs / 2;
+	let selectedWordsObj = {};
+	let selectedWordsArray = [];
+	for (let i = 0; i < numberOfDifferentWords; i++) {
+		// let randomNumber = Math.floor(Math.random() * 30);
+		for (let j = 0; j < vocabular[i].words.length; j++) {
+			if (!selectedWordsObj[vocabular[i].words[j].bind]) {
+				selectedWordsObj[vocabular[i].words[j].bind] = true;
+				selectedWordsArray.push(vocabular[i].words[j]);
+				break;
+			}
+		}
 	}
-
+	console.log(selectedWordsArray);
+	unshuffledArray = selectedWordsArray.concat(selectedWordsArray);
 	shuffledArray = unshuffledArray
 		.map((a) => ({ sort: Math.random(), value: a }))
 		.sort((a, b) => a.sort - b.sort)
@@ -60,23 +65,22 @@ export const renderBoxes = () => {
 	boxes = document.querySelectorAll('.box');
 	boxTitles = document.querySelectorAll('.boxTitle');
 
-	if (boxes.length > 0) {
-		clickingOnBoxes();
-	}
+	if (boxes.length > 0) clickingOnBoxes();
+};
+
+const showSolution = (box) => {
+	box.classList.add('active');
+	inout.play();
+	setTimeout(() => {
+		box.classList.remove('active');
+	}, 450);
 };
 
 const clickingOnBoxes = () => {
 	for (let box of boxes) {
-		box.classList.add('active');
-		inout.play();
-		setTimeout(() => {
-			box.classList.remove('active');
-		}, 450);
-
+		showSolution(box);
 		box.addEventListener('click', (e) => {
-			if (box.classList.contains('correct')) {
-				return;
-			}
+			if (box.classList.contains('correct')) return;
 			box.classList.toggle('active');
 			playSoundEffect('open');
 			if (box.classList.contains('active')) {
@@ -84,29 +88,28 @@ const clickingOnBoxes = () => {
 			} else {
 				temporaryArray = [];
 			}
-
 			if (temporaryArray.length == 2) {
-				if (temporaryArray[0] === temporaryArray[1]) {
-					for (let b of boxes) {
-						if (b.dataset.val == temporaryArray[0]) {
-							b.classList.add('correct');
-							b.children[0].classList.add('correct');
+				const maxScore = shuffledArray.length;
 
+				if (temporaryArray[0] === temporaryArray[1]) {
+					for (let box of boxes) {
+						if (box.dataset.val == temporaryArray[0]) {
+							box.classList.add('correct');
+							box.children[0].classList.add('correct');
 							playAudio('success');
 						}
 					}
 					temporaryArray = [];
 					score += 2;
-					progressValueCounter += 33.3;
-					if (progressValueCounter >= 99) {
-						progressValue.style.width = `100%`;
+					let progressPercentage = (score / maxScore) * 100;
+					console.log('Progress percentage %: ', progressPercentage);
+					progressValue.style.width = `${progressPercentage}%`;
+					progressBar.classList.add('correct');
+					if (score === maxScore) {
 						setTimeout(() => {
 							progressValue.style.width = `5%`;
-							progressValueCounter = 5;
 						}, 550);
 					}
-					progressValue.style.width = `${progressValueCounter}%`;
-					progressBar.classList.add('correct');
 					setTimeout(() => {
 						progressBar.classList.remove('correct');
 					}, 250);
@@ -122,20 +125,10 @@ const clickingOnBoxes = () => {
 				}
 			}
 			// Everything is paired
-			if (score == 6) {
+			if (score == shuffledArray.length) {
 				score = 0;
-				character += 3;
-				if (character > 27) {
-					character = 0;
-					for (let word of vocabular) {
-						word.wordCounter++;
-						if (word.words.length <= word.wordCounter) {
-							word.wordCounter = 0;
-						}
-					}
-				}
 				unshuffledArray = [];
-				formingArrayForMemoryGame();
+				formingArrayForMemoryGame(shuffledArray.length + 4);
 				setTimeout(() => {
 					for (let b of boxes) {
 						b.remove();

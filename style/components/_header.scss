@@ -25,6 +25,23 @@ header {
 			}
 		}
 	}
+	@media screen and (max-width: 1000px) and (orientation: landscape) {
+		padding: 1em 1em 1em 1.3em;
+		margin-bottom: 5px;
+		.logo {
+			font-size: 20px;
+		}
+		nav {
+			height: 25px;
+			a {
+				font-size: 16px;
+				margin-right: 0;
+				&.active {
+					font-size: 17px;
+				}
+			}
+		}
+	}
 	@media screen and (max-width: 500px) and (orientation: portrait) {
 		padding: 1em 1em 1em 1.3em;
 		.logo {

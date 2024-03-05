@@ -15,14 +15,17 @@
 		background: transparent;
 		border: none;
 		box-shadow: none;
+		flex-direction: column-reverse;
 	}
 	width: 90%;
 	@media screen and (min-width: 1024px) {
 		height: 80vh;
-		// background-color: red;
 		gap: 10em;
 	}
-	@media screen and (max-width: 1000px) and (orientation: portrait) {
+	@media screen and (max-width: 1000px) and (orientation: landscape) {
+		height: 78vh;
+	}
+	@media screen and (max-width: 1025px) and (orientation: portrait) {
 		flex-direction: column-reverse;
 		gap: 0em;
 		height: 90vh;

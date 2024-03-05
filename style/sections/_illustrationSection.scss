@@ -17,10 +17,30 @@
 		margin-top: 20px;
 		font-family: 'Pangolin', cursive;
 	}
+
+	//LANDSCAPE
 	@media screen and (max-width: 1024px) and (orientation: landscape) {
 		transform: scale(0.8);
 	}
-	@media screen and (max-width: 1000px) and (orientation: portrait) {
+	@media screen and (max-width: 1000px) and (orientation: landscape) {
+		margin: 0;
+		flex-direction: column-reverse;
+		img {
+			width: 250px;
+		}
+		h3 {
+			margin: 0;
+			font-size: 34px;
+		}
+	}
+	@media screen and (max-width: 500px) and (orientation: landscape) {
+		img {
+			width: 200px;
+		}
+	}
+
+	//PORRAIT
+	@media screen and (max-width: 1025px) and (orientation: portrait) {
 		margin: 0;
 		flex-direction: column-reverse;
 		h3 {

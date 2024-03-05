@@ -1,6 +1,4 @@
 import { vocabular } from '../data/data.js';
-import { loadAllImages } from './utilities/load-images.js';
-import { loadAllAudio } from './utilities/load-audio.js';
 import { animatingElements } from './utilities/animating-elements.js';
 import { playSoundEffect } from './utilities/sounds.js';
 import { sectionButtons, randomButton, logo, leftArrow, rightArrow, arrowButtons } from './utilities/buttons.js';
@@ -8,7 +6,7 @@ import { loadingScreen } from './utilities/loading-screen.js';
 import { defaultLetter, forward, backward } from './utilities/change-letter.js';
 import { wrapper, letterSection, illustration, displayWord, letter, azbukaArr, img, stopRandomButton, startStop } from './utilities/randomising-letter.js';
 
-import { memoryGame, formingArrayForMemoryGame, renderBoxes, progressBar, progressValue } from './utilities/memory-game.js';
+import { memoryGame, formingArrayForMemoryGame, renderBoxes, progressBar, progressValue, shuffledArray } from './utilities/memory-game.js';
 
 const span = document.querySelector('span');
 let stopLetter = '';
@@ -67,7 +65,7 @@ for (let sectionButton of sectionButtons) {
 			progressValue.style.width = `5%`;
 			// progressValueCounter = 5;
 			wrapper.classList.add('game');
-			formingArrayForMemoryGame();
+			formingArrayForMemoryGame(shuffledArray + 4);
 			renderBoxes();
 		} else {
 			letterSection.style.display = 'flex';
@@ -81,8 +79,6 @@ for (let sectionButton of sectionButtons) {
 
 const startApp = () => {
 	animatingElements(letter, img, displayWord);
-	// loadAllAudio(vocabular);
-	// loadAllImages(vocabular);
 	defaultLetter(vocabular);
 };
 
