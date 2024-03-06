@@ -1,31 +1,85 @@
 header {
-    position: fixed;
-    justify-content: space-between;
-    width: 80%;
-    left: 10%;
-    top: 5%;
-    color: rgb(255, 255, 255);
-    z-index: 55;
-
-    .logo {
-        font-size: 1.6em;
-        letter-spacing: 1px;
-        text-transform: capitalize;
-    }
-    nav {
-        justify-content: space-around;
-        a {
-            padding: 5px;
-            margin-right: 20px;
-            font-size: 1.4em;
-            transition: 0.1s ease-in-out;
-            &:hover {
-                font-size: 1.5em;
-            }
-            &.active {
-                border-bottom: 1px solid white;
-                font-size: 1.5em;
-            }
-        }
-    }
+	justify-content: space-between;
+	color: rgb(255, 255, 255);
+	z-index: 55;
+	padding: 1em 1em 1em 2em;
+	margin-bottom: 15px;
+	.logo {
+		font-size: 1.6em;
+		letter-spacing: 1px;
+		text-transform: capitalize;
+	}
+	nav {
+		justify-content: space-around;
+		a {
+			padding: 5px;
+			margin-right: 20px;
+			font-size: 1.4em;
+			transition: 0.1s ease-in-out;
+			&:hover {
+				font-size: 1.5em;
+			}
+			&.active {
+				border-bottom: 1px solid white;
+				font-size: 1.5em;
+			}
+		}
+	}
+	@media screen and (max-width: 1000px) and (orientation: landscape) {
+		padding: 1em 1em 1em 1.3em;
+		margin-bottom: 5px;
+		.logo {
+			font-size: 20px;
+		}
+		nav {
+			height: 25px;
+			a {
+				font-size: 16px;
+				margin-right: 0;
+				&.active {
+					font-size: 17px;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 500px) and (orientation: portrait) {
+		padding: 1em 1em 1em 1.3em;
+		.logo {
+			font-size: 20px;
+		}
+		nav {
+			height: 25px;
+			a {
+				font-size: 16px;
+				margin-right: 0;
+				&.active {
+					font-size: 17px;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 420px) and (orientation: portrait) {
+		nav {
+			a {
+				font-size: 15px;
+				&.active {
+					font-size: 16px;
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 320px) and (orientation: portrait) {
+		.logo {
+			font-size: 15px;
+			margin-top: 5px;
+		}
+		nav {
+			a {
+				font-size: 13px;
+				&.active {
+					font-size: 14px;
+				}
+			}
+		}
+	}
 }

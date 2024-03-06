@@ -1,87 +1,144 @@
 @keyframes scalingIn {
-    from {
-        opacity: 0;
-        transform: scale(0);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+	from {
+		opacity: 0;
+		transform: scale(0);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 @keyframes scalingInButtons {
-    0% {
-        opacity: 0;
-        transform: scale(0);
-    }
-    80% {
-        opacity: 0;
-        transform: scale(0);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+	0% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	80% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 @keyframes scalingOut {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    80% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0);
-    }
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	80% {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(0);
+	}
 }
 @keyframes capitalAndLower {
-    0% {
-        transform: scale(0) rotate(20deg);
-        opacity: 0;
-    }
+	0% {
+		transform: scale(0) rotate(20deg);
+		opacity: 0;
+	}
 
-    40% {
-        transform: scale(1.5) rotate(-10deg);
-    }
-    60% {
-        transform: rotate(10deg);
-    }
+	40% {
+		transform: scale(1.5) rotate(-10deg);
+	}
+	60% {
+		transform: rotate(10deg);
+	}
 
-    100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-    }
+	100% {
+		opacity: 1;
+		transform: scale(1) rotate(0deg);
+	}
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    60% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+	0% {
+		opacity: 0;
+	}
+	60% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 @keyframes fadeInTitle {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 @keyframes correctFront {
-    0% {
-    }
-    100% {
-        border: none;
-    }
+	0% {
+	}
+	100% {
+		border: none;
+	}
+}
+@keyframes rotatingDisappearance {
+	0% {
+		transform: scale(1) rotate(0deg);
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(0) rotate(360deg);
+		opacity: 0;
+	}
+}
+@keyframes pulsingRed {
+	0% {
+		background-color: lighten($button-red, 10%);
+	}
+	50% {
+		background-color: lighten($button-red, 30%);
+	}
+	100% {
+		background-color: lighten($button-red, 10%);
+	}
+}
+@keyframes shaking {
+	0% {
+		transform: rotate(0deg);
+	}
+	10% {
+		transform: rotate(-1deg);
+	}
+	20% {
+		transform: rotate(1deg);
+	}
+	30% {
+		transform: rotate(-1deg);
+	}
+	40% {
+		transform: rotate(1deg);
+	}
+	50% {
+		transform: rotate(-1deg);
+	}
+	60% {
+		transform: rotate(1deg);
+	}
+	70% {
+		transform: rotate(-1deg);
+	}
+	80% {
+		transform: rotate(1deg);
+	}
+	90% {
+		transform: rotate(-1deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
 }
