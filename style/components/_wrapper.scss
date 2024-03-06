@@ -21,6 +21,9 @@
 	@media screen and (min-width: 1024px) {
 		height: 80vh;
 		gap: 10em;
+		&.game {
+			height: 50vh;
+		}
 	}
 	@media screen and (max-width: 1000px) and (orientation: landscape) {
 		height: 78vh;

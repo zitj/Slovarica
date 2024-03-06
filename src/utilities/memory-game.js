@@ -11,9 +11,23 @@ export let progressValueCounter = 5;
 export let counter = 0;
 export let character = 0;
 let timer = 0;
+let hideSolutionTime = 0;
 
 export const memoryGame = document.querySelector('.memoryGame');
+export const boxesContainer = document.querySelector('#boxes');
+const timeCounter = document.querySelector('#timer').children[0];
+const scoreBoard = {
+	bestScore: document.querySelector('#bestScore').children[0],
+	totalScore: document.querySelector('#totalScore').children[0],
+};
 export const inout = new Audio('assets/audio/inout.mp3');
+
+const sounds = {
+	show: new Audio('assets/audio/show.mp3'),
+	hide: new Audio('assets/audio/hide.mp3'),
+	timeIsUp: new Audio('assets/audio/time-is-up.mp3'),
+	wrong: new Audio('assets/audio/wrong.mp3'),
+};
 
 export let boxes = [];
 export let boxTitles = [];
@@ -24,19 +38,44 @@ export let temporaryArray = [];
 export let intervalId;
 
 export const startTimer = () => {
+	if (localStorage.getItem('bestScore')) scoreBoard.bestScore.innerHTML = localStorage.getItem('bestScore');
 	temporaryArray = [];
+	hideSolutionTime = 450;
 	totalScore = 0;
+	scoreBoard.totalScore.innerHTML = totalScore;
 	score = 0;
-	timer = 30;
+	timer = 5;
 	intervalId = setInterval(() => {
 		timer--;
-		console.log(timer);
+		const minutes = Math.floor(timer / 60)
+			.toString()
+			.padStart(2, '0');
+		const seconds = (timer % 60).toString().padStart(2, '0');
+		console.log(`${minutes}:${seconds}`);
+		timeCounter.innerHTML = `${minutes}:${seconds}`;
 		if (timer <= 0) {
 			clearInterval(intervalId);
 			if (!localStorage.getItem('bestScore')) localStorage.setItem('bestScore', totalScore);
 			if (localStorage.getItem('bestScore') && localStorage.getItem('bestScore') < totalScore) {
 				localStorage.setItem('bestScore', totalScore);
 			}
+			progressValue.style.width = `100%`;
+			progressBar.classList.add('wrong');
+			for (let box of boxes) {
+				showSolution(box, false);
+			}
+			setTimeout(() => {
+				sounds.timeIsUp.play();
+				for (let box of boxes) {
+					box.classList.remove('shaking');
+					box.classList.add('rotatingDisappearance');
+					box.addEventListener('animationend', () => {
+						box.classList.add('gone');
+						progressBar.classList.remove('wrong');
+						progressValue.style.width = `5%`;
+					});
+				}
+			}, 2000);
 			console.log(`Time is up! Total score: ${totalScore}, Best score: ${localStorage.getItem('bestScore')}`);
 			return;
 		}
@@ -85,19 +124,27 @@ export const renderBoxes = () => {
         </div>
         `;
 	});
-	memoryGame.innerHTML = template;
+	boxesContainer.innerHTML = template;
 	boxes = document.querySelectorAll('.box');
 	boxTitles = document.querySelectorAll('.boxTitle');
 
 	if (boxes.length > 0) clickingOnBoxes();
 };
 
-const showSolution = (box) => {
+const showSolution = (box, hideSolution) => {
 	box.classList.add('active');
-	inout.play();
-	setTimeout(() => {
-		box.classList.remove('active');
-	}, 450);
+	if (hideSolution) {
+		sounds.show.play();
+		hideSolutionTime += 5;
+		setTimeout(() => {
+			box.classList.remove('active');
+			sounds.hide.play();
+		}, hideSolutionTime);
+	} else {
+		sounds.wrong.play();
+		box.classList.add('shaking');
+		box.children[0].classList.add('pulsingRed');
+	}
 };
 
 const pairMatches = () => {
@@ -111,6 +158,7 @@ const pairMatches = () => {
 	score += 2;
 	timer += 2;
 	totalScore += 1;
+	scoreBoard.totalScore.innerHTML = totalScore;
 
 	let progressPercentage = (score / maxScore) * 100;
 	progressValue.style.width = `${progressPercentage}%`;
@@ -139,7 +187,7 @@ const pairDoesNotMatch = () => {
 const goToNextLevel = () => {
 	score = 0;
 	unshuffledArray = [];
-	formingArrayForMemoryGame(shuffledArray.length + 4);
+	formingArrayForMemoryGame(shuffledArray.length + 2);
 	setTimeout(() => {
 		renderBoxes();
 	}, 700);
@@ -148,8 +196,9 @@ const goToNextLevel = () => {
 const clickingOnBoxes = () => {
 	for (let box of boxes) {
 		const maxScore = shuffledArray.length;
-		showSolution(box);
+		showSolution(box, true);
 		box.addEventListener('click', (event) => {
+			if (timer === 0) return;
 			if (box.classList.contains('correct')) return;
 			box.classList.toggle('active');
 			playSoundEffect('open');

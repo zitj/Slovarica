@@ -80,6 +80,62 @@
     border: none;
   }
 }
+@keyframes rotatingDisappearance {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+@keyframes pulsingRed {
+  0% {
+    background-color: #ff7a7a;
+  }
+  50% {
+    background-color: #ffe0e0;
+  }
+  100% {
+    background-color: #ff7a7a;
+  }
+}
+@keyframes shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-1deg);
+  }
+  20% {
+    transform: rotate(1deg);
+  }
+  30% {
+    transform: rotate(-1deg);
+  }
+  40% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  60% {
+    transform: rotate(1deg);
+  }
+  70% {
+    transform: rotate(-1deg);
+  }
+  80% {
+    transform: rotate(1deg);
+  }
+  90% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 .loadingScreen {
   background: rgb(40, 66, 43);
   z-index: 1000;
@@ -221,6 +277,9 @@ header nav a.active {
     height: 80vh;
     gap: 10em;
   }
+  .wrapper.game {
+    height: 50vh;
+  }
 }
 @media screen and (max-width: 1000px) and (orientation: landscape) {
   .wrapper {
@@ -242,6 +301,7 @@ header nav a.active {
 
 .memoryGame {
   display: none;
+  gap: 2em;
 }
 .memoryGame.active {
   align-items: center;
@@ -249,137 +309,20 @@ header nav a.active {
   flex-wrap: wrap;
   width: 80%;
 }
-.memoryGame .box {
-  position: relative;
-  height: 220px;
-  width: 220px;
-  transition: 0.6s;
-  animation: scalingIn 0.4s;
-}
-.memoryGame .box.active .front {
-  transform: rotateY(0deg) translateX(0px);
-}
-.memoryGame .box.active .front.correct {
-  border-left: 5px solid #28c44a;
-  border-right: 5px solid #4fdb6d;
-  border-top: 5px solid #3ad65c;
-  border-bottom: 5px solid rgb(36, 175, 66);
-  background: #e7faeb;
-}
-.memoryGame .box.active .back {
-  transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
-}
-.memoryGame .box.correct {
-  animation: scalingOut 0.6s ease-out;
-  background: transparent;
-  opacity: 0;
-}
-.memoryGame .box.gone {
-  display: none;
-}
-.memoryGame .box .square {
-  position: absolute;
-  height: 100%;
+.memoryGame #progresBarAndTimerWrapper {
   width: 100%;
-  transition: 0.2s ease-in-out;
-  transform-style: preserve-3d;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color: white;
 }
-.memoryGame .box .front,
-.memoryGame .box .back {
-  border-left: 5px solid #767676;
-  border-right: 5px solid #949494;
-  border-top: 5px solid #888888;
-  border-bottom: 5px solid rgb(105, 105, 105);
-  border-radius: 10px;
-}
-.memoryGame .box .front {
-  transform: rotateY(90deg) skewY(-5deg) translateX(200px);
-  transform-origin: right;
-  background: rgb(238, 238, 238);
-}
-.memoryGame .box .front img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -55%);
-  width: 160px;
-  height: 160px;
-}
-.memoryGame .box .front h2 {
-  position: absolute;
-  font-size: 2.2em;
-  left: 8%;
-  top: 2%;
-}
-.memoryGame .box .front h2 span {
-  margin-left: 5px;
-  font-size: 0.6em;
-}
-.memoryGame .box .front p {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, 75%);
-  bottom: 0%;
-  opacity: 0.8;
-}
-.memoryGame .box .back {
-  background: rgb(238, 238, 238);
-  transform-origin: left;
-  text-align: center;
-  justify-content: center;
-}
-.memoryGame .box .back img {
-  height: 100%;
-  width: 100%;
-}
-.memoryGame .box .back:hover {
-  opacity: 0.95;
-}
-@media screen and (max-width: 1025px) and (orientation: landscape) {
-  .memoryGame .box {
-    height: 90px;
-    width: 90px;
-  }
-  .memoryGame .box .front img {
-    height: 50px;
-    width: 50px;
-  }
-  .memoryGame .box .front p {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, 50%);
-  }
-}
-@media screen and (max-width: 1025px) and (orientation: portrait) {
-  .memoryGame .box {
-    height: 160px;
-    width: 160px;
-  }
-  .memoryGame .box .front img {
-    height: 110px;
-    width: 110px;
-  }
-  .memoryGame .box .front p {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, 65%);
-  }
-}
-
-.progressBar,
-.progressValue {
+.memoryGame #progresBarAndTimerWrapper .progressBar,
+.memoryGame #progresBarAndTimerWrapper .progressValue {
   transition: 0.3s ease-in-out;
 }
-
-.progressBar {
-  position: absolute;
+.memoryGame #progresBarAndTimerWrapper .progressBar {
   display: none;
-  width: 60%;
-  top: 80px;
-  margin-bottom: -80px;
+  width: 90%;
   border-radius: 15px;
   border-left: 2px solid #767676;
   border-right: 2px solid #949494;
@@ -387,24 +330,159 @@ header nav a.active {
   border-bottom: 2px solid rgb(105, 105, 105);
   background: rgb(238, 238, 238);
   box-shadow: inset 0px 0px 2px #000000;
-  padding: 0.2em 0.3em 0.2em;
+  padding: 0.3em 0.3em 0.3em;
   animation: scalingInButtons 0.7s ease-in-out;
 }
-.progressBar.active {
+.memoryGame #progresBarAndTimerWrapper .progressBar.active {
   display: flex;
 }
-.progressBar.correct {
+.memoryGame #progresBarAndTimerWrapper .progressBar.correct {
   transform: scale(1.05);
   border-left: 2px solid #28c44a;
   border-right: 2px solid #4fdb6d;
   border-top: 2px solid #3ad65c;
   border-bottom: 2px solid rgb(36, 175, 66);
 }
-.progressBar .progressValue {
+.memoryGame #progresBarAndTimerWrapper .progressBar.wrong {
+  border-left: 2px solid #ff6161;
+  border-right: 2px solid #ff9e9e;
+  border-top: 2px solid #ff8484;
+  border-bottom: 2px solid rgb(255, 71, 71);
+}
+.memoryGame #progresBarAndTimerWrapper .progressBar.wrong .progressValue {
+  background: #ff6161;
+}
+.memoryGame #progresBarAndTimerWrapper .progressBar .progressValue {
   height: 0.5em;
   width: 5%;
   border-radius: 15px;
   background: #28c44a;
+}
+.memoryGame #progresBarAndTimerWrapper #timer {
+  width: 10%;
+  position: relative;
+  margin-left: 10px;
+}
+.memoryGame #progresBarAndTimerWrapper #timer span {
+  position: absolute;
+  font-size: 30px;
+  top: -4px;
+}
+.memoryGame #scores {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: white;
+  width: 100%;
+  font-size: 26px;
+  padding: 0 10% 0 0;
+}
+.memoryGame #boxes {
+  flex-wrap: wrap;
+  height: 300px;
+  width: 90%;
+  gap: 10px;
+}
+.memoryGame #boxes .box {
+  position: relative;
+  height: 140px;
+  width: 140px;
+  transition: 0.6s;
+  animation: scalingIn 0.4s;
+}
+.memoryGame #boxes .box.active .front {
+  transform: rotateY(0deg) translateX(0px);
+}
+.memoryGame #boxes .box.active .front.correct {
+  border-left: 5px solid #28c44a;
+  border-right: 5px solid #4fdb6d;
+  border-top: 5px solid #3ad65c;
+  border-bottom: 5px solid rgb(36, 175, 66);
+  background: #e7faeb;
+}
+.memoryGame #boxes .box.active .front.pulsingRed {
+  border-left: 5px solid #ff6161;
+  border-right: 5px solid #ff9e9e;
+  border-top: 5px solid #ff8484;
+  border-bottom: 5px solid rgb(255, 71, 71);
+  background: white;
+  animation: pulsingRed 1s infinite;
+}
+.memoryGame #boxes .box.active .back {
+  transform: rotateY(90deg) skewY(5deg) translateY(-12px) translateX(-30px);
+}
+.memoryGame #boxes .box.correct {
+  animation: scalingOut 0.6s ease-out;
+  background: transparent;
+  opacity: 0;
+}
+.memoryGame #boxes .box.gone {
+  display: none;
+}
+.memoryGame #boxes .box.shaking {
+  animation: 0.968s shaking infinite;
+}
+.memoryGame #boxes .box.rotatingDisappearance {
+  animation: 2s rotatingDisappearance ease-out;
+}
+.memoryGame #boxes .box .square {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transition: 0.2s ease-in-out;
+  transform-style: preserve-3d;
+}
+.memoryGame #boxes .box .front,
+.memoryGame #boxes .box .back {
+  border-left: 5px solid #767676;
+  border-right: 5px solid #949494;
+  border-top: 5px solid #888888;
+  border-bottom: 5px solid rgb(105, 105, 105);
+  border-radius: 10px;
+}
+.memoryGame #boxes .box .front {
+  transform: rotateY(90deg) skewY(-5deg) translateX(200px);
+  transform-origin: right;
+  background: rgb(238, 238, 238);
+}
+.memoryGame #boxes .box .front img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -55%);
+  width: 120px;
+  height: 120px;
+}
+.memoryGame #boxes .box .front h2 {
+  position: absolute;
+  font-size: 2.2em;
+  left: 8%;
+  top: 2%;
+}
+.memoryGame #boxes .box .front h2 span {
+  margin-left: 5px;
+  font-size: 0.6em;
+}
+.memoryGame #boxes .box .front p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 65%);
+  bottom: 0%;
+  opacity: 0.8;
+}
+.memoryGame #boxes .box .back {
+  background: rgb(238, 238, 238);
+  transform-origin: left;
+  text-align: center;
+  justify-content: center;
+}
+.memoryGame #boxes .box .back img {
+  height: 100%;
+  width: 100%;
+}
+.memoryGame #boxes .box .back:hover {
+  opacity: 0.95;
 }
 
 .letterSection {
@@ -673,7 +751,7 @@ header a,
 .illustration,
 .memoryGame.active,
 .memoryGame .box,
-.tatkoNaWrapper {
+#boxes {
   display: flex;
 }
 
