@@ -6,12 +6,9 @@ import { loadingScreen } from './utilities/loading-screen.js';
 import { defaultLetter, forward, backward } from './utilities/change-letter.js';
 import { wrapper, letterSection, illustration, displayWord, letter, azbukaArr, img, stopRandomButton, startStop } from './utilities/randomising-letter.js';
 
-import { memoryGame, formingArrayForMemoryGame, renderBoxes, progressBar, progressValue, shuffledArray, startTimer, intervalId, unshuffledArray, score, stopTimer } from './utilities/memory-game.js';
+import { memoryGame, progressBar, clearTimeouts, startGame } from './utilities/memory-game.js';
 
-const span = document.querySelector('span');
-let stopLetter = '';
 randomButton.style.display = 'none';
-let timerInterval;
 
 //Keyboard
 const isKeyPressed = {
@@ -22,10 +19,6 @@ const isKeyPressed = {
 letter.innerHTML = azbukaArr[0] + `<span>${azbukaArr[0].toLowerCase()}</span>`;
 img.src = `assets/img/${vocabular[0].words[0].bind}.png`;
 img.alt = vocabular[0].words[0].name;
-
-let counter = 0;
-let character = 0;
-// let timer;
 
 // Navigation (adding and removing elements)
 const classRemover = () => {
@@ -38,7 +31,7 @@ const classRemover = () => {
 for (let sectionButton of sectionButtons) {
 	sectionButton.addEventListener('click', () => {
 		playSoundEffect('sectionClick');
-		stopTimer();
+		clearTimeouts();
 		classRemover();
 		sectionButton.classList.add('active');
 
@@ -53,6 +46,7 @@ for (let sectionButton of sectionButtons) {
 
 		if (sectionButtons[0].classList.contains('active')) {
 			defaultLetter(vocabular);
+
 			arrowButtons.style.display = 'flex';
 		}
 
@@ -63,9 +57,7 @@ for (let sectionButton of sectionButtons) {
 			progressBar.classList.add('active');
 			vocabular.forEach((el) => (el.wordCounter = 0));
 			wrapper.classList.add('game');
-			startTimer();
-			formingArrayForMemoryGame(4);
-			renderBoxes();
+			startGame();
 		} else {
 			letterSection.style.display = 'flex';
 			illustration.style.display = 'flex';

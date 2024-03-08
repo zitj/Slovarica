@@ -377,11 +377,37 @@ header nav a.active {
   font-size: 26px;
   padding: 0 10% 0 0;
 }
+.memoryGame #playAgainBtn {
+  display: none;
+  border: none;
+  border-bottom: 4px solid rgb(40, 66, 43);
+  outline: none;
+  letter-spacing: 3px;
+  font-size: 2em;
+  background: rgb(36, 175, 66);
+  color: white;
+  border-radius: 8px;
+  padding: 20px;
+  transition: 0.1s;
+  animation: scalingInButtons 0.35s ease-in-out;
+}
+.memoryGame #playAgainBtn:hover {
+  opacity: 0.9;
+}
+.memoryGame #playAgainBtn:active {
+  opacity: 1;
+  border-bottom: 2px solid rgb(40, 66, 43);
+  transform: translateY(4px);
+}
+.memoryGame #playAgainBtn.show {
+  display: block;
+}
 .memoryGame #boxes {
   flex-wrap: wrap;
   height: 300px;
   width: 90%;
   gap: 10px;
+  margin-right: 10%;
 }
 .memoryGame #boxes .box {
   position: relative;

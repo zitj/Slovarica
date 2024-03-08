@@ -1,26 +1,18 @@
 import { vocabular } from '../../data/data.js';
-import { playAudio, playSoundEffect, audio } from './sounds.js';
+import { playAudio, playSoundEffect } from './sounds.js';
 
+export const memoryGame = document.querySelector('.memoryGame');
 export const progressBar = document.querySelector('.progressBar');
 export const progressValue = document.querySelector('.progressValue');
 
-export let countingPairs = 0;
-export let score = 0;
-export let totalScore = 0;
-export let progressValueCounter = 5;
-export let counter = 0;
-export let character = 0;
-let timer = 0;
-let hideSolutionTime = 0;
+const boxesContainer = document.querySelector('#boxes');
 
-export const memoryGame = document.querySelector('.memoryGame');
-export const boxesContainer = document.querySelector('#boxes');
+const playAgainButton = document.querySelector('#playAgainBtn');
 const timeCounter = document.querySelector('#timer').children[0];
 const scoreBoard = {
 	bestScore: document.querySelector('#bestScore').children[0],
 	totalScore: document.querySelector('#totalScore').children[0],
 };
-export const inout = new Audio('assets/audio/inout.mp3');
 
 const sounds = {
 	show: new Audio('assets/audio/show.mp3'),
@@ -29,77 +21,111 @@ const sounds = {
 	wrong: new Audio('assets/audio/wrong.mp3'),
 };
 
-export let boxes = [];
-export let boxTitles = [];
-export let unshuffledArray = [];
-export let shuffledArray = [];
-export let temporaryArray = [];
+let boxes = [];
+let boxTitles = [];
+let unshuffledArray = [];
+let shuffledArray = [];
+let temporaryArray = [];
+let timeouts = [];
 
-export let intervalId;
+let score = 0;
+let totalScore = 0;
+let time = 0;
+let hideSolutionTime = 0;
 
-export const startTimer = () => {
+export const startGame = () => {
+	startTimer();
+	formingArrayForMemoryGame(4);
+	renderBoxes();
+};
+
+export const clearTimeouts = () => {
+	timeouts.forEach((timeout) => clearInterval(timeout));
+};
+
+playAgainButton.addEventListener('click', () => {
+	startGame();
+});
+
+const setTimeToMinutes = () => {
+	const minutes = Math.floor(time / 60)
+		.toString()
+		.padStart(2, '0');
+	const seconds = (time % 60).toString().padStart(2, '0');
+	timeCounter.innerHTML = `${minutes}:${seconds}`;
+};
+
+const gameOver = () => {
+	progressValue.style.width = `100%`;
+	progressBar.classList.add('wrong');
+	let gameOverTimeout = setTimeout(() => {
+		sounds.timeIsUp.play();
+		for (let box of boxes) {
+			if (!box.classList.contains('correct')) {
+				box.classList.remove('shaking');
+				box.classList.add('rotatingDisappearance');
+				box.addEventListener('animationend', () => {
+					box.classList.add('gone');
+					progressBar.classList.remove('wrong');
+					progressValue.style.width = `5%`;
+					playAgainButton.classList.add('show');
+				});
+			}
+		}
+	}, 2000);
+	timeouts.push(gameOverTimeout);
+};
+
+const settingGameStart = () => {
 	if (localStorage.getItem('bestScore')) scoreBoard.bestScore.innerHTML = localStorage.getItem('bestScore');
+	playAgainButton.classList.remove('show');
+	progressBar.classList.remove('wrong');
+	progressValue.style.width = `5%`;
 	temporaryArray = [];
-	hideSolutionTime = 450;
+	hideSolutionTime = 600;
 	totalScore = 0;
 	scoreBoard.totalScore.innerHTML = totalScore;
 	score = 0;
-	timer = 5;
-	intervalId = setInterval(() => {
-		timer--;
-		const minutes = Math.floor(timer / 60)
-			.toString()
-			.padStart(2, '0');
-		const seconds = (timer % 60).toString().padStart(2, '0');
-		console.log(`${minutes}:${seconds}`);
-		timeCounter.innerHTML = `${minutes}:${seconds}`;
-		if (timer <= 0) {
-			clearInterval(intervalId);
+	time = 25;
+	setTimeToMinutes();
+};
+
+const startTimer = () => {
+	settingGameStart();
+	let tickingInterval = setInterval(() => {
+		time--;
+		setTimeToMinutes();
+		if (time <= 0) {
+			clearInterval(tickingInterval);
 			if (!localStorage.getItem('bestScore')) localStorage.setItem('bestScore', totalScore);
 			if (localStorage.getItem('bestScore') && localStorage.getItem('bestScore') < totalScore) {
 				localStorage.setItem('bestScore', totalScore);
 			}
-			progressValue.style.width = `100%`;
-			progressBar.classList.add('wrong');
+
 			for (let box of boxes) {
 				showSolution(box, false);
 			}
-			setTimeout(() => {
-				sounds.timeIsUp.play();
-				for (let box of boxes) {
-					box.classList.remove('shaking');
-					box.classList.add('rotatingDisappearance');
-					box.addEventListener('animationend', () => {
-						box.classList.add('gone');
-						progressBar.classList.remove('wrong');
-						progressValue.style.width = `5%`;
-					});
-				}
-			}, 2000);
-			console.log(`Time is up! Total score: ${totalScore}, Best score: ${localStorage.getItem('bestScore')}`);
+			gameOver();
 			return;
 		}
 	}, 1000);
-};
-export const stopTimer = () => {
-	clearInterval(intervalId);
+	timeouts.push(tickingInterval);
 };
 
-export const formingArrayForMemoryGame = (numberOfPairs) => {
+const formingArrayForMemoryGame = (numberOfPairs) => {
 	let numberOfDifferentWords = numberOfPairs / 2;
 	let selectedWordsObj = {};
 	let selectedWordsArray = [];
 	for (let i = 0; i < numberOfDifferentWords; i++) {
-		// let randomNumber = Math.floor(Math.random() * 30);
-		for (let j = 0; j < vocabular[i].words.length; j++) {
-			if (!selectedWordsObj[vocabular[i].words[j].bind]) {
-				selectedWordsObj[vocabular[i].words[j].bind] = true;
-				selectedWordsArray.push(vocabular[i].words[j]);
+		let randomNumber = Math.floor(Math.random() * 30);
+		for (let j = 0; j < vocabular[randomNumber].words.length; j++) {
+			if (!selectedWordsObj[vocabular[randomNumber].words[j].bind]) {
+				selectedWordsObj[vocabular[randomNumber].words[j].bind] = true;
+				selectedWordsArray.push(vocabular[randomNumber].words[j]);
 				break;
 			}
 		}
 	}
-	console.log(selectedWordsArray);
 	unshuffledArray = selectedWordsArray.concat(selectedWordsArray);
 	shuffledArray = unshuffledArray
 		.map((a) => ({ sort: Math.random(), value: a }))
@@ -107,7 +133,7 @@ export const formingArrayForMemoryGame = (numberOfPairs) => {
 		.map((a) => a.value);
 };
 
-export const renderBoxes = () => {
+const renderBoxes = () => {
 	let template = ``;
 	shuffledArray.forEach((word) => {
 		const firstLetter = word.name[0];
@@ -133,13 +159,14 @@ export const renderBoxes = () => {
 
 const showSolution = (box, hideSolution) => {
 	box.classList.add('active');
+	if (box.children[0].classList.contains('pulsingRed')) return;
 	if (hideSolution) {
 		sounds.show.play();
-		hideSolutionTime += 5;
-		setTimeout(() => {
+		let hideSolutionTimeout = setTimeout(() => {
 			box.classList.remove('active');
 			sounds.hide.play();
 		}, hideSolutionTime);
+		timeouts.push(hideSolutionTimeout);
 	} else {
 		sounds.wrong.play();
 		box.classList.add('shaking');
@@ -156,7 +183,8 @@ const pairMatches = () => {
 	playAudio('success');
 	temporaryArray = [];
 	score += 2;
-	timer += 2;
+	time += 2;
+	setTimeToMinutes();
 	totalScore += 1;
 	scoreBoard.totalScore.innerHTML = totalScore;
 
@@ -164,17 +192,19 @@ const pairMatches = () => {
 	progressValue.style.width = `${progressPercentage}%`;
 	progressBar.classList.add('correct');
 	if (score === maxScore) {
-		setTimeout(() => {
+		let progressValueTimeout = setTimeout(() => {
 			progressValue.style.width = `5%`;
 		}, 550);
+		timeouts.push(progressValueTimeout);
 	}
-	setTimeout(() => {
+	let progressBarTimeout = setTimeout(() => {
 		progressBar.classList.remove('correct');
 	}, 250);
+	timeouts.push(progressBarTimeout);
 };
 
 const pairDoesNotMatch = () => {
-	setTimeout(() => {
+	let pairDoesNotMatchTimeout = setTimeout(() => {
 		temporaryArray.forEach((box) => {
 			if (box.classList.contains('active')) {
 				box.classList.remove('active');
@@ -182,15 +212,17 @@ const pairDoesNotMatch = () => {
 			}
 		});
 	}, 400);
+	timeouts.push(pairDoesNotMatchTimeout);
 };
 
 const goToNextLevel = () => {
 	score = 0;
 	unshuffledArray = [];
 	formingArrayForMemoryGame(shuffledArray.length + 2);
-	setTimeout(() => {
+	let renderBoxesTimeout = setTimeout(() => {
 		renderBoxes();
 	}, 700);
+	timeouts.push(renderBoxesTimeout);
 };
 
 const clickingOnBoxes = () => {
@@ -200,6 +232,7 @@ const clickingOnBoxes = () => {
 		box.addEventListener('click', (event) => {
 			if (timer === 0) return;
 			if (box.classList.contains('correct')) return;
+			if (box.children[0].classList.contains('pulsingRed')) return;
 			box.classList.toggle('active');
 			playSoundEffect('open');
 			box.classList.contains('active') ? temporaryArray.push(box) : (temporaryArray = []);

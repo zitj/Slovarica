@@ -68,12 +68,38 @@
 		font-size: 26px;
 		padding: 0 10% 0 0;
 	}
+	#playAgainBtn {
+		display: none;
+		border: none;
+		border-bottom: 4px solid $border-button-green;
+		outline: none;
+		letter-spacing: 3px;
+		font-size: 2em;
+		background: $button-green;
+		color: white;
+		border-radius: 8px;
+		padding: 20px;
+		transition: 0.1s;
+		animation: scalingInButtons 0.35s ease-in-out;
+		&:hover {
+			opacity: 0.9;
+		}
+		&:active {
+			opacity: 1;
+			border-bottom: 2px solid $border-button-green;
+			transform: translateY(4px);
+		}
+		&.show {
+			display: block;
+		}
+	}
 
 	#boxes {
 		flex-wrap: wrap;
 		height: 300px;
 		width: 90%;
 		gap: 10px;
+		margin-right: 10%;
 		.box {
 			position: relative;
 			height: 140px;
