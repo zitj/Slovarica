@@ -1,15 +1,29 @@
 @import 'variables';
 
 @mixin borderMixin($width, $color) {
-    border-left: $width solid lighten($color, 5%);
-    border-right: $width solid lighten($color, 17%);
-    border-top: $width solid lighten($color, 12%);
-    border-bottom: $width solid $color;
+	border-left: $width solid lighten($color, 5%);
+	border-right: $width solid lighten($color, 17%);
+	border-top: $width solid lighten($color, 12%);
+	border-bottom: $width solid $color;
 }
 
 @mixin centering($x, $y) {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate($x, $y);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate($x, $y);
+}
+
+@mixin button($backgroudColor) {
+	border: none;
+	outline: none;
+	border-bottom: 4px solid $border-button-green;
+	border-radius: 8px;
+	letter-spacing: 3px;
+	font-size: 2em;
+	background: $backgroudColor;
+	color: white;
+	padding: 20px;
+	transition: 0.1s;
+	animation: scalingInButtons 0.35s ease-in-out;
 }

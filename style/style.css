@@ -101,6 +101,46 @@
     background-color: #ff7a7a;
   }
 }
+@keyframes fadeOutToTopGreen {
+  0% {
+    color: #31d555;
+    transform: translateY(-50px);
+    opacity: 1;
+  }
+  100% {
+    color: white;
+    transform: translateY(0px);
+    opacity: 0;
+  }
+}
+@keyframes scaleInOutGreen {
+  0% {
+    color: white;
+    transform: scale(1);
+  }
+  50% {
+    color: #31d555;
+    transform: scale(1.5);
+  }
+  100% {
+    color: white;
+    transform: scale(1);
+  }
+}
+@keyframes pulsingRedCharacters {
+  0% {
+    transform: scale(1);
+    color: white;
+  }
+  50% {
+    transform: scale(1.5);
+    color: #ff6161;
+  }
+  100% {
+    transform: scale(1);
+    color: white;
+  }
+}
 @keyframes shaking {
   0% {
     transform: rotate(0deg);
@@ -278,7 +318,7 @@ header nav a.active {
     gap: 10em;
   }
   .wrapper.game {
-    height: 50vh;
+    height: 70vh;
   }
 }
 @media screen and (max-width: 1000px) and (orientation: landscape) {
@@ -322,7 +362,7 @@ header nav a.active {
 }
 .memoryGame #progresBarAndTimerWrapper .progressBar {
   display: none;
-  width: 90%;
+  width: 100%;
   border-radius: 15px;
   border-left: 2px solid #767676;
   border-right: 2px solid #949494;
@@ -358,16 +398,6 @@ header nav a.active {
   border-radius: 15px;
   background: #28c44a;
 }
-.memoryGame #progresBarAndTimerWrapper #timer {
-  width: 10%;
-  position: relative;
-  margin-left: 10px;
-}
-.memoryGame #progresBarAndTimerWrapper #timer span {
-  position: absolute;
-  font-size: 30px;
-  top: -4px;
-}
 .memoryGame #scores {
   display: flex;
   justify-content: space-between;
@@ -375,12 +405,58 @@ header nav a.active {
   color: white;
   width: 100%;
   font-size: 26px;
-  padding: 0 10% 0 0;
+}
+.memoryGame #scores #timer {
+  position: relative;
+  margin-left: 10px;
+  font-size: 30px;
+}
+.memoryGame #scores #timer #counterTimer.bonus {
+  animation: scaleInOutGreen 0.3s ease-in-out;
+}
+.memoryGame #scores #timer #counterTimer.timeIsUp {
+  animation: pulsingRedCharacters 0.8s ease-in-out;
+}
+.memoryGame #scores #timer #bonusTime {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  margin-left: 10px;
+  opacity: 0;
+}
+.memoryGame #scores #timer #bonusTime.fadeOutToTopGreen {
+  opacity: 1;
+  animation: fadeOutToTopGreen 0.2s ease-in-out;
+}
+.memoryGame #playAgainBtn {
+  display: none;
+  border: none;
+  outline: none;
+  border-bottom: 4px solid rgb(40, 66, 43);
+  border-radius: 8px;
+  letter-spacing: 3px;
+  font-size: 2em;
+  background: rgb(36, 175, 66);
+  color: white;
+  padding: 20px;
+  transition: 0.1s;
+  animation: scalingInButtons 0.35s ease-in-out;
+  width: 100%;
+}
+.memoryGame #playAgainBtn:hover {
+  opacity: 0.9;
+}
+.memoryGame #playAgainBtn:active {
+  opacity: 1;
+  border-bottom: 2px solid rgb(40, 66, 43);
+  transform: translateY(4px);
+}
+.memoryGame #playAgainBtn.show {
+  display: block;
 }
 .memoryGame #boxes {
   flex-wrap: wrap;
   height: 300px;
-  width: 90%;
   gap: 10px;
 }
 .memoryGame #boxes .box {
@@ -510,13 +586,13 @@ header nav a.active {
 }
 .letterSection button {
   border: none;
-  border-bottom: 4px solid rgb(83, 26, 26);
   outline: none;
+  border-bottom: 4px solid rgb(40, 66, 43);
+  border-radius: 8px;
   letter-spacing: 3px;
-  font-size: 1.5em;
+  font-size: 2em;
   background: rgb(255, 71, 71);
   color: white;
-  border-radius: 8px;
   padding: 20px;
   transition: 0.1s;
   animation: scalingInButtons 0.35s ease-in-out;

@@ -8,6 +8,7 @@
 		transform: scale(1);
 	}
 }
+
 @keyframes scalingInButtons {
 	0% {
 		opacity: 0;
@@ -22,6 +23,7 @@
 		transform: scale(1);
 	}
 }
+
 @keyframes scalingOut {
 	0% {
 		opacity: 1;
@@ -40,6 +42,7 @@
 		transform: scale(0);
 	}
 }
+
 @keyframes capitalAndLower {
 	0% {
 		transform: scale(0) rotate(20deg);
@@ -70,6 +73,7 @@
 		opacity: 1;
 	}
 }
+
 @keyframes fadeInTitle {
 	0% {
 		opacity: 0;
@@ -78,6 +82,7 @@
 		opacity: 1;
 	}
 }
+
 @keyframes correctFront {
 	0% {
 	}
@@ -85,6 +90,7 @@
 		border: none;
 	}
 }
+
 @keyframes rotatingDisappearance {
 	0% {
 		transform: scale(1) rotate(0deg);
@@ -96,6 +102,7 @@
 		opacity: 0;
 	}
 }
+
 @keyframes pulsingRed {
 	0% {
 		background-color: lighten($button-red, 10%);
@@ -107,6 +114,49 @@
 		background-color: lighten($button-red, 10%);
 	}
 }
+
+@keyframes fadeOutToTopGreen {
+	0% {
+		color: lighten($button-green, 10%);
+		transform: translateY(-50px);
+		opacity: 1;
+	}
+	100% {
+		color: white;
+		transform: translateY(0px);
+		opacity: 0;
+	}
+}
+@keyframes scaleInOutGreen {
+	0% {
+		color: white;
+		transform: scale(1);
+	}
+	50% {
+		color: lighten($button-green, 10%);
+		transform: scale(1.5);
+	}
+	100% {
+		color: white;
+		transform: scale(1);
+	}
+}
+
+@keyframes pulsingRedCharacters {
+	0% {
+		transform: scale(1);
+		color: white;
+	}
+	50% {
+		transform: scale(1.5);
+		color: lighten($button-red, 5%);
+	}
+	100% {
+		transform: scale(1);
+		color: white;
+	}
+}
+
 @keyframes shaking {
 	0% {
 		transform: rotate(0deg);

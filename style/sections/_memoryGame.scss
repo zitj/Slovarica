@@ -20,7 +20,7 @@
 		}
 		.progressBar {
 			display: none;
-			width: 90%;
+			width: 100%;
 			border-radius: 15px;
 			@include borderMixin(2px, $border-grey);
 			background: rgb(238, 238, 238);
@@ -47,16 +47,6 @@
 				background: lighten($button-green, 5%);
 			}
 		}
-		#timer {
-			width: 10%;
-			position: relative;
-			margin-left: 10px;
-			span {
-				position: absolute;
-				font-size: 30px;
-				top: -4px;
-			}
-		}
 	}
 
 	#scores {
@@ -66,13 +56,51 @@
 		color: white;
 		width: 100%;
 		font-size: 26px;
-		padding: 0 10% 0 0;
+		#timer {
+			position: relative;
+			margin-left: 10px;
+			font-size: 30px;
+			#counterTimer {
+				&.bonus {
+					animation: scaleInOutGreen 0.3s ease-in-out;
+				}
+				&.timeIsUp {
+					animation: pulsingRedCharacters 0.8s ease-in-out;
+				}
+			}
+			#bonusTime {
+				position: absolute;
+				top: 0;
+				right: -10px;
+				margin-left: 10px;
+				opacity: 0;
+				&.fadeOutToTopGreen {
+					opacity: 1;
+					animation: fadeOutToTopGreen 0.2s ease-in-out;
+				}
+			}
+		}
+	}
+	#playAgainBtn {
+		display: none;
+		@include button($button-green);
+		width: 100%;
+		&:hover {
+			opacity: 0.9;
+		}
+		&:active {
+			opacity: 1;
+			border-bottom: 2px solid $border-button-green;
+			transform: translateY(4px);
+		}
+		&.show {
+			display: block;
+		}
 	}
 
 	#boxes {
 		flex-wrap: wrap;
 		height: 300px;
-		width: 90%;
 		gap: 10px;
 		.box {
 			position: relative;
