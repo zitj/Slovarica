@@ -6,7 +6,7 @@ import { loadingScreen } from './utilities/loading-screen.js';
 import { defaultLetter, forward, backward } from './utilities/change-letter.js';
 import { wrapper, letterSection, illustration, displayWord, letter, azbukaArr, img, stopRandomButton, startStop } from './utilities/randomising-letter.js';
 
-import { memoryGame, progressBar, clearTimeouts, startGame } from './utilities/memory-game.js';
+import { clearTimeouts, hideGameElements, showGameElements, startGame } from './utilities/memory-game.js';
 
 randomButton.style.display = 'none';
 
@@ -53,16 +53,14 @@ for (let sectionButton of sectionButtons) {
 		if (sectionButtons[2].classList.contains('active')) {
 			letterSection.style.display = 'none';
 			illustration.style.display = 'none';
-			memoryGame.classList.add('active');
-			progressBar.classList.add('active');
+			showGameElements();
 			vocabular.forEach((el) => (el.wordCounter = 0));
 			wrapper.classList.add('game');
 			startGame();
 		} else {
 			letterSection.style.display = 'flex';
 			illustration.style.display = 'flex';
-			memoryGame.classList.remove('active');
-			progressBar.classList.remove('active');
+			hideGameElements();
 			wrapper.classList.remove('game');
 		}
 	});

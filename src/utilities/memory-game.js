@@ -1,14 +1,15 @@
 import { vocabular } from '../../data/data.js';
 import { playAudio, playSoundEffect } from './sounds.js';
 
-export const memoryGame = document.querySelector('.memoryGame');
-export const progressBar = document.querySelector('.progressBar');
-export const progressValue = document.querySelector('.progressValue');
+const memoryGame = document.querySelector('.memoryGame');
+const progressBar = document.querySelector('.progressBar');
+const progressValue = document.querySelector('.progressValue');
 
 const boxesContainer = document.querySelector('#boxes');
 
 const playAgainButton = document.querySelector('#playAgainBtn');
-const timeCounter = document.querySelector('#timer').children[0];
+const timeCounter = document.querySelector('#counterTimer');
+const bonusTime = document.querySelector('#bonusTime');
 const scoreBoard = {
 	bestScore: document.querySelector('#bestScore').children[0],
 	totalScore: document.querySelector('#totalScore').children[0],
@@ -32,6 +33,15 @@ let score = 0;
 let totalScore = 0;
 let time = 0;
 let hideSolutionTime = 0;
+
+export const showGameElements = () => {
+	memoryGame.classList.add('active');
+	progressBar.classList.add('active');
+};
+export const hideGameElements = () => {
+	memoryGame.classList.remove('active');
+	progressBar.classList.remove('active');
+};
 
 export const startGame = () => {
 	startTimer();
@@ -86,7 +96,7 @@ const settingGameStart = () => {
 	totalScore = 0;
 	scoreBoard.totalScore.innerHTML = totalScore;
 	score = 0;
-	time = 25;
+	time = 35;
 	setTimeToMinutes();
 };
 
@@ -97,19 +107,20 @@ const startTimer = () => {
 		setTimeToMinutes();
 		if (time <= 0) {
 			clearInterval(tickingInterval);
-			if (!localStorage.getItem('bestScore')) localStorage.setItem('bestScore', totalScore);
-			if (localStorage.getItem('bestScore') && localStorage.getItem('bestScore') < totalScore) {
-				localStorage.setItem('bestScore', totalScore);
-			}
-
-			for (let box of boxes) {
-				showSolution(box, false);
-			}
+			setBestScore();
+			for (let box of boxes) showSolution(box, false);
 			gameOver();
 			return;
 		}
 	}, 1000);
 	timeouts.push(tickingInterval);
+};
+
+const setBestScore = () => {
+	if (!localStorage.getItem('bestScore')) localStorage.setItem('bestScore', totalScore);
+	if (localStorage.getItem('bestScore') && localStorage.getItem('bestScore') < totalScore) {
+		localStorage.setItem('bestScore', totalScore);
+	}
 };
 
 const formingArrayForMemoryGame = (numberOfPairs) => {
@@ -168,14 +179,19 @@ const showSolution = (box, hideSolution) => {
 		}, hideSolutionTime);
 		timeouts.push(hideSolutionTimeout);
 	} else {
-		sounds.wrong.play();
-		box.classList.add('shaking');
-		box.children[0].classList.add('pulsingRed');
+		revealSolutionFor(box);
 	}
 };
 
+const revealSolutionFor = (box) => {
+	sounds.wrong.play();
+	box.classList.add('shaking');
+	box.children[0].classList.add('pulsingRed');
+	timeCounter.classList.add('timeIsUp');
+	timeCounter.addEventListener('animationend', () => timeCounter.classList.remove('timeIsUp'));
+};
+
 const pairMatches = () => {
-	const maxScore = shuffledArray.length;
 	temporaryArray.forEach((box) => {
 		box.classList.add('correct');
 		box.children[0].classList.add('correct');
@@ -185,9 +201,22 @@ const pairMatches = () => {
 	score += 2;
 	time += 2;
 	setTimeToMinutes();
+	animateTimeCounter();
 	totalScore += 1;
 	scoreBoard.totalScore.innerHTML = totalScore;
+	increaseProgressBarPercentage();
+};
 
+const animateTimeCounter = () => {
+	timeCounter.classList.add('bonus');
+	timeCounter.addEventListener('animationend', () => timeCounter.classList.remove('bonus'));
+	bonusTime.innerHTML = `+2`;
+	bonusTime.classList.add('fadeOutToTopGreen');
+	bonusTime.addEventListener('animationend', () => bonusTime.classList.remove('fadeOutToTopGreen'));
+};
+
+const increaseProgressBarPercentage = () => {
+	const maxScore = shuffledArray.length;
 	let progressPercentage = (score / maxScore) * 100;
 	progressValue.style.width = `${progressPercentage}%`;
 	progressBar.classList.add('correct');
