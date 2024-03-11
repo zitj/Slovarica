@@ -99,14 +99,21 @@
 	}
 
 	#boxes {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		flex-wrap: wrap;
 		height: 300px;
+		transition: 0.3s;
 		gap: 10px;
+		&.gameOver {
+			height: 0px;
+		}
 		.box {
 			position: relative;
 			height: 140px;
 			width: 140px;
-			transition: 0.6s;
+			transition: 0.2s ease-out;
 			animation: scalingIn 0.4s;
 			&.active {
 				.front {
@@ -152,7 +159,7 @@
 				border-radius: 10px;
 			}
 			.front {
-				transform: rotateY(90deg) skewY(-5deg) translateX(200px);
+				transform: rotateY(90deg) skewY(-10deg) translateX(140px);
 				transform-origin: right;
 				background: $dirty-white;
 
@@ -196,21 +203,75 @@
 	// }
 	// @media screen and (max-width: 1280px) {
 	// }
-	// @media screen and (max-width: 1025px) and (orientation: landscape) {
-	// 	.box {
-	// 		height: 90px;
-	// 		width: 90px;
-	// 		.front {
-	// 			img {
-	// 				height: 50px;
-	// 				width: 50px;
-	// 			}
-	// 			p {
-	// 				@include centering(-50%, 50%);
-	// 			}
-	// 		}
-	// 	}
-	// }
+	@media screen and (max-width: 1280px) and (orientation: landscape) {
+		#boxes {
+			align-content: flex-start;
+			.box {
+				height: 90px;
+				width: 90px;
+				.front {
+					img {
+						height: 50px;
+						width: 50px;
+					}
+					h2 {
+						font-size: 1.8em;
+					}
+					p {
+						@include centering(-50%, 50%);
+					}
+				}
+				.back {
+					// transform: rotateY(0deg) skewY(0deg) translateY(0px) translateX(0px);
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 600px) and (orientation: portrait) {
+		#scores {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			& > :nth-child(2) {
+				order: 1;
+			}
+			font-size: 16px;
+			#timer {
+				font-size: 26px;
+			}
+		}
+		#playAgainBtn {
+			font-size: 16px;
+		}
+		#boxes {
+			align-content: flex-start;
+			.box {
+				height: 50px;
+				width: 50px;
+				.front {
+					transform: rotateY(90deg) skewY(-5deg) translateX(50px);
+					img {
+						height: 40px;
+						width: 40px;
+					}
+					h2 {
+						font-size: 1em;
+						// z-index: 2000;
+						opacity: 0.7;
+					}
+					p {
+						display: none;
+					}
+				}
+				&.active {
+					.back {
+						transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
+					}
+				}
+			}
+		}
+	}
 	// @media screen and (max-width: 1025px) and (orientation: portrait) {
 	// 	.box {
 	// 		height: 160px;

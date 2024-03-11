@@ -33,7 +33,16 @@
 		gap: 0em;
 		height: 90vh;
 	}
-	@media screen and (max-width: 500px) and (orientation: portrait) {
+	@media screen and (max-width: 600px) and (orientation: portrait) {
 		height: 85vh;
+		&.game {
+			height: 75vh;
+			width: 100%;
+		}
+	}
+	@media screen and (max-width: 320px) and (orientation: portrait) {
+		&.game {
+			height: 85vh;
+		}
 	}
 }
