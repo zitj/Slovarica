@@ -34,6 +34,8 @@ let totalScore = 0;
 let time = 0;
 let hideSolutionTime = 0;
 
+let matchPairHasNotDisappeared = false;
+
 export const showGameElements = () => {
 	memoryGame.classList.add('active');
 	progressBar.classList.add('active');
@@ -44,8 +46,10 @@ export const hideGameElements = () => {
 };
 
 export const startGame = () => {
+	settingGameStart();
 	startTimer();
 	formingArrayForMemoryGame(4);
+	// formingArrayForMemoryGame(20);
 	renderBoxes();
 };
 
@@ -79,6 +83,7 @@ const gameOver = () => {
 					progressBar.classList.remove('wrong');
 					progressValue.style.width = `5%`;
 					playAgainButton.classList.add('show');
+					boxesContainer.classList.add('gameOver');
 				});
 			}
 		}
@@ -90,18 +95,19 @@ const settingGameStart = () => {
 	if (localStorage.getItem('bestScore')) scoreBoard.bestScore.innerHTML = localStorage.getItem('bestScore');
 	playAgainButton.classList.remove('show');
 	progressBar.classList.remove('wrong');
+	boxesContainer.classList.remove('gameOver');
 	progressValue.style.width = `5%`;
 	temporaryArray = [];
 	hideSolutionTime = 600;
 	totalScore = 0;
 	scoreBoard.totalScore.innerHTML = totalScore;
 	score = 0;
-	time = 35;
+	// time = 5;
+	time = 45;
 	setTimeToMinutes();
 };
 
 const startTimer = () => {
-	settingGameStart();
 	let tickingInterval = setInterval(() => {
 		time--;
 		setTimeToMinutes();
@@ -192,9 +198,15 @@ const revealSolutionFor = (box) => {
 };
 
 const pairMatches = () => {
+	// matchPairHasNotDisappeared = true;
 	temporaryArray.forEach((box) => {
 		box.classList.add('correct');
 		box.children[0].classList.add('correct');
+		box.addEventListener('animationend', () => {
+			// box.style.height = '0px';
+			// box.style.width = '0px';
+			matchPairHasNotDisappeared = false;
+		});
 	});
 	playAudio('success');
 	temporaryArray = [];
@@ -248,6 +260,7 @@ const goToNextLevel = () => {
 	score = 0;
 	unshuffledArray = [];
 	formingArrayForMemoryGame(shuffledArray.length + 2);
+	hideSolutionTime += 30;
 	let renderBoxesTimeout = setTimeout(() => {
 		renderBoxes();
 	}, 700);
@@ -259,6 +272,7 @@ const clickingOnBoxes = () => {
 		const maxScore = shuffledArray.length;
 		showSolution(box, true);
 		box.addEventListener('click', (event) => {
+			if (matchPairHasNotDisappeared) return;
 			if (timer === 0) return;
 			if (box.classList.contains('correct')) return;
 			if (box.children[0].classList.contains('pulsingRed')) return;
