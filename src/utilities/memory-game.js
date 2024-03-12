@@ -14,6 +14,7 @@ const scoreBoard = {
 	bestScore: document.querySelector('#bestScore').children[0],
 	totalScore: document.querySelector('#totalScore').children[0],
 };
+const scores = document.querySelector('#scores');
 
 const sounds = {
 	show: new Audio('assets/audio/show.mp3'),
@@ -26,7 +27,7 @@ let boxes = [];
 let boxTitles = [];
 let unshuffledArray = [];
 let shuffledArray = [];
-let temporaryArray = [];
+let openedBoxes = [];
 let timeouts = [];
 
 let score = 0;
@@ -34,22 +35,23 @@ let totalScore = 0;
 let time = 0;
 let hideSolutionTime = 0;
 
-let matchPairHasNotDisappeared = false;
-
 export const showGameElements = () => {
 	memoryGame.classList.add('active');
 	progressBar.classList.add('active');
+	progressBar.addEventListener('animationend', () => {
+		scores.classList.add('active');
+	});
 };
 export const hideGameElements = () => {
 	memoryGame.classList.remove('active');
 	progressBar.classList.remove('active');
+	scores.classList.remove('active');
 };
 
 export const startGame = () => {
 	settingGameStart();
 	startTimer();
 	formingArrayForMemoryGame(4);
-	// formingArrayForMemoryGame(20);
 	renderBoxes();
 };
 
@@ -92,18 +94,22 @@ const gameOver = () => {
 };
 
 const settingGameStart = () => {
-	if (localStorage.getItem('bestScore')) scoreBoard.bestScore.innerHTML = localStorage.getItem('bestScore');
+	if (localStorage.getItem('bestScore')) {
+		scoreBoard.bestScore.innerHTML = localStorage.getItem('bestScore');
+	} else {
+		scoreBoard.bestScore.innerHTML = 0;
+	}
 	playAgainButton.classList.remove('show');
 	progressBar.classList.remove('wrong');
 	boxesContainer.classList.remove('gameOver');
 	progressValue.style.width = `5%`;
-	temporaryArray = [];
+	openedBoxes = [];
 	hideSolutionTime = 600;
 	totalScore = 0;
 	scoreBoard.totalScore.innerHTML = totalScore;
 	score = 0;
-	// time = 5;
-	time = 45;
+	time = 15;
+	// time = 45;
 	setTimeToMinutes();
 };
 
@@ -123,9 +129,13 @@ const startTimer = () => {
 };
 
 const setBestScore = () => {
-	if (!localStorage.getItem('bestScore')) localStorage.setItem('bestScore', totalScore);
+	if (!localStorage.getItem('bestScore')) {
+		localStorage.setItem('bestScore', totalScore);
+		scoreBoard.bestScore.innerHTML = totalScore;
+	}
 	if (localStorage.getItem('bestScore') && localStorage.getItem('bestScore') < totalScore) {
 		localStorage.setItem('bestScore', totalScore);
+		scoreBoard.bestScore.innerHTML = totalScore;
 	}
 };
 
@@ -198,18 +208,12 @@ const revealSolutionFor = (box) => {
 };
 
 const pairMatches = () => {
-	// matchPairHasNotDisappeared = true;
-	temporaryArray.forEach((box) => {
+	openedBoxes.forEach((box) => {
 		box.classList.add('correct');
 		box.children[0].classList.add('correct');
-		box.addEventListener('animationend', () => {
-			// box.style.height = '0px';
-			// box.style.width = '0px';
-			matchPairHasNotDisappeared = false;
-		});
 	});
+	openedBoxes = [];
 	playAudio('success');
-	temporaryArray = [];
 	score += 2;
 	time += 2;
 	setTimeToMinutes();
@@ -217,6 +221,7 @@ const pairMatches = () => {
 	totalScore += 1;
 	scoreBoard.totalScore.innerHTML = totalScore;
 	increaseProgressBarPercentage();
+	setBestScore();
 };
 
 const animateTimeCounter = () => {
@@ -246,10 +251,10 @@ const increaseProgressBarPercentage = () => {
 
 const pairDoesNotMatch = () => {
 	let pairDoesNotMatchTimeout = setTimeout(() => {
-		temporaryArray.forEach((box) => {
+		openedBoxes.forEach((box) => {
 			if (box.classList.contains('active')) {
 				box.classList.remove('active');
-				temporaryArray = [];
+				openedBoxes = [];
 			}
 		});
 	}, 400);
@@ -272,16 +277,16 @@ const clickingOnBoxes = () => {
 		const maxScore = shuffledArray.length;
 		showSolution(box, true);
 		box.addEventListener('click', (event) => {
-			if (matchPairHasNotDisappeared) return;
+			if (openedBoxes.length == 2) return;
 			if (timer === 0) return;
 			if (box.classList.contains('correct')) return;
 			if (box.children[0].classList.contains('pulsingRed')) return;
 			box.classList.toggle('active');
 			playSoundEffect('open');
-			box.classList.contains('active') ? temporaryArray.push(box) : (temporaryArray = []);
-			if (temporaryArray.length == 2) {
-				const firstValue = temporaryArray[0].dataset.val;
-				const secondValue = temporaryArray[1].dataset.val;
+			box.classList.contains('active') ? openedBoxes.push(box) : (openedBoxes = []);
+			if (openedBoxes.length == 2) {
+				const firstValue = openedBoxes[0].dataset.val;
+				const secondValue = openedBoxes[1].dataset.val;
 				firstValue === secondValue ? pairMatches() : pairDoesNotMatch();
 			}
 			if (score === maxScore) goToNextLevel();

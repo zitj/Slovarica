@@ -50,12 +50,17 @@
 	}
 
 	#scores {
-		display: flex;
 		justify-content: space-between;
 		align-items: flex-end;
 		color: white;
 		width: 100%;
 		font-size: 26px;
+		opacity: 0;
+		&.active {
+			display: flex;
+			animation: scalingIn 0.1s;
+			opacity: 1;
+		}
 		#timer {
 			position: relative;
 			margin-left: 10px;
@@ -247,17 +252,16 @@
 		#boxes {
 			align-content: flex-start;
 			.box {
-				height: 50px;
-				width: 50px;
+				height: 55px;
+				width: 55px;
 				.front {
 					transform: rotateY(90deg) skewY(-5deg) translateX(50px);
 					img {
-						height: 40px;
-						width: 40px;
+						height: 45px;
+						width: 45px;
 					}
 					h2 {
 						font-size: 1em;
-						// z-index: 2000;
 						opacity: 0.7;
 					}
 					p {
@@ -267,6 +271,20 @@
 				&.active {
 					.back {
 						transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 320px) and (orientation: portrait) {
+		#boxes {
+			.box {
+				height: 50px;
+				width: 50px;
+				.front {
+					img {
+						height: 40px;
+						width: 40px;
 					}
 				}
 			}
