@@ -408,12 +408,17 @@ header nav a.active {
   background: #28c44a;
 }
 .memoryGame #scores {
-  display: flex;
   justify-content: space-between;
   align-items: flex-end;
   color: white;
   width: 100%;
   font-size: 26px;
+  opacity: 0;
+}
+.memoryGame #scores.active {
+  display: flex;
+  animation: scalingIn 0.1s;
+  opacity: 1;
 }
 .memoryGame #scores #timer {
   position: relative;
@@ -619,15 +624,15 @@ header nav a.active {
     align-content: flex-start;
   }
   .memoryGame #boxes .box {
-    height: 50px;
-    width: 50px;
+    height: 55px;
+    width: 55px;
   }
   .memoryGame #boxes .box .front {
     transform: rotateY(90deg) skewY(-5deg) translateX(50px);
   }
   .memoryGame #boxes .box .front img {
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
   }
   .memoryGame #boxes .box .front h2 {
     font-size: 1em;
@@ -638,6 +643,16 @@ header nav a.active {
   }
   .memoryGame #boxes .box.active .back {
     transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
+  }
+}
+@media screen and (max-width: 320px) and (orientation: portrait) {
+  .memoryGame #boxes .box {
+    height: 50px;
+    width: 50px;
+  }
+  .memoryGame #boxes .box .front img {
+    height: 40px;
+    width: 40px;
   }
 }
 
