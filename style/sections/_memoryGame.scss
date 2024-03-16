@@ -8,7 +8,7 @@
 		width: 80%;
 	}
 
-	#progresBarWrapper {
+	#progressBarWrapper {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
@@ -273,9 +273,9 @@
 				}
 			}
 		}
-		#progresBarWrapper {
-			font-size: 10px;
-		}
+		// #progressBarWrapper {
+		// 	font-size: 10px;
+		// }
 	}
 	@media screen and (max-width: 320px) and (orientation: portrait) {
 		#scores {
@@ -299,9 +299,9 @@
 				}
 			}
 		}
-		#progresBarWrapper {
-			font-size: 10px;
-		}
+		// #progressBarWrapper {
+		// 	font-size: 10px;
+		// }
 	}
 	@media screen and (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) {
 		&.active {
@@ -343,9 +343,9 @@
 				}
 			}
 		}
-		#progresBarWrapper {
-			font-size: 10px;
-		}
+		// #progressBarWrapper {
+		// 	font-size: 10px;
+		// }
 	}
 	@media screen and (max-width: 568px) and (max-height: 320px) and (orientation: landscape) {
 		#scores {
@@ -390,8 +390,8 @@
 		#playAgainBtn {
 			font-size: 24px;
 		}
-		#progresBarWrapper {
-			font-size: 20px;
-		}
+		// #progressBarWrapper {
+		// 	font-size: 20px;
+		// }
 	}
 }

@@ -1,6 +1,5 @@
 import { vocabular } from '../../data/data.js';
 import { playAudio, playSoundEffect } from './sounds.js';
-import { wrapper } from './randomising-letter.js';
 
 const memoryGame = document.querySelector('.memoryGame');
 const progressBar = document.querySelector('.progressBar');
@@ -39,9 +38,8 @@ let hideSolutionTime = 0;
 export const showGameElements = () => {
 	memoryGame.classList.add('active');
 	progressBar.classList.add('active');
-	progressBar.addEventListener('animationend', () => {
-		scores.classList.add('active');
-	});
+	scores.classList.add('active');
+	// progressBar.addEventListener('animationend', () => {});
 };
 export const hideGameElements = () => {
 	memoryGame.classList.remove('active');
@@ -111,8 +109,8 @@ const settingGameStart = () => {
 	totalScore = 0;
 	scoreBoard.totalScore.innerHTML = totalScore;
 	score = 0;
-	// time = 5;
-	time = 4500;
+	time = 15;
+	// time = 4500;
 	setTimeToMinutes();
 };
 
