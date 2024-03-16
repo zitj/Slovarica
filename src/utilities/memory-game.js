@@ -1,5 +1,6 @@
 import { vocabular } from '../../data/data.js';
 import { playAudio, playSoundEffect } from './sounds.js';
+import { wrapper } from './randomising-letter.js';
 
 const memoryGame = document.querySelector('.memoryGame');
 const progressBar = document.querySelector('.progressBar');
@@ -86,6 +87,8 @@ const gameOver = () => {
 					progressValue.style.width = `5%`;
 					playAgainButton.classList.add('show');
 					boxesContainer.classList.add('gameOver');
+					totalScore = 0;
+					scoreBoard.totalScore.innerHTML = totalScore;
 				});
 			}
 		}
@@ -108,8 +111,8 @@ const settingGameStart = () => {
 	totalScore = 0;
 	scoreBoard.totalScore.innerHTML = totalScore;
 	score = 0;
-	// time = 15;
-	time = 4500;
+	time = 5;
+	// time = 4500;
 	setTimeToMinutes();
 };
 

@@ -239,7 +239,8 @@
 			}
 			font-size: 16px;
 			#timer {
-				font-size: 26px;
+				margin-top: 5px;
+				font-size: 24px;
 			}
 		}
 		#playAgainBtn {
@@ -273,7 +274,7 @@
 			}
 		}
 		#progresBarWrapper {
-			font-size: 15px;
+			font-size: 10px;
 		}
 	}
 	@media screen and (max-width: 320px) and (orientation: portrait) {
@@ -312,13 +313,20 @@
 				font-size: 20px;
 			}
 		}
+		#playAgainBtn {
+			font-size: 16px;
+		}
 		#boxes {
 			align-content: flex-start;
 			gap: 5px;
+			&.gameOver {
+				height: 130px;
+			}
 			.box {
 				height: 50px;
 				width: 50px;
 				.front {
+					transform: rotateY(90deg) skewY(-5deg) translateX(50px);
 					img {
 						height: 40px;
 						width: 40px;
@@ -331,10 +339,23 @@
 						display: none;
 					}
 				}
+				&.active {
+					.back {
+						transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
+					}
+				}
 			}
 		}
 		#progresBarWrapper {
 			font-size: 10px;
+		}
+	}
+	@media screen and (max-width: 568px) and (max-height: 320px) and (orientation: landscape) {
+		#scores {
+			font-size: 12px;
+			#timer {
+				font-size: 16px;
+			}
 		}
 	}
 }
