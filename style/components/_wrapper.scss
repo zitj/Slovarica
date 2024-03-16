@@ -45,4 +45,34 @@
 			height: 85vh;
 		}
 	}
+	@media screen and (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) {
+		&.game {
+			height: 105vh;
+		}
+	}
+	@media screen and (max-width: 653px) and (max-height: 281px) and (orientation: landscape) {
+		&.game {
+			height: 120vh;
+		}
+	}
+	@media screen and (min-width: 360px) and (max-height: 850px) and (orientation: portrait) {
+		&.game {
+			height: 67vh;
+		}
+	}
+	@media screen and (min-width: 400px) and (min-height: 900px) and (orientation: portrait) {
+		&.game {
+			height: 57vh;
+		}
+	}
+	@media screen and (max-width: 280px) and (max-height: 900px) and (orientation: portrait) {
+		&.game {
+			height: 60vh;
+		}
+	}
+	@media screen and (max-width: 320px) and (min-height: 550px) and (orientation: portrait) {
+		&.game {
+			height: 70vh;
+		}
+	}
 }

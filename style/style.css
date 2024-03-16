@@ -347,6 +347,36 @@ header nav a.active {
     height: 85vh;
   }
 }
+@media screen and (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) {
+  .wrapper.game {
+    height: 105vh;
+  }
+}
+@media screen and (max-width: 653px) and (max-height: 281px) and (orientation: landscape) {
+  .wrapper.game {
+    height: 120vh;
+  }
+}
+@media screen and (min-width: 360px) and (max-height: 850px) and (orientation: portrait) {
+  .wrapper.game {
+    height: 67vh;
+  }
+}
+@media screen and (min-width: 400px) and (min-height: 900px) and (orientation: portrait) {
+  .wrapper.game {
+    height: 57vh;
+  }
+}
+@media screen and (max-width: 280px) and (max-height: 900px) and (orientation: portrait) {
+  .wrapper.game {
+    height: 60vh;
+  }
+}
+@media screen and (max-width: 320px) and (min-height: 550px) and (orientation: portrait) {
+  .wrapper.game {
+    height: 70vh;
+  }
+}
 
 .memoryGame {
   display: none;
@@ -358,18 +388,18 @@ header nav a.active {
   flex-wrap: wrap;
   width: 80%;
 }
-.memoryGame #progresBarAndTimerWrapper {
+.memoryGame #progresBarWrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
   font-size: 20px;
   color: white;
 }
-.memoryGame #progresBarAndTimerWrapper .progressBar,
-.memoryGame #progresBarAndTimerWrapper .progressValue {
+.memoryGame #progresBarWrapper .progressBar,
+.memoryGame #progresBarWrapper .progressValue {
   transition: 0.3s ease-in-out;
 }
-.memoryGame #progresBarAndTimerWrapper .progressBar {
+.memoryGame #progresBarWrapper .progressBar {
   display: none;
   width: 100%;
   border-radius: 15px;
@@ -382,26 +412,26 @@ header nav a.active {
   padding: 0.3em 0.3em 0.3em;
   animation: scalingInButtons 0.7s ease-in-out;
 }
-.memoryGame #progresBarAndTimerWrapper .progressBar.active {
+.memoryGame #progresBarWrapper .progressBar.active {
   display: flex;
 }
-.memoryGame #progresBarAndTimerWrapper .progressBar.correct {
+.memoryGame #progresBarWrapper .progressBar.correct {
   transform: scale(1.05);
   border-left: 2px solid #28c44a;
   border-right: 2px solid #4fdb6d;
   border-top: 2px solid #3ad65c;
   border-bottom: 2px solid rgb(36, 175, 66);
 }
-.memoryGame #progresBarAndTimerWrapper .progressBar.wrong {
+.memoryGame #progresBarWrapper .progressBar.wrong {
   border-left: 2px solid #ff6161;
   border-right: 2px solid #ff9e9e;
   border-top: 2px solid #ff8484;
   border-bottom: 2px solid rgb(255, 71, 71);
 }
-.memoryGame #progresBarAndTimerWrapper .progressBar.wrong .progressValue {
+.memoryGame #progresBarWrapper .progressBar.wrong .progressValue {
   background: #ff6161;
 }
-.memoryGame #progresBarAndTimerWrapper .progressBar .progressValue {
+.memoryGame #progresBarWrapper .progressBar .progressValue {
   height: 0.5em;
   width: 5%;
   border-radius: 15px;
@@ -604,6 +634,9 @@ header nav a.active {
   }
 }
 @media screen and (max-width: 600px) and (orientation: portrait) {
+  .memoryGame.active {
+    gap: 1em;
+  }
   .memoryGame #scores {
     display: flex;
     flex-direction: column;
@@ -644,8 +677,20 @@ header nav a.active {
   .memoryGame #boxes .box.active .back {
     transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
   }
+  .memoryGame #progresBarWrapper {
+    font-size: 15px;
+  }
 }
 @media screen and (max-width: 320px) and (orientation: portrait) {
+  .memoryGame #scores {
+    font-size: 14px;
+  }
+  .memoryGame #scores #timer {
+    font-size: 20px;
+  }
+  .memoryGame #playAgainBtn {
+    font-size: 16px;
+  }
   .memoryGame #boxes .box {
     height: 50px;
     width: 50px;
@@ -653,6 +698,42 @@ header nav a.active {
   .memoryGame #boxes .box .front img {
     height: 40px;
     width: 40px;
+  }
+  .memoryGame #progresBarWrapper {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) {
+  .memoryGame.active {
+    gap: 1em;
+  }
+  .memoryGame #scores {
+    font-size: 16px;
+  }
+  .memoryGame #scores #timer {
+    font-size: 20px;
+  }
+  .memoryGame #boxes {
+    align-content: flex-start;
+    gap: 5px;
+  }
+  .memoryGame #boxes .box {
+    height: 50px;
+    width: 50px;
+  }
+  .memoryGame #boxes .box .front img {
+    height: 40px;
+    width: 40px;
+  }
+  .memoryGame #boxes .box .front h2 {
+    font-size: 1em;
+    opacity: 0.7;
+  }
+  .memoryGame #boxes .box .front p {
+    display: none;
+  }
+  .memoryGame #progresBarWrapper {
+    font-size: 10px;
   }
 }
 
