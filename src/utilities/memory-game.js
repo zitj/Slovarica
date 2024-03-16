@@ -111,8 +111,8 @@ const settingGameStart = () => {
 	totalScore = 0;
 	scoreBoard.totalScore.innerHTML = totalScore;
 	score = 0;
-	time = 5;
-	// time = 4500;
+	// time = 5;
+	time = 4500;
 	setTimeToMinutes();
 };
 

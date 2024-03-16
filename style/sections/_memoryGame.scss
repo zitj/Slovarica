@@ -88,14 +88,15 @@
 	}
 	#playAgainBtn {
 		display: none;
-		@include button($button-green);
+		@include button($button-green, 4px, rgb(2, 38, 6));
+
 		width: 100%;
 		&:hover {
 			opacity: 0.9;
 		}
 		&:active {
 			opacity: 1;
-			border-bottom: 2px solid $border-button-green;
+			border-bottom: 2px solid rgb(2, 38, 6);
 			transform: translateY(4px);
 		}
 		&.show {
@@ -169,7 +170,7 @@
 				background: $dirty-white;
 
 				img {
-					@include centering(-50%, -55%);
+					@include centering(-50%, -50%);
 					width: 120px;
 					height: 120px;
 				}
@@ -184,9 +185,7 @@
 					}
 				}
 				p {
-					@include centering(-50%, 65%);
-					bottom: 0%;
-					opacity: 0.8;
+					display: none;
 				}
 			}
 			.back {
@@ -211,15 +210,20 @@
 				height: 90px;
 				width: 90px;
 				.front {
+					transform: rotateY(90deg) skewY(-5deg) translateX(85px);
 					img {
-						height: 50px;
-						width: 50px;
+						height: 75px;
+						width: 75px;
+						transform: translate(-50%, -50%);
 					}
 					h2 {
 						font-size: 1.8em;
+						opacity: 0.8;
 					}
-					p {
-						@include centering(-50%, 50%);
+				}
+				&.active {
+					.back {
+						transform: rotateY(90deg) skewY(5deg) translateY(-5px) translateX(-5px);
 					}
 				}
 			}
@@ -248,7 +252,6 @@
 		}
 		#boxes {
 			align-content: flex-start;
-			// gap: 7px;
 			.box {
 				height: 55px;
 				width: 55px;
@@ -261,9 +264,6 @@
 					h2 {
 						font-size: 1em;
 						opacity: 0.7;
-					}
-					p {
-						display: none;
 					}
 				}
 				&.active {
@@ -326,7 +326,7 @@
 				height: 50px;
 				width: 50px;
 				.front {
-					transform: rotateY(90deg) skewY(-5deg) translateX(50px);
+					transform: rotateY(90deg) skewY(-5deg) translateX(45px);
 					img {
 						height: 40px;
 						width: 40px;
@@ -334,9 +334,6 @@
 					h2 {
 						font-size: 1em;
 						opacity: 0.7;
-					}
-					p {
-						display: none;
 					}
 				}
 				&.active {
@@ -356,6 +353,45 @@
 			#timer {
 				font-size: 16px;
 			}
+		}
+	}
+	@media screen and (max-width: 1000px) and (min-height: 960px) and (orientation: portrait) {
+		#scores {
+			font-size: 22px;
+			#timer {
+				margin-top: 10px;
+				font-size: 28px;
+			}
+		}
+		#boxes {
+			align-content: flex-start;
+			gap: 10px;
+			.box {
+				height: 100px;
+				width: 100px;
+				.front {
+					transform: rotateY(90deg) skewY(-5deg) translateX(50px);
+					img {
+						height: 90px;
+						width: 90px;
+					}
+					h2 {
+						font-size: 1.5em;
+						opacity: 0.9;
+					}
+				}
+				&.active {
+					.back {
+						transform: rotateY(90deg) skewY(5deg) translateY(-5px) translateX(-5px);
+					}
+				}
+			}
+		}
+		#playAgainBtn {
+			font-size: 24px;
+		}
+		#progresBarWrapper {
+			font-size: 20px;
 		}
 	}
 }

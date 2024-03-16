@@ -481,7 +481,7 @@ header nav a.active {
   display: none;
   border: none;
   outline: none;
-  border-bottom: 4px solid rgb(40, 66, 43);
+  border-bottom: 4px solid rgb(2, 38, 6);
   border-radius: 8px;
   letter-spacing: 3px;
   font-size: 2em;
@@ -497,7 +497,7 @@ header nav a.active {
 }
 .memoryGame #playAgainBtn:active {
   opacity: 1;
-  border-bottom: 2px solid rgb(40, 66, 43);
+  border-bottom: 2px solid rgb(2, 38, 6);
   transform: translateY(4px);
 }
 .memoryGame #playAgainBtn.show {
@@ -581,7 +581,7 @@ header nav a.active {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -55%);
+  transform: translate(-50%, -50%);
   width: 120px;
   height: 120px;
 }
@@ -596,12 +596,7 @@ header nav a.active {
   font-size: 0.6em;
 }
 .memoryGame #boxes .box .front p {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, 65%);
-  bottom: 0%;
-  opacity: 0.8;
+  display: none;
 }
 .memoryGame #boxes .box .back {
   background: rgb(238, 238, 238);
@@ -624,18 +619,20 @@ header nav a.active {
     height: 90px;
     width: 90px;
   }
+  .memoryGame #boxes .box .front {
+    transform: rotateY(90deg) skewY(-5deg) translateX(85px);
+  }
   .memoryGame #boxes .box .front img {
-    height: 50px;
-    width: 50px;
+    height: 75px;
+    width: 75px;
+    transform: translate(-50%, -50%);
   }
   .memoryGame #boxes .box .front h2 {
     font-size: 1.8em;
+    opacity: 0.8;
   }
-  .memoryGame #boxes .box .front p {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, 50%);
+  .memoryGame #boxes .box.active .back {
+    transform: rotateY(90deg) skewY(5deg) translateY(-5px) translateX(-5px);
   }
 }
 @media screen and (max-width: 600px) and (orientation: portrait) {
@@ -676,9 +673,6 @@ header nav a.active {
   .memoryGame #boxes .box .front h2 {
     font-size: 1em;
     opacity: 0.7;
-  }
-  .memoryGame #boxes .box .front p {
-    display: none;
   }
   .memoryGame #boxes .box.active .back {
     transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
@@ -734,7 +728,7 @@ header nav a.active {
     width: 50px;
   }
   .memoryGame #boxes .box .front {
-    transform: rotateY(90deg) skewY(-5deg) translateX(50px);
+    transform: rotateY(90deg) skewY(-5deg) translateX(45px);
   }
   .memoryGame #boxes .box .front img {
     height: 40px;
@@ -743,9 +737,6 @@ header nav a.active {
   .memoryGame #boxes .box .front h2 {
     font-size: 1em;
     opacity: 0.7;
-  }
-  .memoryGame #boxes .box .front p {
-    display: none;
   }
   .memoryGame #boxes .box.active .back {
     transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
@@ -760,6 +751,43 @@ header nav a.active {
   }
   .memoryGame #scores #timer {
     font-size: 16px;
+  }
+}
+@media screen and (max-width: 1000px) and (min-height: 960px) and (orientation: portrait) {
+  .memoryGame #scores {
+    font-size: 22px;
+  }
+  .memoryGame #scores #timer {
+    margin-top: 10px;
+    font-size: 28px;
+  }
+  .memoryGame #boxes {
+    align-content: flex-start;
+    gap: 10px;
+  }
+  .memoryGame #boxes .box {
+    height: 100px;
+    width: 100px;
+  }
+  .memoryGame #boxes .box .front {
+    transform: rotateY(90deg) skewY(-5deg) translateX(50px);
+  }
+  .memoryGame #boxes .box .front img {
+    height: 90px;
+    width: 90px;
+  }
+  .memoryGame #boxes .box .front h2 {
+    font-size: 1.5em;
+    opacity: 0.9;
+  }
+  .memoryGame #boxes .box.active .back {
+    transform: rotateY(90deg) skewY(5deg) translateY(-5px) translateX(-5px);
+  }
+  .memoryGame #playAgainBtn {
+    font-size: 24px;
+  }
+  .memoryGame #progresBarWrapper {
+    font-size: 20px;
   }
 }
 
