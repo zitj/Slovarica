@@ -8,7 +8,7 @@
 		width: 80%;
 	}
 
-	#progresBarAndTimerWrapper {
+	#progressBarWrapper {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
@@ -88,14 +88,15 @@
 	}
 	#playAgainBtn {
 		display: none;
-		@include button($button-green);
+		@include button($button-green, 4px, rgb(2, 38, 6));
+
 		width: 100%;
 		&:hover {
 			opacity: 0.9;
 		}
 		&:active {
 			opacity: 1;
-			border-bottom: 2px solid $border-button-green;
+			border-bottom: 2px solid rgb(2, 38, 6);
 			transform: translateY(4px);
 		}
 		&.show {
@@ -169,7 +170,7 @@
 				background: $dirty-white;
 
 				img {
-					@include centering(-50%, -55%);
+					@include centering(-50%, -50%);
 					width: 120px;
 					height: 120px;
 				}
@@ -184,9 +185,7 @@
 					}
 				}
 				p {
-					@include centering(-50%, 65%);
-					bottom: 0%;
-					opacity: 0.8;
+					display: none;
 				}
 			}
 			.back {
@@ -204,10 +203,6 @@
 			}
 		}
 	}
-	// @media screen and (min-width: 1400px) {
-	// }
-	// @media screen and (max-width: 1280px) {
-	// }
 	@media screen and (max-width: 1280px) and (orientation: landscape) {
 		#boxes {
 			align-content: flex-start;
@@ -215,24 +210,29 @@
 				height: 90px;
 				width: 90px;
 				.front {
+					transform: rotateY(90deg) skewY(-5deg) translateX(85px);
 					img {
-						height: 50px;
-						width: 50px;
+						height: 75px;
+						width: 75px;
+						transform: translate(-50%, -50%);
 					}
 					h2 {
 						font-size: 1.8em;
-					}
-					p {
-						@include centering(-50%, 50%);
+						opacity: 0.8;
 					}
 				}
-				.back {
-					// transform: rotateY(0deg) skewY(0deg) translateY(0px) translateX(0px);
+				&.active {
+					.back {
+						transform: rotateY(90deg) skewY(5deg) translateY(-5px) translateX(-5px);
+					}
 				}
 			}
 		}
 	}
 	@media screen and (max-width: 600px) and (orientation: portrait) {
+		&.active {
+			gap: 1em;
+		}
 		#scores {
 			display: flex;
 			flex-direction: column;
@@ -243,7 +243,8 @@
 			}
 			font-size: 16px;
 			#timer {
-				font-size: 26px;
+				margin-top: 5px;
+				font-size: 24px;
 			}
 		}
 		#playAgainBtn {
@@ -264,9 +265,6 @@
 						font-size: 1em;
 						opacity: 0.7;
 					}
-					p {
-						display: none;
-					}
 				}
 				&.active {
 					.back {
@@ -275,8 +273,20 @@
 				}
 			}
 		}
+		// #progressBarWrapper {
+		// 	font-size: 10px;
+		// }
 	}
 	@media screen and (max-width: 320px) and (orientation: portrait) {
+		#scores {
+			font-size: 14px;
+			#timer {
+				font-size: 20px;
+			}
+		}
+		#playAgainBtn {
+			font-size: 16px;
+		}
 		#boxes {
 			.box {
 				height: 50px;
@@ -289,20 +299,99 @@
 				}
 			}
 		}
+		// #progressBarWrapper {
+		// 	font-size: 10px;
+		// }
 	}
-	// @media screen and (max-width: 1025px) and (orientation: portrait) {
-	// 	.box {
-	// 		height: 160px;
-	// 		width: 160px;
-	// 		.front {
-	// 			img {
-	// 				height: 110px;
-	// 				width: 110px;
-	// 			}
-	// 			p {
-	// 				@include centering(-50%, 65%);
-	// 			}
-	// 		}
-	// 	}
-	// }
+	@media screen and (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) {
+		&.active {
+			gap: 1em;
+		}
+		#scores {
+			font-size: 16px;
+			#timer {
+				font-size: 20px;
+			}
+		}
+		#playAgainBtn {
+			font-size: 16px;
+		}
+		#boxes {
+			align-content: flex-start;
+			gap: 5px;
+			&.gameOver {
+				height: 130px;
+			}
+			.box {
+				height: 50px;
+				width: 50px;
+				.front {
+					transform: rotateY(90deg) skewY(-5deg) translateX(45px);
+					img {
+						height: 40px;
+						width: 40px;
+					}
+					h2 {
+						font-size: 1em;
+						opacity: 0.7;
+					}
+				}
+				&.active {
+					.back {
+						transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
+					}
+				}
+			}
+		}
+		// #progressBarWrapper {
+		// 	font-size: 10px;
+		// }
+	}
+	@media screen and (max-width: 568px) and (max-height: 320px) and (orientation: landscape) {
+		#scores {
+			font-size: 12px;
+			#timer {
+				font-size: 16px;
+			}
+		}
+	}
+	@media screen and (max-width: 1000px) and (min-height: 960px) and (orientation: portrait) {
+		#scores {
+			font-size: 22px;
+			#timer {
+				margin-top: 10px;
+				font-size: 28px;
+			}
+		}
+		#boxes {
+			align-content: flex-start;
+			gap: 10px;
+			.box {
+				height: 100px;
+				width: 100px;
+				.front {
+					transform: rotateY(90deg) skewY(-5deg) translateX(50px);
+					img {
+						height: 90px;
+						width: 90px;
+					}
+					h2 {
+						font-size: 1.5em;
+						opacity: 0.9;
+					}
+				}
+				&.active {
+					.back {
+						transform: rotateY(90deg) skewY(5deg) translateY(-5px) translateX(-5px);
+					}
+				}
+			}
+		}
+		#playAgainBtn {
+			font-size: 24px;
+		}
+		// #progressBarWrapper {
+		// 	font-size: 20px;
+		// }
+	}
 }

@@ -14,10 +14,10 @@
 	transform: translate($x, $y);
 }
 
-@mixin button($backgroudColor) {
+@mixin button($backgroudColor, $border-size: 4px, $border-color: $border-button-green) {
 	border: none;
 	outline: none;
-	border-bottom: 4px solid $border-button-green;
+	border-bottom: $border-size solid $border-color;
 	border-radius: 8px;
 	letter-spacing: 3px;
 	font-size: 2em;

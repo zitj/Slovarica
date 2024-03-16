@@ -38,9 +38,8 @@ let hideSolutionTime = 0;
 export const showGameElements = () => {
 	memoryGame.classList.add('active');
 	progressBar.classList.add('active');
-	progressBar.addEventListener('animationend', () => {
-		scores.classList.add('active');
-	});
+	scores.classList.add('active');
+	// progressBar.addEventListener('animationend', () => {});
 };
 export const hideGameElements = () => {
 	memoryGame.classList.remove('active');
@@ -86,6 +85,8 @@ const gameOver = () => {
 					progressValue.style.width = `5%`;
 					playAgainButton.classList.add('show');
 					boxesContainer.classList.add('gameOver');
+					totalScore = 0;
+					scoreBoard.totalScore.innerHTML = totalScore;
 				});
 			}
 		}
@@ -109,7 +110,7 @@ const settingGameStart = () => {
 	scoreBoard.totalScore.innerHTML = totalScore;
 	score = 0;
 	time = 15;
-	// time = 45;
+	// time = 4500;
 	setTimeToMinutes();
 };
 
