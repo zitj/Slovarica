@@ -22,9 +22,9 @@
 			<div class="logo"><h4>словарица</h4></div>
 			<!-- end .logo-->
 			<nav>
-				<a class="active">Лекцијица</a>
-				<a>Насумица</a>
-				<a>Игрица</a>
+				<a id="navigateToLecture" class="active">Лекцијица</a>
+				<!-- <a id="navigateToRandom">Насумица</a> -->
+				<a id="navigateToGames">Игрица</a>
 			</nav>
 		</header>
 		<div class="loadAudioContainer"></div>
@@ -33,6 +33,7 @@
 			<h4 id="loadingTitle">Словарица</h4>
 		</div>
 		<main class="wrapper">
+			<!-- <button id="randomise">?</button> -->
 			<div class="letterSection">
 				<div class="letters">
 					<h1></h1>
@@ -41,10 +42,13 @@
 				<button class="start">КРЕНИ</button>
 				<div class="arrowButtons">
 					<div class="buttonWrap">
-						<button class="arrowLeft"></button>
+						<button class="arrowLeft arrow"></button>
 					</div>
 					<div class="buttonWrap">
-						<button class="arrowRight"></button>
+						<button id="randomise"><span>?</span></button>
+					</div>
+					<div class="buttonWrap">
+						<button class="arrowRight arrow"></button>
 					</div>
 				</div>
 			</div>

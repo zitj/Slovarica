@@ -293,6 +293,7 @@ header nav a.active {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   gap: 4em;
   background: rgb(238, 238, 238);
   border-left: 10px solid #767676;
@@ -846,14 +847,35 @@ header nav a.active {
   border: none;
   transform: translateY(2px);
 }
+.letterSection .arrowButtons button#randomise {
+  height: 50px;
+  width: 50px;
+  margin: 15px 10px 0 10px;
+  justify-content: center;
+  align-items: center;
+}
+.letterSection .arrowButtons button#randomise.active {
+  width: 250px;
+  height: 80px;
+  background-color: rgb(255, 71, 71);
+}
+.letterSection .arrowButtons button#randomise span {
+  margin-left: 3px;
+}
 .letterSection .arrowButtons .arrowRight {
   -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
           clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 .letterSection .arrowButtons .arrowLeft {
-  margin-right: 20px;
   -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
           clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+}
+.letterSection .arrowButtons .arrow {
+  opacity: 1;
+}
+.letterSection .arrowButtons .arrow.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 .letterSection .arrowButtons .buttonWrap {
   background: none;

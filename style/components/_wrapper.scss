@@ -3,6 +3,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 	gap: 4em;
 	background: $dirty-white;
 	@include borderMixin(10px, $border-grey);
@@ -11,6 +12,16 @@
 	border-radius: 10px;
 	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.301);
 	margin: 0% auto;
+	// #randomise {
+	// 	position: absolute;
+	// 	bottom: 0px;
+	// 	// right: 10px;
+	// 	width: 100%;
+	// 	@include button($button-green);
+	// 	border-bottom-left-radius: 0px;
+	// 	border-bottom-right-radius: 0px;
+	// 	border-radius: 0;
+	// }
 	&.game {
 		background: transparent;
 		border: none;

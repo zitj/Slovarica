@@ -38,8 +38,9 @@ let hideSolutionTime = 0;
 export const showGameElements = () => {
 	memoryGame.classList.add('active');
 	progressBar.classList.add('active');
-	scores.classList.add('active');
-	// progressBar.addEventListener('animationend', () => {});
+	progressBar.addEventListener('animationend', () => {
+		scores.classList.add('active');
+	});
 };
 export const hideGameElements = () => {
 	memoryGame.classList.remove('active');

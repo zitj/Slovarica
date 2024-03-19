@@ -1,13 +1,14 @@
-import { img, displayWord, letter, azbukaArr } from './randomising-letter.js';
+import { img, displayWord, letter, azbukaArr, characterNumber, charactersAreShuffled } from './randomising-letter.js';
 import { playAudio, playSoundEffect } from './sounds.js';
 import { animatingElements } from './animating-elements.js';
 import { vocabular } from '../../data/data.js';
-import { sectionButtons } from './buttons.js';
+import { navButtons } from './buttons.js';
 
 export let character = 0;
 export let counter = 0;
 
 export const changeLetter = (data, dataCounter, actualCounter) => {
+	// actualCounter = 0;
 	if (data[dataCounter].wordCounter > data[dataCounter].words.length - 1) {
 		data[dataCounter].wordCounter = 0;
 		actualCounter = 0;
@@ -39,10 +40,13 @@ export const defaultLetter = (data) => {
 	animatingElements(letter, img, displayWord);
 };
 
+export const setCharacter = (randomCharacter) => {
+	character = randomCharacter;
+};
+
 export const forward = () => {
-	if (sectionButtons[2].classList.contains('active') || sectionButtons[1].classList.contains('active')) {
-		return;
-	}
+	if (!navButtons.lecture.classList.contains('active')) return;
+
 	character++;
 
 	if (character === azbukaArr.length) {
@@ -57,9 +61,7 @@ export const forward = () => {
 
 // Arrow back
 export const backward = () => {
-	if (sectionButtons[2].classList.contains('active') || sectionButtons[1].classList.contains('active')) {
-		return;
-	}
+	if (!navButtons.lecture.classList.contains('active')) return;
 	character--;
 	if (character == -1) {
 		character = azbukaArr.length - 1;
