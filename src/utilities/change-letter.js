@@ -9,20 +9,27 @@ export let counter = 0;
 
 export const changeLetter = (data, dataCounter, actualCounter) => {
 	// actualCounter = 0;
-	if (data[dataCounter].wordCounter > data[dataCounter].words.length - 1) {
-		data[dataCounter].wordCounter = 0;
-		actualCounter = 0;
-	} else {
-		actualCounter = data[dataCounter].wordCounter;
-	}
+	// if (data[dataCounter].wordCounter > data[dataCounter].words.length - 1) {
+	// 	data[dataCounter].wordCounter = 0;
+	// 	actualCounter = 0;
+	// } else {
+	// 	actualCounter = data[dataCounter].wordCounter;
+	// }
 
-	letter.innerHTML = azbukaArr[dataCounter] + `<span>${azbukaArr[dataCounter].toLowerCase()}</span>`;
-	displayWord.innerHTML = data[dataCounter].words[actualCounter].name;
-	img.src = `assets/img/${data[dataCounter].words[actualCounter].bind}.png`;
-	img.alt = data[dataCounter].words[actualCounter].name;
+	letter.innerHTML = azbukaArr[character] + `<span>${azbukaArr[character].toLowerCase()}</span>`;
+	displayWord.innerHTML = vocabular[dataCounter].words[0].name;
+	img.src = `assets/img/${vocabular[dataCounter].words[0].bind}.png`;
+	img.alt = vocabular[dataCounter].words[0].name;
 	playSoundEffect('click');
-	playAudio(data[dataCounter].words[actualCounter].bind);
+	playAudio(data[dataCounter].words[0].bind);
 	animatingElements(letter, img, displayWord);
+	// letter.innerHTML = azbukaArr[dataCounter] + `<span>${azbukaArr[dataCounter].toLowerCase()}</span>`;
+	// displayWord.innerHTML = data[dataCounter].words[actualCounter].name;
+	// img.src = `assets/img/${data[dataCounter].words[actualCounter].bind}.png`;
+	// img.alt = data[dataCounter].words[actualCounter].name;
+	// playSoundEffect('click');
+	// playAudio(data[dataCounter].words[actualCounter].bind);
+	// animatingElements(letter, img, displayWord);
 };
 
 export const defaultLetter = (data) => {
@@ -46,16 +53,13 @@ export const setCharacter = (randomCharacter) => {
 
 export const forward = () => {
 	if (!navButtons.lecture.classList.contains('active')) return;
-
 	character++;
-
 	if (character === azbukaArr.length) {
 		character = 0;
-		for (let word of vocabular) {
-			word.wordCounter++;
-		}
+		// for (let word of vocabular) {
+		// 	word.wordCounter++;
+		// }
 	}
-
 	changeLetter(vocabular, character, counter);
 };
 

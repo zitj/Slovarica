@@ -53,7 +53,7 @@ export const startStop = () => {
 	} else {
 		randomiseButtonText.innerHTML = '?';
 		arrows.forEach((arrow) => arrow.classList.remove('hide'));
-		setCharacter(--characterNumber);
+		setCharacter(characterNumber - 1);
 	}
 
 	if (randomButton.classList.contains('start')) {
@@ -68,10 +68,10 @@ export const startStop = () => {
 			}
 			if (word.words[0].name.charAt(0) == stopLetter) {
 				counter = word.wordCounter;
-				img.src = `assets/img/${word.words[counter].bind}.png`;
-				img.alt = word.words[counter].name;
-				displayWord.innerHTML = word.words[counter].name;
-				playAudio(word.words[counter].bind);
+				img.src = `assets/img/${word.words[0].bind}.png`;
+				img.alt = word.words[0].name;
+				displayWord.innerHTML = word.words[0].name;
+				playAudio(word.words[0].bind);
 				word.wordCounter++;
 			}
 		}
