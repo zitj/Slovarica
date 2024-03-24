@@ -16,7 +16,7 @@ const isKeyPressed = {
 
 //Application
 letter.innerHTML = azbukaArr[0] + `<span>${azbukaArr[0].toLowerCase()}</span>`;
-img.src = `assets/img/${vocabular[0].words[0].bind}.png`;
+img.src = `assets/img-game-cards/${vocabular[0].words[0].bind}.png`;
 img.alt = vocabular[0].words[0].name;
 
 // Navigation (adding and removing elements)

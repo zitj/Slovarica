@@ -20,12 +20,12 @@ export const vocabular = [
 		wordCounter: 0,
 		words: [
 			{
-				name: 'Банана',
-				bind: 'Banana',
-			},
-			{
 				name: 'Балон',
 				bind: 'Balon',
+			},
+			{
+				name: 'Банана',
+				bind: 'Banana',
 			},
 			{
 				name: 'Буре',
@@ -58,12 +58,12 @@ export const vocabular = [
 				bind: 'Grozdje',
 			},
 			{
-				name: 'Гром',
-				bind: 'Grom',
-			},
-			{
 				name: 'Гитара',
 				bind: 'Gitara',
+			},
+			{
+				name: 'Грабуља',
+				bind: 'Grabulja',
 			},
 		],
 	},
@@ -71,12 +71,12 @@ export const vocabular = [
 		wordCounter: 0,
 		words: [
 			{
-				name: 'Домине',
-				bind: 'Domine',
-			},
-			{
 				name: 'Дрво',
 				bind: 'Drvo',
+			},
+			{
+				name: 'Домине',
+				bind: 'Domine',
 			},
 			{
 				name: 'Диносаурус',
@@ -88,12 +88,16 @@ export const vocabular = [
 		wordCounter: 0,
 		words: [
 			{
-				name: 'Ђумбирко',
-				bind: 'Djumbirko',
-			},
-			{
 				name: 'Ђеврек',
 				bind: 'Djevrek',
+			},
+			{
+				name: 'Ђак',
+				bind: 'Djak',
+			},
+			{
+				name: 'Ђурђевак',
+				bind: 'Djurdjevak',
 			},
 		],
 	},
@@ -103,6 +107,14 @@ export const vocabular = [
 			{
 				name: 'Ексери',
 				bind: 'Ekseri',
+			},
+			{
+				name: 'Елиса',
+				bind: 'Elisa',
+			},
+			{
+				name: 'Епрувета',
+				bind: 'Epruveta',
 			},
 		],
 	},
@@ -127,16 +139,16 @@ export const vocabular = [
 		wordCounter: 0,
 		words: [
 			{
-				name: 'Зомби',
-				bind: 'Zombi',
+				name: 'Звезда',
+				bind: 'Zvezda',
 			},
 			{
 				name: 'Зец',
 				bind: 'Zec',
 			},
 			{
-				name: 'Звезда',
-				bind: 'Zvezda',
+				name: 'Зуб',
+				bind: 'Zub',
 			},
 		],
 	},
@@ -144,16 +156,16 @@ export const vocabular = [
 		wordCounter: 0,
 		words: [
 			{
+				name: 'Индијанaц',
+				bind: 'Indijanac',
+			},
+			{
 				name: 'Играчке',
 				bind: 'Igracke',
 			},
 			{
 				name: 'Игла',
 				bind: 'Igla',
-			},
-			{
-				name: 'Индијанaц',
-				bind: 'Indijanac',
 			},
 		],
 	},
@@ -203,8 +215,8 @@ export const vocabular = [
 				bind: 'Lizalica',
 			},
 			{
-				name: 'Ловац',
-				bind: 'Lovac',
+				name: 'Лепеза',
+				bind: 'Lepeza',
 			},
 		],
 	},
@@ -216,8 +228,12 @@ export const vocabular = [
 				bind: 'Ljuljaska',
 			},
 			{
-				name: 'Људи',
-				bind: 'Ljudi',
+				name: 'Љуска',
+				bind: 'Ljuska',
+			},
+			{
+				name: 'Љубичица',
+				bind: 'Ljubicica',
 			},
 		],
 	},
@@ -242,16 +258,16 @@ export const vocabular = [
 		wordCounter: 0,
 		words: [
 			{
+				name: 'Наранџа',
+				bind: 'Narandza',
+			},
+			{
 				name: 'Нож',
 				bind: 'Noz',
 			},
 			{
 				name: 'Ној',
 				bind: 'Noj',
-			},
-			{
-				name: 'Наранџа',
-				bind: 'Narandza',
 			},
 		],
 	},
@@ -297,8 +313,8 @@ export const vocabular = [
 				bind: 'Paprika',
 			},
 			{
-				name: 'Папагај',
-				bind: 'Papagaj',
+				name: 'Птица',
+				bind: 'Ptica',
 			},
 		],
 	},
@@ -330,6 +346,10 @@ export const vocabular = [
 				name: 'Слон',
 				bind: 'Slon',
 			},
+			{
+				name: 'Столица',
+				bind: 'Stolica',
+			},
 		],
 	},
 	{
@@ -360,6 +380,10 @@ export const vocabular = [
 				name: 'Ћуп',
 				bind: 'Cup',
 			},
+			{
+				name: 'Ћилим',
+				bind: 'Cilim',
+			},
 		],
 	},
 	{
@@ -373,6 +397,10 @@ export const vocabular = [
 				name: 'Удица',
 				bind: 'Udica',
 			},
+			{
+				name: 'Утикач',
+				bind: 'Utikac',
+			},
 		],
 	},
 	{
@@ -383,12 +411,12 @@ export const vocabular = [
 				bind: 'Frula',
 			},
 			{
-				name: 'Фењер',
-				bind: 'Fenjer',
+				name: 'Фока',
+				bind: 'Foka',
 			},
 			{
-				name: 'Фијакер',
-				bind: 'Fijaker',
+				name: 'Фењер',
+				bind: 'Fenjer',
 			},
 		],
 	},
@@ -400,12 +428,12 @@ export const vocabular = [
 				bind: 'Hleb',
 			},
 			{
-				name: 'Храм',
-				bind: 'Hram',
-			},
-			{
 				name: 'Хармоника',
 				bind: 'Harmonika',
+			},
+			{
+				name: 'Хаљина',
+				bind: 'Haljina',
 			},
 		],
 	},
@@ -454,6 +482,10 @@ export const vocabular = [
 				name: 'Џемпер',
 				bind: 'Dzemper',
 			},
+			{
+				name: 'Џеп',
+				bind: 'Dzep',
+			},
 		],
 	},
 	{
@@ -462,6 +494,10 @@ export const vocabular = [
 			{
 				name: 'Шешир',
 				bind: 'Sesir',
+			},
+			{
+				name: 'Шерпа',
+				bind: 'Serpa',
 			},
 			{
 				name: 'Шишарка',

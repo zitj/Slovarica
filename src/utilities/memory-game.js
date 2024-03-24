@@ -171,7 +171,7 @@ const renderBoxes = () => {
         <div class="front square">
             <h2>${firstLetter}<span>${firstLetter.toLowerCase()}</span></h2>
             <p class="boxTitle">${word.name}</p>
-            <img src="assets/img/${word.bind}.png" alt="${word.name}" />
+            <img src="assets/img-game-cards/${word.bind}.png" alt="${word.name}" />
             </div>
             <div class="back square">
             <img src="assets/gif/questionMark.gif" alt="question mark gif" />

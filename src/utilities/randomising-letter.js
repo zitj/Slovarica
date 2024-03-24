@@ -34,7 +34,7 @@ export const randomizingLetter = () => {
 	charactersAreShuffled = true;
 	letter.innerHTML = azbukaArr[characterNumber] + `<span>${azbukaArr[characterNumber].toLowerCase()}</span>`;
 	displayWord.innerHTML = vocabular[characterNumber].words[0].name;
-	img.src = `assets/img/${vocabular[characterNumber].words[0].bind}.png`;
+	img.src = `assets/img-centered/${vocabular[characterNumber].words[0].bind}.png`;
 
 	characterNumber++;
 	if (characterNumber === azbukaArr.length) {
@@ -68,7 +68,7 @@ export const startStop = () => {
 			}
 			if (word.words[0].name.charAt(0) == stopLetter) {
 				counter = word.wordCounter;
-				img.src = `assets/img/${word.words[0].bind}.png`;
+				img.src = `assets/img-centered/${word.words[0].bind}.png`;
 				img.alt = word.words[0].name;
 				displayWord.innerHTML = word.words[0].name;
 				playAudio(word.words[0].bind);

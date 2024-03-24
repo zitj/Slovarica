@@ -18,14 +18,14 @@ export const changeLetter = (data, dataCounter, actualCounter) => {
 
 	letter.innerHTML = azbukaArr[character] + `<span>${azbukaArr[character].toLowerCase()}</span>`;
 	displayWord.innerHTML = vocabular[dataCounter].words[0].name;
-	img.src = `assets/img/${vocabular[dataCounter].words[0].bind}.png`;
+	img.src = `assets/img-centered/${vocabular[dataCounter].words[0].bind}.png`;
 	img.alt = vocabular[dataCounter].words[0].name;
 	playSoundEffect('click');
 	playAudio(data[dataCounter].words[0].bind);
 	animatingElements(letter, img, displayWord);
 	// letter.innerHTML = azbukaArr[dataCounter] + `<span>${azbukaArr[dataCounter].toLowerCase()}</span>`;
 	// displayWord.innerHTML = data[dataCounter].words[actualCounter].name;
-	// img.src = `assets/img/${data[dataCounter].words[actualCounter].bind}.png`;
+	// img.src = `assets/img-game-cards/${data[dataCounter].words[actualCounter].bind}.png`;
 	// img.alt = data[dataCounter].words[actualCounter].name;
 	// playSoundEffect('click');
 	// playAudio(data[dataCounter].words[actualCounter].bind);
@@ -36,7 +36,7 @@ export const defaultLetter = (data) => {
 	character = 0;
 	letter.innerHTML = azbukaArr[character] + `<span>${azbukaArr[character].toLowerCase()}</span>`;
 	displayWord.innerHTML = data[character].words[0].name;
-	img.src = `assets/img/${data[character].words[0].bind}.png`;
+	img.src = `assets/img-centered/${data[character].words[0].bind}.png`;
 	img.alt = data[character].words[0].name;
 	playAudio(data[character].words[0].bind);
 
