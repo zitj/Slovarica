@@ -293,6 +293,7 @@ header nav a.active {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   gap: 4em;
   background: rgb(238, 238, 238);
   border-left: 10px solid #767676;
@@ -326,6 +327,21 @@ header nav a.active {
     height: 78vh;
   }
 }
+@media screen and (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) {
+  .wrapper.game {
+    height: 105vh;
+  }
+}
+@media screen and (max-width: 653px) and (max-height: 281px) and (orientation: landscape) {
+  .wrapper.game {
+    height: 120vh;
+  }
+}
+@media screen and (max-width: 568px) and (max-height: 320px) and (orientation: landscape) {
+  .wrapper.game {
+    height: 120vh;
+  }
+}
 @media screen and (max-width: 1025px) and (orientation: portrait) {
   .wrapper {
     flex-direction: column-reverse;
@@ -342,19 +358,9 @@ header nav a.active {
     width: 100%;
   }
 }
-@media screen and (max-width: 320px) and (orientation: portrait) {
+@media screen and (min-width: 400px) and (min-height: 850px) and (orientation: portrait) {
   .wrapper.game {
-    height: 85vh;
-  }
-}
-@media screen and (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) {
-  .wrapper.game {
-    height: 105vh;
-  }
-}
-@media screen and (max-width: 653px) and (max-height: 281px) and (orientation: landscape) {
-  .wrapper.game {
-    height: 120vh;
+    height: 57vh;
   }
 }
 @media screen and (min-width: 360px) and (max-height: 850px) and (orientation: portrait) {
@@ -362,14 +368,9 @@ header nav a.active {
     height: 67vh;
   }
 }
-@media screen and (min-width: 400px) and (min-height: 850px) and (orientation: portrait) {
+@media screen and (max-width: 320px) and (orientation: portrait) {
   .wrapper.game {
-    height: 57vh;
-  }
-}
-@media screen and (max-width: 280px) and (max-height: 900px) and (orientation: portrait) {
-  .wrapper.game {
-    height: 60vh;
+    height: 85vh;
   }
 }
 @media screen and (max-width: 320px) and (min-height: 533px) and (orientation: portrait) {
@@ -377,9 +378,9 @@ header nav a.active {
     height: 70vh;
   }
 }
-@media screen and (max-width: 568px) and (max-height: 320px) and (orientation: landscape) {
+@media screen and (max-width: 280px) and (max-height: 900px) and (orientation: portrait) {
   .wrapper.game {
-    height: 120vh;
+    height: 60vh;
   }
 }
 
@@ -393,18 +394,18 @@ header nav a.active {
   flex-wrap: wrap;
   width: 80%;
 }
-.memoryGame #progresBarWrapper {
+.memoryGame #progressBarWrapper {
   width: 100%;
   display: flex;
   justify-content: space-between;
   font-size: 20px;
   color: white;
 }
-.memoryGame #progresBarWrapper .progressBar,
-.memoryGame #progresBarWrapper .progressValue {
+.memoryGame #progressBarWrapper .progressBar,
+.memoryGame #progressBarWrapper .progressValue {
   transition: 0.3s ease-in-out;
 }
-.memoryGame #progresBarWrapper .progressBar {
+.memoryGame #progressBarWrapper .progressBar {
   display: none;
   width: 100%;
   border-radius: 15px;
@@ -417,26 +418,26 @@ header nav a.active {
   padding: 0.3em 0.3em 0.3em;
   animation: scalingInButtons 0.7s ease-in-out;
 }
-.memoryGame #progresBarWrapper .progressBar.active {
+.memoryGame #progressBarWrapper .progressBar.active {
   display: flex;
 }
-.memoryGame #progresBarWrapper .progressBar.correct {
+.memoryGame #progressBarWrapper .progressBar.correct {
   transform: scale(1.05);
   border-left: 2px solid #28c44a;
   border-right: 2px solid #4fdb6d;
   border-top: 2px solid #3ad65c;
   border-bottom: 2px solid rgb(36, 175, 66);
 }
-.memoryGame #progresBarWrapper .progressBar.wrong {
+.memoryGame #progressBarWrapper .progressBar.wrong {
   border-left: 2px solid #ff6161;
   border-right: 2px solid #ff9e9e;
   border-top: 2px solid #ff8484;
   border-bottom: 2px solid rgb(255, 71, 71);
 }
-.memoryGame #progresBarWrapper .progressBar.wrong .progressValue {
+.memoryGame #progressBarWrapper .progressBar.wrong .progressValue {
   background: #ff6161;
 }
-.memoryGame #progresBarWrapper .progressBar .progressValue {
+.memoryGame #progressBarWrapper .progressBar .progressValue {
   height: 0.5em;
   width: 5%;
   border-radius: 15px;
@@ -677,9 +678,6 @@ header nav a.active {
   .memoryGame #boxes .box.active .back {
     transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
   }
-  .memoryGame #progresBarWrapper {
-    font-size: 10px;
-  }
 }
 @media screen and (max-width: 320px) and (orientation: portrait) {
   .memoryGame #scores {
@@ -698,9 +696,6 @@ header nav a.active {
   .memoryGame #boxes .box .front img {
     height: 40px;
     width: 40px;
-  }
-  .memoryGame #progresBarWrapper {
-    font-size: 10px;
   }
 }
 @media screen and (max-width: 1000px) and (max-height: 600px) and (orientation: landscape) {
@@ -740,9 +735,6 @@ header nav a.active {
   }
   .memoryGame #boxes .box.active .back {
     transform: rotateY(90deg) skewY(10deg) translateY(-5px) translateX(-5px);
-  }
-  .memoryGame #progresBarWrapper {
-    font-size: 10px;
   }
 }
 @media screen and (max-width: 568px) and (max-height: 320px) and (orientation: landscape) {
@@ -785,9 +777,6 @@ header nav a.active {
   }
   .memoryGame #playAgainBtn {
     font-size: 24px;
-  }
-  .memoryGame #progresBarWrapper {
-    font-size: 20px;
   }
 }
 
@@ -844,9 +833,7 @@ header nav a.active {
   transform: translateY(4px);
 }
 .letterSection .arrowButtons {
-  height: 40px;
   justify-content: center;
-  margin-right: -10px;
 }
 .letterSection .arrowButtons button {
   border: none;
@@ -858,14 +845,35 @@ header nav a.active {
   border: none;
   transform: translateY(2px);
 }
+.letterSection .arrowButtons button#randomise {
+  height: 50px;
+  width: 50px;
+  margin: 15px 10px 0 10px;
+  justify-content: center;
+  align-items: center;
+}
+.letterSection .arrowButtons button#randomise.active {
+  width: 250px;
+  height: 60px;
+  background-color: rgb(255, 71, 71);
+}
+.letterSection .arrowButtons button#randomise span {
+  margin-left: 3px;
+}
 .letterSection .arrowButtons .arrowRight {
   -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
           clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 .letterSection .arrowButtons .arrowLeft {
-  margin-right: 20px;
   -webkit-clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
           clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+}
+.letterSection .arrowButtons .arrow {
+  opacity: 1;
+}
+.letterSection .arrowButtons .arrow.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 .letterSection .arrowButtons .buttonWrap {
   background: none;
@@ -883,9 +891,34 @@ header nav a.active {
   .letterSection h1 {
     font-size: 8em;
   }
-  .letterSection .arrowButtons button {
+  .letterSection .arrowButtons button.arrow {
     width: 60px;
     height: 60px;
+  }
+  .letterSection .arrowButtons button#randomise {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+  }
+}
+@media screen and (min-width: 1024px) and (min-height: 600px) and (orientation: landscape) {
+  .letterSection .arrowButtons button {
+    width: 100px;
+    height: 100px;
+  }
+  .letterSection .arrowButtons button#randomise {
+    width: 60px;
+    height: 60px;
+    margin-top: 20px;
+  }
+  .letterSection .arrowButtons button#randomise.active {
+    height: 80px;
+    width: 250px;
+  }
+}
+@media screen and (max-width: 570px) and (max-height: 325px) and (orientation: landscape) {
+  .letterSection .arrowButtons button#randomise.active {
+    width: 160px;
   }
 }
 @media screen and (max-width: 500px) and (orientation: landscape) {
@@ -906,6 +939,21 @@ header nav a.active {
   }
   .letterSection .arrowButtons {
     height: auto;
+  }
+}
+@media screen and (max-width: 1025px) and (min-height: 1000px) and (orientation: portrait) {
+  .letterSection .arrowButtons button {
+    width: 100px;
+    height: 100px;
+  }
+  .letterSection .arrowButtons button#randomise {
+    width: 60px;
+    height: 60px;
+    margin-top: 20px;
+  }
+  .letterSection .arrowButtons button#randomise.active {
+    height: 80px;
+    width: 250px;
   }
 }
 @media screen and (max-width: 650px) and (orientation: portrait) {
