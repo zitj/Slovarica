@@ -1,5 +1,6 @@
 import { vocabular } from '../../data/data.js';
-import { playAudio, playSoundEffect } from './sounds.js';
+import { PATHS } from './paths.js';
+import { playSoundEffect, soundEffects } from './sounds.js';
 
 const memoryGame = document.querySelector('.memoryGame');
 const progressBar = document.querySelector('.progressBar');
@@ -15,13 +16,6 @@ const scoreBoard = {
 	totalScore: document.querySelector('#totalScore').children[0],
 };
 const scores = document.querySelector('#scores');
-
-const sounds = {
-	show: new Audio('assets/audio/show.mp3'),
-	hide: new Audio('assets/audio/hide.mp3'),
-	timeIsUp: new Audio('assets/audio/time-is-up.mp3'),
-	wrong: new Audio('assets/audio/wrong.mp3'),
-};
 
 let boxes = [];
 let boxTitles = [];
@@ -75,7 +69,7 @@ const gameOver = () => {
 	progressValue.style.width = `100%`;
 	progressBar.classList.add('wrong');
 	let gameOverTimeout = setTimeout(() => {
-		sounds.timeIsUp.play();
+		soundEffects.timeIsUp.play();
 		for (let box of boxes) {
 			if (!box.classList.contains('correct')) {
 				box.classList.remove('shaking');
@@ -171,10 +165,10 @@ const renderBoxes = () => {
         <div class="front square">
             <h2>${firstLetter}<span>${firstLetter.toLowerCase()}</span></h2>
             <p class="boxTitle">${word.name}</p>
-            <img src="assets/img-game-cards/${word.bind}.png" alt="${word.name}" />
+            <img src="${PATHS.illustrations.memoryGame}/${word.bind}.png" alt="${word.name}" />
             </div>
             <div class="back square">
-            <img src="assets/gif/questionMark.gif" alt="question mark gif" />
+            <img src="${PATHS.gif}/questionMark.gif" alt="question mark gif" />
          </div>
         </div>
         `;
@@ -190,10 +184,10 @@ const showSolution = (box, hideSolution) => {
 	box.classList.add('active');
 	if (box.children[0].classList.contains('pulsingRed')) return;
 	if (hideSolution) {
-		sounds.show.play();
+		soundEffects.show.play();
 		let hideSolutionTimeout = setTimeout(() => {
 			box.classList.remove('active');
-			sounds.hide.play();
+			soundEffects.hide.play();
 		}, hideSolutionTime);
 		timeouts.push(hideSolutionTimeout);
 	} else {
@@ -202,7 +196,7 @@ const showSolution = (box, hideSolution) => {
 };
 
 const revealSolutionFor = (box) => {
-	sounds.wrong.play();
+	soundEffects.wrong.play();
 	box.classList.add('shaking');
 	box.children[0].classList.add('pulsingRed');
 	timeCounter.classList.add('timeIsUp');
@@ -215,7 +209,7 @@ const pairMatches = () => {
 		box.children[0].classList.add('correct');
 	});
 	openedBoxes = [];
-	playAudio('success');
+	playSoundEffect('success');
 	score += 2;
 	time += 2;
 	setTimeToMinutes();

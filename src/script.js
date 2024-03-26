@@ -1,13 +1,11 @@
 import { vocabular } from '../data/data.js';
 import { animatingElements } from './utilities/animating-elements.js';
-import { playSoundEffect } from './utilities/sounds.js';
-import { sectionButtons, randomButton, logo, leftArrow, rightArrow, arrowButtons, navButtons, randomiseButton } from './utilities/buttons.js';
+import { audio, playSoundEffect } from './utilities/sounds.js';
+import { sectionButtons, logo, leftArrow, rightArrow, arrowButtons, navButtons, randomiseButton } from './utilities/buttons.js';
 import { loadingScreen } from './utilities/loading-screen.js';
-import { defaultLetter, forward, backward } from './utilities/change-letter.js';
-import { wrapper, letterSection, illustration, displayWord, letter, azbukaArr, img, stopRandomButton, startStop } from './utilities/randomising-letter.js';
+import { setDefaultLetter, forward, backward } from './utilities/change-letter.js';
+import { wrapper, letterSection, illustration, displayWord, letter, azbukaArr, img, startAndStopRandomising, stopRandomButton } from './utilities/randomising-letter.js';
 import { clearTimeouts, hideGameElements, showGameElements, startGame } from './utilities/memory-game.js';
-
-randomButton.style.display = 'none';
 
 //Keyboard
 const isKeyPressed = {
@@ -28,28 +26,16 @@ const classRemover = () => {
 
 const lecturePageActive = () => {
 	if (navButtons.lecture.classList.contains('active')) {
-		defaultLetter(vocabular);
+		setDefaultLetter();
 		arrowButtons.style.display = 'flex';
 		letterSection.style.display = 'flex';
 		illustration.style.display = 'flex';
 	}
 };
 
-const randomPageActive = () => {
-	if (navButtons.random.classList.contains('active')) {
-		randomButton.style.display = 'block';
-		arrowButtons.style.display = 'none';
-		letterSection.style.display = 'flex';
-		illustration.style.display = 'flex';
-		defaultLetter(vocabular);
-	} else {
-		randomButton.style.display = 'none';
-		stopRandomButton();
-	}
-};
-
 const gamePageActive = () => {
 	if (navButtons.games.classList.contains('active')) {
+		stopRandomButton();
 		letterSection.style.display = 'none';
 		illustration.style.display = 'none';
 		vocabular.forEach((el) => (el.wordCounter = 0));
@@ -65,11 +51,11 @@ const gamePageActive = () => {
 // SECTIONS
 for (let sectionButton of sectionButtons) {
 	sectionButton.addEventListener('click', () => {
+		audio.pause();
 		playSoundEffect('sectionClick');
 		clearTimeouts();
 		classRemover();
 		sectionButton.classList.add('active');
-		// randomPageActive();
 		lecturePageActive();
 		gamePageActive();
 	});
@@ -77,7 +63,7 @@ for (let sectionButton of sectionButtons) {
 
 const startApp = () => {
 	animatingElements(letter, img, displayWord);
-	defaultLetter(vocabular);
+	setDefaultLetter();
 };
 
 const endLoadingScreen = () => {
@@ -91,29 +77,23 @@ const endLoadingScreen = () => {
 };
 
 //Triggers on Mouse
-randomButton.addEventListener('click', startStop);
 leftArrow.addEventListener('click', backward);
 rightArrow.addEventListener('click', forward);
-randomiseButton.addEventListener('click', startStop);
-// document.querySelector('#randomise').addEventListener('click', startStop);
+randomiseButton.addEventListener('click', startAndStopRandomising);
 logo.addEventListener('click', () => {
 	location.reload();
 });
 
 //Triggers on Keyboard
-document.body.onkeyup = function (e) {
-	if (e.keyCode === 32) {
-		startStop;
-	}
+document.body.onkeyup = function (keyUpEvent) {
+	if (keyUpEvent.keyCode === 32) startAndStopRandomising();
 };
+
 document.onkeydown = (keyDownEvent) => {
 	isKeyPressed[keyDownEvent.key] = true;
-	if (keyDownEvent.key == 'ArrowLeft') {
-		backward();
-	}
-	if (keyDownEvent.key == 'ArrowRight') {
-		forward();
-	}
+	keyDownEvent.preventDefault();
+	if (keyDownEvent.key == 'ArrowLeft') backward();
+	if (keyDownEvent.key == 'ArrowRight') forward();
 };
 
 endLoadingScreen();
