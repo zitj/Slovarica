@@ -42,9 +42,8 @@
 		}
 	}
 	.arrowButtons {
-		height: 40px;
+		// height: 40px;
 		justify-content: center;
-		margin-right: -10px;
 		button {
 			border: none;
 			width: 80px;
@@ -55,13 +54,36 @@
 				border: none;
 				transform: translateY(2px);
 			}
+			&#randomise {
+				height: 50px;
+				width: 50px;
+				margin: 15px 10px 0 10px;
+				justify-content: center;
+				align-items: center;
+				&.active {
+					width: 250px;
+					height: 60px;
+					background-color: $button-red;
+					// margin: 0px 10px;
+				}
+				span {
+					margin-left: 3px;
+				}
+			}
 		}
 		.arrowRight {
 			clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 		}
 		.arrowLeft {
-			margin-right: 20px;
+			// margin-right: 20px;
 			clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+		}
+		.arrow {
+			opacity: 1;
+			&.hide {
+				opacity: 0;
+				pointer-events: none;
+			}
 		}
 		.buttonWrap {
 			background: none;
@@ -83,8 +105,43 @@
 		}
 		.arrowButtons {
 			button {
-				width: 60px;
-				height: 60px;
+				&.arrow {
+					width: 60px;
+					height: 60px;
+				}
+				&#randomise {
+					width: 40px;
+					height: 40px;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+	@media screen and (min-width: 1024px) and (min-height: 600px) and (orientation: landscape) {
+		.arrowButtons {
+			button {
+				width: 100px;
+				height: 100px;
+				&#randomise {
+					width: 60px;
+					height: 60px;
+					margin-top: 20px;
+					&.active {
+						height: 80px;
+						width: 250px;
+					}
+				}
+			}
+		}
+	}
+	@media screen and (max-width: 570px) and (max-height: 325px) and (orientation: landscape) {
+		.arrowButtons {
+			button {
+				&#randomise {
+					&.active {
+						width: 160px;
+					}
+				}
 			}
 		}
 	}
@@ -108,6 +165,23 @@
 		margin: 0;
 		.arrowButtons {
 			height: auto;
+		}
+	}
+	@media screen and (max-width: 1025px) and (min-height: 1000px) and (orientation: portrait) {
+		.arrowButtons {
+			button {
+				width: 100px;
+				height: 100px;
+				&#randomise {
+					width: 60px;
+					height: 60px;
+					margin-top: 20px;
+					&.active {
+						height: 80px;
+						width: 250px;
+					}
+				}
+			}
 		}
 	}
 	@media screen and (max-width: 650px) and (orientation: portrait) {
